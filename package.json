@@ -1,0 +1,48 @@
+{
+  "name": "node_design_style",
+  "version": "1.0.0",
+  "description": "design style server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HyunwooP/node_design_style.git"
+  },
+  "keywords": [
+    "node",
+    "design",
+    "style"
+  ],
+  "author": "HyunwooP",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HyunwooP/node_design_style/issues"
+  },
+  "homepage": "https://github.com/HyunwooP/node_design_style#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "http": "0.0.1-security",
+    "https": "^1.0.0",
+    "lodash": "^4.17.21",
+    "mongodb": "^3.6.9",
+    "typeorm": "^0.2.34"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.0",
+    "@types/cors": "^2.8.10",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.12",
+    "@types/helmet": "^4.0.0",
+    "@types/node": "^15.12.2",
+    "@types/lodash": "^4.14.170",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.2"
+  }
+}
