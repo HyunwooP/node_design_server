@@ -17,5 +17,5 @@ export default {
   origin:
     process.env.clientDomain && process.env.clientPort
       ? `http://${process.env.clientDomain}:${process.env.clientPort}`
-      : "http://localhost:3000",
+      : "http://localhost:3001",
 };

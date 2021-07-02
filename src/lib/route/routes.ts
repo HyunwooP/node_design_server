@@ -16,6 +16,12 @@ const item: RouteItemIE[] = [
     next: Common.health,
     auth: false,
   },
+  {
+    path: "/findTheme",
+    method: "get",
+    next: Theme.find,
+    auth: false,
+  },
 ];
 
 export default item;

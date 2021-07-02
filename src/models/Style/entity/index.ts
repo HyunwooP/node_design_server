@@ -1,10 +1,15 @@
+import { Entity, ObjectIdColumn, Column, ObjectID, ManyToOne } from "typeorm";
 import { CommonEntity } from "../../Common/entity";
-import { Entity, ObjectIdColumn, Column, ObjectID } from "typeorm";
+import { Theme } from "../../../models/Theme/entity";
 
 export interface StyleIE {
   id?: ObjectID;
   name?: string;
-  attribute?: object | string | string[];
+  // layout?: Layout[];
+  // component?: Component[];
+  layout?: ObjectID[];
+  component?: ObjectID[];
+  isActive?: boolean;
   isDeleted?: boolean;
 }
 
@@ -16,8 +21,19 @@ export class Style extends CommonEntity implements StyleIE {
   @Column()
   name: string;
 
+  // @OneToMany(() => Layout, (layout) => layout.parent)
   @Column()
-  attribute: object | string | string[];
+  layout: ObjectID[];
+
+  // @OneToMany(() => Component, (component) => component.parent)
+  @Column()
+  component: ObjectID[];
+
+  @ManyToOne(() => Theme, (theme) => theme.styles)
+  parent: Theme;
+
+  @Column({ default: true })
+  isActive: boolean = true;
 
   @Column({ default: false })
   isDeleted: boolean = false;

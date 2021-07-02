@@ -6,7 +6,15 @@
 
 #### Style 객체를 관리하기 위해 MongoDB를 사용
 
-#### Style 관리 클라이언트 만들기
+## 아이디어
+
+#### Theme = 여러개의 Style을 가질 수 있고, Style.isActive 관리를 통하여 Client에 주어진다.
+
+#### Style = 여러개의 레이아웃과 컴포넌트들을 조합한 객체
+
+#### Layout = Client의 최상단 Wrapper 역할을 하는 CSS를 가지고 있다.
+
+#### Component = 각 테마별로 가져야 할 컴포넌트 CSS 객체들이다.
 
 ## Client Repository
 
