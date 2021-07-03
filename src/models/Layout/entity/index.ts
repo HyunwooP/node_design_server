@@ -13,7 +13,9 @@ export class Layout extends CommonEntity implements LayoutIE {
   @ObjectIdColumn()
   id: ObjectID;
 
-  @Column()
+  @Column({
+    unique: true,
+  })
   name: string;
 
   @Column()

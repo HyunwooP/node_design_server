@@ -18,19 +18,25 @@ export class Style extends CommonEntity implements StyleIE {
   @ObjectIdColumn()
   id: ObjectID;
 
-  @Column()
+  @Column({
+    unique: true,
+  })
   name: string;
 
   // @OneToMany(() => Layout, (layout) => layout.parent)
-  @Column()
+  @Column({
+    nullable: true,
+  })
   layout: ObjectID[];
 
   // @OneToMany(() => Component, (component) => component.parent)
-  @Column()
+  @Column({
+    nullable: true,
+  })
   component: ObjectID[];
 
-  @ManyToOne(() => Theme, (theme) => theme.styles)
-  parent: Theme;
+  // @ManyToOne(() => Theme, (theme) => theme.styles)
+  // parent: Theme;
 
   @Column({ default: true })
   isActive: boolean = true;

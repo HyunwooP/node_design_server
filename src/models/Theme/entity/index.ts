@@ -15,7 +15,9 @@ export class Theme extends CommonEntity implements ThemeIE {
   @ObjectIdColumn()
   id: ObjectID;
 
-  @Column()
+  @Column({
+    unique: true,
+  })
   name: string;
 
   // @OneToMany(() => Style, (style) => style.parent)

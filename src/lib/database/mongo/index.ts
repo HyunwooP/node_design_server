@@ -19,9 +19,20 @@ import { sampleLayouts } from "./sample/layout";
 import { sampleComponents } from "./sample/component";
 
 export const generateTestData = async (): Promise<void> => {
-  let styleInfo: any = [];
-  let layoutIds: ObjectID[] = [];
-  let componentIds: ObjectID[] = [];
+  let styleInfos: any = [];
+  let layoutInfos: any = {
+    BLACK_THEME: [],
+    WHITE_THEME: [],
+    GREEN_THEME: [],
+  };
+  let componentInfos: any = {
+    BLACK_THEME: [],
+    WHITE_THEME: [],
+    GREEN_THEME: [],
+  };
+
+  // 코드로 데이터를 만드는 과정이기 때문에 동일 프로퍼티명으로 제작하고싶지만, 힘든 부분이 있어서 THEME별 이름을 붙임
+  // 실제 관리 사이트가 만들어진다면? 동일 프로퍼티로 스타일속성만 다르게하여 조인하는 형태가 될 듯.
 
   // Generate Component Collection
   const generateComponentCollection = async () => {
@@ -32,7 +43,13 @@ export const generateTestData = async (): Promise<void> => {
       component.attribute = sampleComponents[name];
 
       const outputComponent = await AppRepository.Component.save(component);
-      componentIds.push(outputComponent.id);
+      if (outputComponent.name.indexOf("BLACK_THEME") !== -1) {
+        componentInfos.BLACK_THEME.push(outputComponent.id);
+      } else if (outputComponent.name.indexOf("WHITE_THEME") !== -1) {
+        componentInfos.WHITE_THEME.push(outputComponent.id);
+      } else if (outputComponent.name.indexOf("GREEN_THEME") !== -1) {
+        componentInfos.GREEN_THEME.push(outputComponent.id);
+      }
     }
   };
 
@@ -45,23 +62,25 @@ export const generateTestData = async (): Promise<void> => {
       layout.attribute = sampleLayouts[name];
 
       const outputLayout = await AppRepository.Layout.save(layout);
-      layoutIds.push(outputLayout.id);
+      if (outputLayout.name.indexOf("BLACK_THEME") !== -1) {
+        layoutInfos.BLACK_THEME.push(outputLayout.id);
+      } else if (outputLayout.name.indexOf("WHITE_THEME") !== -1) {
+        layoutInfos.WHITE_THEME.push(outputLayout.id);
+      } else if (outputLayout.name.indexOf("GREEN_THEME") !== -1) {
+        layoutInfos.GREEN_THEME.push(outputLayout.id);
+      }
     }
   };
 
   // Generate Style Collection
   const generateStyleCollection = async () => {
-    for (let i = 0; i < sampleStyles.length; i++) {
+    for (const name of sampleStyles) {
       const style = new Style();
-      style.name = sampleStyles[i];
-
-      // todo: 로우별 다양한 컴포넌트와 레이아웃으로 섞기
-      style.component = componentIds;
-      style.layout = layoutIds;
-      style.isActive = i % 2 === 0;
-
+      style.name = name;
+      style.component = componentInfos[name];
+      style.layout = layoutInfos[name];
       const outputStyle = await AppRepository.Style.save(style);
-      styleInfo.push(outputStyle);
+      styleInfos.push(outputStyle.id);
     }
   };
 
@@ -69,17 +88,9 @@ export const generateTestData = async (): Promise<void> => {
   const generateThemeCollection = async () => {
     for (const name of sampleTheme) {
       const theme = new Theme();
-      const styles: ObjectID[] = [];
       theme.name = name;
-
-      styleInfo.forEach((children: Style) => {
-        if (children.isActive === true) {
-          styles.push(children.id);
-        }
-      });
-
       // populate or aggregation
-      theme.styles = styles;
+      theme.styles = styleInfos;
       await AppRepository.Theme.save(theme);
     }
   };

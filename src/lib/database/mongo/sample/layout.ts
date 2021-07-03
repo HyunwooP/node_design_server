@@ -3,15 +3,27 @@ interface SampleLayoutIE {
 }
 export const sampleLayouts: SampleLayoutIE = {
   BLACK_THEME_LAYOUT: {
-    backgroundColor: "black",
-  },
-  BLACK_THEME_MODAL_LAYOUT: {
-    border: "1px solid white",
+    CONTAINER_LAYOUT: {
+      backgroundColor: "black",
+    },
+    MODAL_LAYOUT: {
+      border: "1px solid white",
+    },
   },
   WHITE_THEME_LAYOUT: {
-    backgroundColor: "black",
+    CONTAINER_LAYOUT: {
+      backgroundColor: "white",
+    },
+    MODAL_LAYOUT: {
+      border: "1px solid black",
+    },
   },
-  WHITE_THEME_MODAL_LAYOUT: {
-    border: "1px solid white",
+  GREEN_THEME_LAYOUT: {
+    CONTAINER_LAYOUT: {
+      backgroundColor: "green",
+    },
+    MODAL_LAYOUT: {
+      backgroundColor: "red",
+    },
   },
 };

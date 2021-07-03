@@ -1,6 +1,1 @@
-export const sampleStyles = [
-  "BLACK_THEME_STYLE1",
-  "BLACK_THEME_STYLE2",
-  "WHITE_THEME_STYLE1",
-  "WHITE_THEME_STYLE2",
-];
+export const sampleStyles = ["BLACK_THEME", "WHITE_THEME", "GREEN_THEME"];

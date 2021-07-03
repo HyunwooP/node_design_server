@@ -13,7 +13,9 @@ export class Component extends CommonEntity implements ComponentIE {
   @ObjectIdColumn()
   id: ObjectID;
 
-  @Column()
+  @Column({
+    unique: true,
+  })
   name: string;
 
   @Column()

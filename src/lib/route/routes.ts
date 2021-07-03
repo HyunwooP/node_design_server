@@ -19,7 +19,7 @@ const item: RouteItemIE[] = [
   {
     path: "/findTheme",
     method: "get",
-    next: Theme.find,
+    next: Theme.findItem,
     auth: false,
   },
 ];

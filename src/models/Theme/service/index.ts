@@ -1,4 +1,5 @@
 import * as _ from "lodash";
+import { ObjectLiteral } from "typeorm";
 import {
   AppRepository,
   CommonStatusCode,
@@ -6,6 +7,7 @@ import {
   onFailureHandler,
 } from "../../../lib";
 import { ThemeIE } from "../entity";
+import { themeItemQuery } from "../query";
 
 /**
  * @description
@@ -14,39 +16,27 @@ import { ThemeIE } from "../entity";
  * (Component, Layout, Style을 한번에 묶어서 Theme에 넣어줘야함.)
  * @returns {Document[]}
  */
-export const aggregateTheme = async (): Promise<any> => {
+export const aggregateTheme = async (
+  pipeline?: ObjectLiteral[]
+): Promise<any> => {
   try {
     /**
      * Common Theme Query - join style (layouts, components)
      * todo = Theme Service -> aggregate -> return value
      */
-    return await AppRepository.Theme.aggregate([
-      {
-        $lookup: {
-          from: "Style",
-          let: { styleId: "$styles" },
-          pipeline: [{ $match: { $expr: { $in: ["$_id", "$$styleId"] } } }],
-          as: "styles",
-        },
-      },
-      { $unwind: "$styles" },
-      {
-        $lookup: {
-          from: "Layout",
-          let: { layoutId: "$styles.layout" },
-          pipeline: [{ $match: { $expr: { $in: ["$_id", "$$layoutId"] } } }],
-          as: "styles.layout",
-        },
-      },
-      {
-        $lookup: {
-          from: "Component",
-          let: { componentId: "$styles.component" },
-          pipeline: [{ $match: { $expr: { $in: ["$_id", "$$componentId"] } } }],
-          as: "styles.component",
-        },
-      },
-    ]).toArray();
+    return await AppRepository.Theme.aggregate(pipeline).toArray();
+  } catch (e) {
+    onFailureHandler({
+      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
+      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
+      data: e.data ?? {},
+    });
+  }
+};
+
+export const findThemeItem = async (): Promise<ThemeIE> => {
+  try {
+    return await aggregateTheme(themeItemQuery);
   } catch (e) {
     onFailureHandler({
       status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
@@ -58,11 +48,7 @@ export const aggregateTheme = async (): Promise<any> => {
 
 export const findOneTheme = async (conditions: ThemeIE): Promise<ThemeIE> => {
   try {
-    return await AppRepository.Theme.findOne({
-      ...conditions,
-      isActive: true,
-      isDeleted: false,
-    });
+    return await AppRepository.Theme.findOne({ ...conditions });
   } catch (e) {
     onFailureHandler({
       status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
@@ -74,17 +60,7 @@ export const findOneTheme = async (conditions: ThemeIE): Promise<ThemeIE> => {
 
 export const findTheme = async (conditions: ThemeIE): Promise<ThemeIE[]> => {
   try {
-    const theme: any = await AppRepository.Theme.find({
-      ...conditions,
-      isActive: true,
-      isDeleted: false,
-    });
-
-    const testThemeData: any = await aggregateTheme();
-    console.log(testThemeData[0].styles.component);
-    console.log(testThemeData[0].styles.layout);
-
-    return theme;
+    return await AppRepository.Theme.find({ ...conditions });
   } catch (e) {
     onFailureHandler({
       status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
