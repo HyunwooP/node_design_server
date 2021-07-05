@@ -20,10 +20,6 @@ export const aggregateTheme = async (
   pipeline?: ObjectLiteral[]
 ): Promise<any> => {
   try {
-    /**
-     * Common Theme Query - join style (layouts, components)
-     * todo = Theme Service -> aggregate -> return value
-     */
     return await AppRepository.Theme.aggregate(pipeline).toArray();
   } catch (e) {
     onFailureHandler({
