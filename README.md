@@ -1,6 +1,6 @@
 # Node Style Server
 
-## React + Node API Server + Style Server
+## React + Gateway Server + API Server + Style Server
 
 ### Client에 참조되는 Style객체를 관리하는 서버를 목적으로 둠.
 
