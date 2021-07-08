@@ -2,6 +2,8 @@
 
 ## React Client + React Admin + Gateway Server + API Server + Style Server
 
+![구조](https://user-images.githubusercontent.com/20429356/124894845-f89eef80-e016-11eb-9a37-0c037dbc0fe4.png)
+
 ### Client에 참조되는 Style객체를 관리하는 서버를 목적으로 둠.
 
 #### Style 객체를 관리하기 위해 MongoDB를 사용
