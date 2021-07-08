@@ -1,6 +1,6 @@
 # Node Style Server
 
-## React + Gateway Server + API Server + Style Server
+## React Client + React Admin + Gateway Server + API Server + Style Server
 
 ### Client에 참조되는 Style객체를 관리하는 서버를 목적으로 둠.
 
@@ -18,15 +18,19 @@
 
 ## Client Repository
 
-https://github.com/HyunwooP/react_template
+https://github.com/HyunwooP/react_client_template
+
+## Admin Repository
+
+https://github.com/HyunwooP/react_admin_template
 
 ## Gateway Server Repository
 
-https://github.com/HyunwooP/spring_boot_api_gateway_server
+https://github.com/HyunwooP/study_spring_boot
 
 ## API Server Repository
 
-https://github.com/HyunwooP/node_api_template
+https://github.com/HyunwooP/node_api_server
 
 ## Framework & Library
 
@@ -45,7 +49,7 @@ Author: 박현우
 
 ## [노트]
 
-## 설명
+### 설명
 
 ```
 [환경설정]
@@ -57,7 +61,7 @@ Author: 박현우
     2-2. connectRepository function에 참조되는 AppRepository 객체에 선언
 ```
 
-## 실행
+### 실행
 
 ```
 1. npm i
