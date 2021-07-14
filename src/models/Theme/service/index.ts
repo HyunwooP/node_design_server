@@ -6,8 +6,7 @@ import {
   CommonStatusMessage,
   onFailureHandler,
 } from "../../../lib";
-import { ThemeIE } from "../entity";
-import { themeItemQuery } from "../query";
+import { Theme, ThemeIE } from "../entity";
 
 /**
  * @description
@@ -32,7 +31,8 @@ export const aggregateTheme = async (
 
 export const findThemeItem = async (): Promise<ThemeIE> => {
   try {
-    return await aggregateTheme(themeItemQuery);
+    const theme = new Theme();
+    return await aggregateTheme(theme.findThemeItem());
   } catch (e) {
     onFailureHandler({
       status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
@@ -68,7 +68,7 @@ export const findTheme = async (conditions: ThemeIE): Promise<ThemeIE[]> => {
 
 export const createTheme = async (conditions: ThemeIE): Promise<ThemeIE> => {
   try {
-    return await AppRepository.Theme.save(conditions);
+    return await AppRepository.Theme.create(conditions);
   } catch (e) {
     onFailureHandler({
       status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
