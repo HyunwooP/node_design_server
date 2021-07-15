@@ -5,6 +5,7 @@ import {
   removeTheme,
   updateTheme,
   findThemeItem,
+  findThemeCount,
 } from "../service";
 import { ThemeIE } from "../entity";
 
@@ -13,6 +14,21 @@ import { ThemeIE } from "../entity";
  * 대표 CRUD를 통해 중복되는 객체 호출을 방지한다.
  * @returns {ThemeIE}
  */
+
+/**
+ * @method GET
+ * @param {RequestIE} req
+ * @param {ResponseIE} res
+ * @param {Function} next
+ * @returns {Promise<String>}
+ */
+export const findCount = async (
+  req: RequestIE,
+  res: ResponseIE,
+  next: Function
+): Promise<String> => {
+  return await findThemeCount();
+};
 
 /**
  * @method GET

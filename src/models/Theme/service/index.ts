@@ -8,6 +8,18 @@ import {
 } from "../../../lib";
 import { Theme, ThemeIE } from "../entity";
 
+export const findThemeCount = async (): Promise<String> => {
+  try {
+    return String(await AppRepository.Theme.count());
+  } catch (e) {
+    onFailureHandler({
+      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
+      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
+      data: e.data ?? {},
+    });
+  }
+};
+
 /**
  * @description
  * OneToMany, ManyToOne를 통한 조인형태로 데이터를 가져오려 했으나,

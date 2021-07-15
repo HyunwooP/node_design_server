@@ -1,5 +1,8 @@
-import * as Common from "../../models/Common/controller";
-import * as Theme from "../../models/Theme/controller";
+import CommonRoute from "./items/Common";
+import ComponentRoute from "./items/Component";
+import LayoutRoute from "./items/Layout";
+import StyleRoute from "./items/Style";
+import ThemeRoute from "./items/Theme";
 
 export interface RouteItemIE {
   path: string;
@@ -9,19 +12,11 @@ export interface RouteItemIE {
 }
 
 const item: RouteItemIE[] = [
-  // GET
-  {
-    path: "/health",
-    method: "get",
-    next: Common.health,
-    auth: false,
-  },
-  {
-    path: "/findTheme",
-    method: "get",
-    next: Theme.findItem,
-    auth: false,
-  },
+  ...CommonRoute,
+  ...ComponentRoute,
+  ...LayoutRoute,
+  ...StyleRoute,
+  ...ThemeRoute,
 ];
 
 export default item;
