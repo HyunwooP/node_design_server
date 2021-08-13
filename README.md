@@ -54,13 +54,15 @@ Author: 박현우
 ### 설명
 
 ```
-[환경설정]
-.env를 사용한다.
+1. [환경설정]
+   .env를 사용한다.
 
-1. generate ./env file (dotenv)
-2. DB Table (Model) 추가 시
-    2-1. go .src/lib/database.ts
-    2-2. connectRepository function에 참조되는 AppRepository 객체에 선언
+1-1. generate ./env file (dotenv)
+1-2. DB Table (Model) 추가 시
+1-2.1. go .src/lib/database.ts
+1-2.2. connectRepository function에 참조되는 AppRepository 객체에 선언
+
+2. 디자인 시스템에 포함되는 모든 요소는 테마에 따라 "\_\_"을 구분자로 약속함으로써 어느 테마를 위해 제작되었는지 표시한다.
 ```
 
 ### 실행
