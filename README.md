@@ -34,21 +34,6 @@ https://github.com/HyunwooP/study_spring_boot
 
 https://github.com/HyunwooP/node_api_server
 
-## Framework & Library
-
-```
-Express
-TypeORM
-Mongodb
-```
-
-## 작성자
-
-```
-2021.07.01
-Author: 박현우
-```
-
 ## [노트]
 
 ### 설명
@@ -65,7 +50,22 @@ Author: 박현우
 2. 디자인 시스템에 포함되는 모든 요소는 테마에 따라 "\_\_"을 구분자로 약속함으로써 어느 테마를 위해 제작되었는지 표시한다.
 ```
 
-### 실행
+## 작성자
+
+```
+2021.07.01
+Author: 박현우
+```
+
+## Framework & Library
+
+```
+Express
+TypeORM
+Mongodb
+```
+
+## 실행
 
 ```
 1. npm i
