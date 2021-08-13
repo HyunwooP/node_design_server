@@ -5,6 +5,7 @@ import {
   CommonStatusMessage,
   onFailureHandler,
 } from "../../../lib";
+import { toObjectId } from "../../../utils";
 import { LayoutIE } from "../entity";
 
 export const findLayoutCount = async (): Promise<String> => {
@@ -33,9 +34,11 @@ export const findOneLayout = async (
   }
 };
 
-export const findLayout = async (conditions: LayoutIE): Promise<LayoutIE[]> => {
+export const findLayout = async (
+  conditions: LayoutIE
+): Promise<[LayoutIE[], number]> => {
   try {
-    return await AppRepository.Layout.find({ ...conditions });
+    return await AppRepository.Layout.findAndCount({ ...conditions });
   } catch (e) {
     onFailureHandler({
       status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
@@ -59,18 +62,31 @@ export const createLayout = async (conditions: LayoutIE): Promise<LayoutIE> => {
 
 export const updateLayout = async (conditions: LayoutIE): Promise<LayoutIE> => {
   try {
-    const Layout: LayoutIE = await findOneLayout({
-      id: conditions.id,
+    const layout: LayoutIE = await findOneLayout({
+      _id: toObjectId(conditions._id),
     });
 
-    if (_.isUndefined(Layout)) {
+    if (_.isUndefined(layout)) {
       onFailureHandler({
         status: CommonStatusCode.NOT_FOUND,
         message: CommonStatusMessage.NOT_FOUND,
       });
     }
 
-    return await AppRepository.Layout.save(conditions);
+    // 레이아웃 이름
+    layout.name = _.isUndefined(conditions.name)
+      ? layout.name
+      : conditions.name;
+    // 레이아웃 CSS 속성
+    layout.attribute = _.isUndefined(conditions.attribute)
+      ? layout.attribute
+      : conditions.attribute;
+    // 삭제 유무
+    layout.isDeleted = _.isUndefined(conditions.isDeleted)
+      ? layout.isDeleted
+      : conditions.isDeleted;
+
+    return await AppRepository.Layout.save(layout);
   } catch (e) {
     onFailureHandler({
       status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
@@ -82,7 +98,7 @@ export const updateLayout = async (conditions: LayoutIE): Promise<LayoutIE> => {
 
 export const removeLayout = async (conditions: LayoutIE): Promise<object> => {
   try {
-    await updateLayout({ id: conditions.id, isDeleted: true });
+    await updateLayout({ _id: conditions._id, isDeleted: true });
     return {};
   } catch (e) {
     onFailureHandler({

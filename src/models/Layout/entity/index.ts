@@ -1,8 +1,9 @@
-import { Entity, ObjectIdColumn, Column, ObjectID } from "typeorm";
+import { ObjectID } from "mongodb";
+import { Entity, ObjectIdColumn, Column } from "typeorm";
 import { CommonEntity } from "../../Common/entity";
 
 export interface LayoutIE {
-  id?: ObjectID;
+  _id?: ObjectID;
   name?: string;
   attribute?: object | string | string[];
   isDeleted?: boolean;
@@ -11,7 +12,7 @@ export interface LayoutIE {
 @Entity("Layout")
 export class Layout extends CommonEntity implements LayoutIE {
   @ObjectIdColumn()
-  id: ObjectID;
+  _id: ObjectID;
 
   @Column({
     unique: true,

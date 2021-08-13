@@ -5,6 +5,7 @@ import {
   CommonStatusMessage,
   onFailureHandler,
 } from "../../../lib";
+import { toObjectId } from "../../../utils";
 import { StyleIE } from "../entity";
 
 export const findStyleCount = async (): Promise<String> => {
@@ -31,9 +32,11 @@ export const findOneStyle = async (conditions: StyleIE): Promise<StyleIE> => {
   }
 };
 
-export const findStyle = async (conditions: StyleIE): Promise<StyleIE[]> => {
+export const findStyle = async (
+  conditions: StyleIE
+): Promise<[StyleIE[], number]> => {
   try {
-    return await AppRepository.Style.find({ ...conditions });
+    return await AppRepository.Style.findAndCount({ ...conditions });
   } catch (e) {
     onFailureHandler({
       status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
@@ -57,18 +60,37 @@ export const createStyle = async (conditions: StyleIE): Promise<StyleIE> => {
 
 export const updateStyle = async (conditions: StyleIE): Promise<StyleIE> => {
   try {
-    const Style: StyleIE = await findOneStyle({
-      id: conditions.id,
+    const style: StyleIE = await findOneStyle({
+      _id: toObjectId(conditions._id),
     });
 
-    if (_.isUndefined(Style)) {
+    if (_.isUndefined(style)) {
       onFailureHandler({
         status: CommonStatusCode.NOT_FOUND,
         message: CommonStatusMessage.NOT_FOUND,
       });
     }
 
-    return await AppRepository.Style.save(conditions);
+    // 스타일 이름
+    style.name = _.isUndefined(conditions.name) ? style.name : conditions.name;
+    // 스타일에 포함된 컴포넌트
+    style.components = _.isUndefined(conditions.components)
+      ? style.components
+      : conditions.components;
+    // 스타일에 포함된 레이아웃
+    style.layouts = _.isUndefined(conditions.layouts)
+      ? style.layouts
+      : conditions.layouts;
+    // 사용 유무
+    style.isActive = _.isUndefined(conditions.isActive)
+      ? style.isActive
+      : conditions.isActive;
+    // 삭제 유무
+    style.isDeleted = _.isUndefined(conditions.isDeleted)
+      ? style.isDeleted
+      : conditions.isDeleted;
+
+    return await AppRepository.Style.save(style);
   } catch (e) {
     onFailureHandler({
       status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
@@ -80,7 +102,7 @@ export const updateStyle = async (conditions: StyleIE): Promise<StyleIE> => {
 
 export const removeStyle = async (conditions: StyleIE): Promise<object> => {
   try {
-    await updateStyle({ id: conditions.id, isDeleted: true });
+    await updateStyle({ _id: conditions._id, isDeleted: true });
     return {};
   } catch (e) {
     onFailureHandler({

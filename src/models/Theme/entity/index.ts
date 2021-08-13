@@ -1,8 +1,9 @@
-import { Entity, ObjectIdColumn, Column, ObjectID } from "typeorm";
+import { ObjectID } from "mongodb";
+import { Entity, ObjectIdColumn, Column } from "typeorm";
 import { CommonEntity } from "../../Common/entity";
 
 export interface ThemeIE {
-  id?: ObjectID;
+  _id?: ObjectID;
   name?: string;
   // styles?: Style[];
   styles?: ObjectID[];
@@ -13,7 +14,7 @@ export interface ThemeIE {
 @Entity("Theme")
 export class Theme extends CommonEntity implements ThemeIE {
   @ObjectIdColumn()
-  id: ObjectID;
+  _id: ObjectID;
 
   @Column({
     unique: true,

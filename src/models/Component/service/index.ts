@@ -5,6 +5,7 @@ import {
   CommonStatusMessage,
   onFailureHandler,
 } from "../../../lib";
+import { toObjectId } from "../../../utils";
 import { ComponentIE } from "../entity";
 
 export const findComponentCount = async (): Promise<String> => {
@@ -35,9 +36,9 @@ export const findOneComponent = async (
 
 export const findComponent = async (
   conditions: ComponentIE
-): Promise<ComponentIE[]> => {
+): Promise<[ComponentIE[], number]> => {
   try {
-    return await AppRepository.Component.find({ ...conditions });
+    return await AppRepository.Component.findAndCount({ ...conditions });
   } catch (e) {
     onFailureHandler({
       status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
@@ -65,18 +66,31 @@ export const updateComponent = async (
   conditions: ComponentIE
 ): Promise<ComponentIE> => {
   try {
-    const Component: ComponentIE = await findOneComponent({
-      id: conditions.id,
+    const component: ComponentIE = await findOneComponent({
+      _id: toObjectId(conditions._id),
     });
 
-    if (_.isUndefined(Component)) {
+    if (_.isUndefined(component)) {
       onFailureHandler({
         status: CommonStatusCode.NOT_FOUND,
         message: CommonStatusMessage.NOT_FOUND,
       });
     }
 
-    return await AppRepository.Component.save(conditions);
+    // 컴포넌트 이름
+    component.name = _.isUndefined(conditions.name)
+      ? component.name
+      : conditions.name;
+    // 컴포넌트 CSS 속성
+    component.attribute = _.isUndefined(conditions.attribute)
+      ? component.attribute
+      : conditions.attribute;
+    // 삭제 유무
+    component.isDeleted = _.isUndefined(conditions.isDeleted)
+      ? component.isDeleted
+      : conditions.isDeleted;
+
+    return await AppRepository.Component.save(component);
   } catch (e) {
     onFailureHandler({
       status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
@@ -90,7 +104,7 @@ export const removeComponent = async (
   conditions: ComponentIE
 ): Promise<object> => {
   try {
-    await updateComponent({ id: conditions.id, isDeleted: true });
+    await updateComponent({ _id: conditions._id, isDeleted: true });
     return {};
   } catch (e) {
     onFailureHandler({

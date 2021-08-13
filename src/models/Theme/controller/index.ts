@@ -72,7 +72,7 @@ export const find = async (
   req: RequestIE,
   res: ResponseIE,
   next: Function
-): Promise<ThemeIE[]> => {
+): Promise<[ThemeIE[], number]> => {
   const conditions: ThemeIE = req.item;
   return await findTheme(conditions);
 };

@@ -31,9 +31,6 @@ export const generateTestData = async (): Promise<void> => {
     GREEN_THEME: [],
   };
 
-  // 코드로 데이터를 만드는 과정이기 때문에 동일 프로퍼티명으로 제작하고싶지만, 힘든 부분이 있어서 THEME별 이름을 붙임
-  // 실제 관리 사이트가 만들어진다면? 동일 프로퍼티로 스타일속성만 다르게하여 조인하는 형태가 될 듯.
-
   // Generate Component Collection
   const generateComponentCollection = async () => {
     const componentNames = Object.keys(sampleComponents);
@@ -44,11 +41,11 @@ export const generateTestData = async (): Promise<void> => {
 
       const outputComponent = await AppRepository.Component.save(component);
       if (outputComponent.name.indexOf("BLACK_THEME") !== -1) {
-        componentInfos.BLACK_THEME.push(outputComponent.id);
+        componentInfos.BLACK_THEME.push(outputComponent._id);
       } else if (outputComponent.name.indexOf("WHITE_THEME") !== -1) {
-        componentInfos.WHITE_THEME.push(outputComponent.id);
+        componentInfos.WHITE_THEME.push(outputComponent._id);
       } else if (outputComponent.name.indexOf("GREEN_THEME") !== -1) {
-        componentInfos.GREEN_THEME.push(outputComponent.id);
+        componentInfos.GREEN_THEME.push(outputComponent._id);
       }
     }
   };
@@ -63,11 +60,11 @@ export const generateTestData = async (): Promise<void> => {
 
       const outputLayout = await AppRepository.Layout.save(layout);
       if (outputLayout.name.indexOf("BLACK_THEME") !== -1) {
-        layoutInfos.BLACK_THEME.push(outputLayout.id);
+        layoutInfos.BLACK_THEME.push(outputLayout._id);
       } else if (outputLayout.name.indexOf("WHITE_THEME") !== -1) {
-        layoutInfos.WHITE_THEME.push(outputLayout.id);
+        layoutInfos.WHITE_THEME.push(outputLayout._id);
       } else if (outputLayout.name.indexOf("GREEN_THEME") !== -1) {
-        layoutInfos.GREEN_THEME.push(outputLayout.id);
+        layoutInfos.GREEN_THEME.push(outputLayout._id);
       }
     }
   };
@@ -77,10 +74,10 @@ export const generateTestData = async (): Promise<void> => {
     for (const name of sampleStyles) {
       const style = new Style();
       style.name = name;
-      style.component = componentInfos[name];
-      style.layout = layoutInfos[name];
+      style.components = componentInfos[name];
+      style.layouts = layoutInfos[name];
       const outputStyle = await AppRepository.Style.save(style);
-      styleInfos.push(outputStyle.id);
+      styleInfos.push(outputStyle._id);
     }
   };
 

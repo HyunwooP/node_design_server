@@ -15,6 +15,13 @@ const LayoutRoute: RouteItemIE[] = [
     next: Layout.find,
     auth: false,
   },
+  // DELETE
+  {
+    path: "/removeLayout",
+    method: "delete",
+    next: Layout.remove,
+    auth: true,
+  },
 ];
 
 export default LayoutRoute;

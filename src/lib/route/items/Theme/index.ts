@@ -21,6 +21,13 @@ const ThemeRoute: RouteItemIE[] = [
     next: Theme.find,
     auth: false,
   },
+  // DELETE
+  {
+    path: "/removeTheme",
+    method: "delete",
+    next: Theme.remove,
+    auth: true,
+  },
 ];
 
 export default ThemeRoute;

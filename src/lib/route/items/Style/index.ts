@@ -15,6 +15,13 @@ const StyleRoute: RouteItemIE[] = [
     next: Style.find,
     auth: false,
   },
+  // DELETE
+  {
+    path: "/removeStyle",
+    method: "delete",
+    next: Style.remove,
+    auth: true,
+  },
 ];
 
 export default StyleRoute;

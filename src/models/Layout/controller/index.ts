@@ -50,13 +50,13 @@ export const findOne = async (
  * @param {RequestIE} req
  * @param {ResponseIE} res
  * @param {Function} next
- * @returns {Promise<LayoutIE[]>}
+ * @returns {Promise<[LayoutIE[], number]>}
  */
 export const find = async (
   req: RequestIE,
   res: ResponseIE,
   next: Function
-): Promise<LayoutIE[]> => {
+): Promise<[LayoutIE[], number]> => {
   const conditions: LayoutIE = req.item;
   return await findLayout(conditions);
 };

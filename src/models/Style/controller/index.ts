@@ -56,7 +56,7 @@ export const find = async (
   req: RequestIE,
   res: ResponseIE,
   next: Function
-): Promise<StyleIE[]> => {
+): Promise<[StyleIE[], number]> => {
   const conditions: StyleIE = req.item;
   return await findStyle(conditions);
 };

@@ -50,13 +50,13 @@ export const findOne = async (
  * @param {RequestIE} req
  * @param {ResponseIE} res
  * @param {Function} next
- * @returns {Promise<ComponentIE[]>}
+ * @returns {Promise<[ComponentIE[], number]>}
  */
 export const find = async (
   req: RequestIE,
   res: ResponseIE,
   next: Function
-): Promise<ComponentIE[]> => {
+): Promise<[ComponentIE[], number]> => {
   const conditions: ComponentIE = req.item;
   return await findComponent(conditions);
 };

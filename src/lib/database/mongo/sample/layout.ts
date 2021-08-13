@@ -2,28 +2,22 @@ interface SampleLayoutIE {
   [index: string]: any;
 }
 export const sampleLayouts: SampleLayoutIE = {
-  BLACK_THEME_LAYOUT: {
-    CONTAINER_LAYOUT: {
-      backgroundColor: "black",
-    },
-    MODAL_LAYOUT: {
-      border: "1px solid white",
-    },
+  BLACK_THEME__CONTAINER_LAYOUT: {
+    backgroundColor: "black",
   },
-  WHITE_THEME_LAYOUT: {
-    CONTAINER_LAYOUT: {
-      backgroundColor: "white",
-    },
-    MODAL_LAYOUT: {
-      border: "1px solid black",
-    },
+  BLACK_THEME__MODAL_LAYOUT: {
+    border: "1px solid white",
   },
-  GREEN_THEME_LAYOUT: {
-    CONTAINER_LAYOUT: {
-      backgroundColor: "green",
-    },
-    MODAL_LAYOUT: {
-      backgroundColor: "red",
-    },
+  WHITE_THEME__CONTAINER_LAYOUT: {
+    backgroundColor: "white",
+  },
+  WHITE_THEME__MODAL_LAYOUT: {
+    border: "1px solid black",
+  },
+  GREEN_THEME__CONTAINER_LAYOUT: {
+    backgroundColor: "green",
+  },
+  GREEN_THEME__MODAL_LAYOUT: {
+    backgroundColor: "red",
   },
 };

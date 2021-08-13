@@ -6,6 +6,7 @@ import {
   CommonStatusMessage,
   onFailureHandler,
 } from "../../../lib";
+import { toObjectId } from "../../../utils";
 import { Theme, ThemeIE } from "../entity";
 
 export const findThemeCount = async (): Promise<String> => {
@@ -66,9 +67,11 @@ export const findOneTheme = async (conditions: ThemeIE): Promise<ThemeIE> => {
   }
 };
 
-export const findTheme = async (conditions: ThemeIE): Promise<ThemeIE[]> => {
+export const findTheme = async (
+  conditions: ThemeIE
+): Promise<[ThemeIE[], number]> => {
   try {
-    return await AppRepository.Theme.find({ ...conditions });
+    return await AppRepository.Theme.findAndCount({ ...conditions });
   } catch (e) {
     onFailureHandler({
       status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
@@ -92,16 +95,33 @@ export const createTheme = async (conditions: ThemeIE): Promise<ThemeIE> => {
 
 export const updateTheme = async (conditions: ThemeIE): Promise<ThemeIE> => {
   try {
-    const Theme: ThemeIE = await findOneTheme({ id: conditions.id });
+    const theme: ThemeIE = await findOneTheme({
+      _id: toObjectId(conditions._id),
+    });
 
-    if (_.isUndefined(Theme)) {
+    if (_.isUndefined(theme)) {
       onFailureHandler({
         status: CommonStatusCode.NOT_FOUND,
         message: CommonStatusMessage.NOT_FOUND,
       });
     }
 
-    return await AppRepository.Theme.save(conditions);
+    // 스타일 이름
+    theme.name = _.isUndefined(conditions.name) ? theme.name : conditions.name;
+    // 테마에 포함된 스타일
+    theme.styles = _.isUndefined(conditions.styles)
+      ? theme.styles
+      : conditions.styles;
+    // 사용 유무
+    theme.isActive = _.isUndefined(conditions.isActive)
+      ? theme.isActive
+      : conditions.isActive;
+    // 삭제 유무
+    theme.isDeleted = _.isUndefined(conditions.isDeleted)
+      ? theme.isDeleted
+      : conditions.isDeleted;
+
+    return await AppRepository.Theme.save(theme);
   } catch (e) {
     onFailureHandler({
       status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
@@ -113,7 +133,7 @@ export const updateTheme = async (conditions: ThemeIE): Promise<ThemeIE> => {
 
 export const removeTheme = async (conditions: ThemeIE): Promise<object> => {
   try {
-    await updateTheme({ id: conditions.id, isDeleted: true });
+    await updateTheme({ _id: conditions._id, isDeleted: true });
     return {};
   } catch (e) {
     onFailureHandler({

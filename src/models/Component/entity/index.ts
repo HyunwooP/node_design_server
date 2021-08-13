@@ -1,8 +1,10 @@
-import { Entity, ObjectIdColumn, Column, ObjectID } from "typeorm";
+import { ObjectID } from "mongodb";
+import { Entity, ObjectIdColumn, Column } from "typeorm";
+import { toObjectId } from "../../../utils";
 import { CommonEntity } from "../../Common/entity";
 
 export interface ComponentIE {
-  id?: ObjectID;
+  _id?: ObjectID;
   name?: string;
   attribute?: object | string | string[];
   isDeleted?: boolean;
@@ -11,7 +13,7 @@ export interface ComponentIE {
 @Entity("Component")
 export class Component extends CommonEntity implements ComponentIE {
   @ObjectIdColumn()
-  id: ObjectID;
+  _id: ObjectID;
 
   @Column({
     unique: true,

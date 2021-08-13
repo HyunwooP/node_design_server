@@ -15,6 +15,13 @@ const ComponentRoute: RouteItemIE[] = [
     next: Component.find,
     auth: false,
   },
+  // DELETE
+  {
+    path: "/removeComponent",
+    method: "delete",
+    next: Component.remove,
+    auth: true,
+  },
 ];
 
 export default ComponentRoute;
