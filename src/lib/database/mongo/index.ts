@@ -21,14 +21,14 @@ import { sampleComponents } from "./sample/component";
 export const generateTestData = async (): Promise<void> => {
   let styleInfos: any = [];
   let layoutInfos: any = {
-    BLACK_THEME: [],
-    WHITE_THEME: [],
-    GREEN_THEME: [],
+    BLACK_THEME_STYLE: [],
+    WHITE_THEME_STYLE: [],
+    GREEN_THEME_STYLE: [],
   };
   let componentInfos: any = {
-    BLACK_THEME: [],
-    WHITE_THEME: [],
-    GREEN_THEME: [],
+    BLACK_THEME_STYLE: [],
+    WHITE_THEME_STYLE: [],
+    GREEN_THEME_STYLE: [],
   };
 
   // Generate Component Collection
@@ -41,11 +41,11 @@ export const generateTestData = async (): Promise<void> => {
 
       const outputComponent = await AppRepository.Component.save(component);
       if (outputComponent.name.indexOf("BLACK_THEME") !== -1) {
-        componentInfos.BLACK_THEME.push(outputComponent._id);
+        componentInfos.BLACK_THEME_STYLE.push(outputComponent._id);
       } else if (outputComponent.name.indexOf("WHITE_THEME") !== -1) {
-        componentInfos.WHITE_THEME.push(outputComponent._id);
+        componentInfos.WHITE_THEME_STYLE.push(outputComponent._id);
       } else if (outputComponent.name.indexOf("GREEN_THEME") !== -1) {
-        componentInfos.GREEN_THEME.push(outputComponent._id);
+        componentInfos.GREEN_THEME_STYLE.push(outputComponent._id);
       }
     }
   };
@@ -60,11 +60,11 @@ export const generateTestData = async (): Promise<void> => {
 
       const outputLayout = await AppRepository.Layout.save(layout);
       if (outputLayout.name.indexOf("BLACK_THEME") !== -1) {
-        layoutInfos.BLACK_THEME.push(outputLayout._id);
+        layoutInfos.BLACK_THEME_STYLE.push(outputLayout._id);
       } else if (outputLayout.name.indexOf("WHITE_THEME") !== -1) {
-        layoutInfos.WHITE_THEME.push(outputLayout._id);
+        layoutInfos.WHITE_THEME_STYLE.push(outputLayout._id);
       } else if (outputLayout.name.indexOf("GREEN_THEME") !== -1) {
-        layoutInfos.GREEN_THEME.push(outputLayout._id);
+        layoutInfos.GREEN_THEME_STYLE.push(outputLayout._id);
       }
     }
   };

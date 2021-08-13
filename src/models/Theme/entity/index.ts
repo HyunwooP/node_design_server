@@ -59,21 +59,21 @@ export class Theme extends CommonEntity implements ThemeIE {
       {
         $lookup: {
           from: "Layout",
-          let: { layoutId: "$styles.layout" },
+          let: { layoutId: "$styles.layouts" },
           pipeline: [{ $match: { $expr: { $in: ["$_id", "$$layoutId"] } } }],
-          as: "styles.layout",
+          as: "styles.layouts",
         },
       },
       {
         $lookup: {
           from: "Component",
-          let: { componentId: "$styles.component" },
+          let: { componentId: "$styles.components" },
           pipeline: [{ $match: { $expr: { $in: ["$_id", "$$componentId"] } } }],
-          as: "styles.component",
+          as: "styles.components",
         },
       },
-      { $unwind: "$styles.layout" },
-      { $unwind: "$styles.component" },
+      // { $unwind: "$styles.layout" },
+      // { $unwind: "$styles.component" },
     ];
   }
 }
