@@ -1,4 +1,5 @@
 import * as _ from "lodash";
+import { QueryIE } from "../../../models/Common/interface";
 import { ObjectLiteral } from "typeorm";
 import {
   AppRepository,
@@ -71,7 +72,28 @@ export const findTheme = async (
   conditions: ThemeIE
 ): Promise<[ThemeIE[], number]> => {
   try {
-    return await AppRepository.Theme.findAndCount({ ...conditions });
+    let query: QueryIE = {
+      where: {},
+      order: {},
+    };
+
+    if (!_.isEmpty(conditions.searchKeyword)) {
+      query.where = {
+        name: {
+          $regex: conditions.searchKeyword,
+          $options: "i",
+        },
+      };
+    }
+
+    if (!_.isEmpty(conditions.nameSort)) {
+      query.order.name = conditions.nameSort;
+    }
+
+    return await AppRepository.Theme.findAndCount({
+      ...conditions,
+      ...query,
+    });
   } catch (e) {
     onFailureHandler({
       status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,

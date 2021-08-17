@@ -1,9 +1,14 @@
 import { ObjectID } from "mongodb";
 import { Entity, ObjectIdColumn, Column, ManyToOne } from "typeorm";
-import { CommonEntity } from "../../Common/entity";
+import { CommonEntity, CommonEntityIE } from "../../Common/entity";
+import { SortType } from "../../Common/interface";
 import { Theme } from "../../../models/Theme/entity";
 
-export interface StyleIE {
+export interface StyleIE extends CommonEntityIE {
+  // 클라이언트에서 넘기는 데이터
+  nameSort?: SortType;
+  ///////////////////////
+
   _id?: ObjectID;
   name?: string;
   // layout?: Layout[];

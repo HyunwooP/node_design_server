@@ -1,4 +1,5 @@
 import * as _ from "lodash";
+import { QueryIE } from "../../../models/Common/interface";
 import {
   AppRepository,
   CommonStatusCode,
@@ -38,7 +39,28 @@ export const findLayout = async (
   conditions: LayoutIE
 ): Promise<[LayoutIE[], number]> => {
   try {
-    return await AppRepository.Layout.findAndCount({ ...conditions });
+    let query: QueryIE = {
+      where: {},
+      order: {},
+    };
+
+    if (!_.isEmpty(conditions.searchKeyword)) {
+      query.where = {
+        name: {
+          $regex: conditions.searchKeyword,
+          $options: "i",
+        },
+      };
+    }
+
+    if (!_.isEmpty(conditions.nameSort)) {
+      query.order.name = conditions.nameSort;
+    }
+
+    return await AppRepository.Layout.findAndCount({
+      ...conditions,
+      ...query,
+    });
   } catch (e) {
     onFailureHandler({
       status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
