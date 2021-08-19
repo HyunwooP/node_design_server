@@ -10,7 +10,7 @@ export interface LayoutIE extends CommonEntityIE {
 
   _id?: ObjectID;
   name?: string;
-  attribute?: object | string | string[];
+  attribute?: object;
   isDeleted?: boolean;
 }
 
@@ -25,7 +25,7 @@ export class Layout extends CommonEntity implements LayoutIE {
   name: string;
 
   @Column()
-  attribute: object | string | string[];
+  attribute: object;
 
   // @ManyToOne(() => Style, (style) => style.layout)
   // parent: Style;

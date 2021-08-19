@@ -10,6 +10,7 @@ export const sampleComponents: SampleComponentIE = {
     ITEM: {
       color: "white",
     },
+    TEST_ITEM: "test", // 임의의 한줄 짜리 CSS
   },
   BLACK_THEME__SUB_MIT_BUTTON: {
     backgroundColor: "black",

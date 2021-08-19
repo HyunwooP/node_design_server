@@ -10,7 +10,7 @@ export interface ComponentIE extends CommonEntityIE {
 
   _id?: ObjectID;
   name?: string;
-  attribute?: object | string | string[];
+  attribute?: object;
   isDeleted?: boolean;
 }
 
@@ -25,7 +25,7 @@ export class Component extends CommonEntity implements ComponentIE {
   name: string;
 
   @Column()
-  attribute: object | string | string[];
+  attribute: object;
 
   // @ManyToOne(() => Style, (style) => style.component)
   // parent: Style;

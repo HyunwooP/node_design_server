@@ -1,10 +1,5 @@
 import * as _ from "lodash";
-import {
-  createConnection,
-  getManager,
-  MongoRepository,
-  ObjectID,
-} from "typeorm";
+import { createConnection, getManager, MongoRepository } from "typeorm";
 import env from "../../../config";
 import { mongoConfig } from "../config";
 
