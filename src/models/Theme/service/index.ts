@@ -1,5 +1,4 @@
 import * as _ from "lodash";
-import { QueryIE } from "../../../models/Common/interface";
 import { ObjectLiteral } from "typeorm";
 import {
   AppRepository,
@@ -7,6 +6,7 @@ import {
   CommonStatusMessage,
   onFailureHandler,
 } from "../../../lib";
+import { QueryIE } from "../../../models/Common/interface";
 import { toObjectId } from "../../../utils";
 import { Theme, ThemeIE } from "../entity";
 

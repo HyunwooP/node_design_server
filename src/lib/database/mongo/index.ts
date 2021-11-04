@@ -1,17 +1,15 @@
 import * as _ from "lodash";
 import { createConnection, getManager, MongoRepository } from "typeorm";
 import env from "../../../config";
-import { mongoConfig } from "../config";
-
-import { Theme } from "../../../models/Theme/entity";
-import { Style } from "../../../models/Style/entity";
-import { Layout } from "../../../models/Layout/entity";
 import { Component } from "../../../models/Component/entity";
-
-import { sampleTheme } from "./sample/theme";
-import { sampleStyles } from "./sample/style";
-import { sampleLayouts } from "./sample/layout";
+import { Layout } from "../../../models/Layout/entity";
+import { Style } from "../../../models/Style/entity";
+import { Theme } from "../../../models/Theme/entity";
+import { mongoConfig } from "../config";
 import { sampleComponents } from "./sample/component";
+import { sampleLayouts } from "./sample/layout";
+import { sampleStyles } from "./sample/style";
+import { sampleTheme } from "./sample/theme";
 
 export const generateTestData = async (): Promise<void> => {
   let styleInfos: any = [];

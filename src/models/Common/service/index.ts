@@ -1,9 +1,9 @@
-import { healthCheckMemory } from "../../../utils";
 import {
   CommonStatusCode,
   CommonStatusMessage,
   onFailureHandler,
 } from "../../../lib";
+import { healthCheckMemory } from "../../../utils";
 
 export const _health = async (): Promise<object> => {
   try {

@@ -28,9 +28,4 @@ const initMiddleWare = async (
   }
 };
 
-export {
-  // COMMON
-  RequestIE,
-  ResponseIE,
-  initMiddleWare,
-};
+export { RequestIE, ResponseIE, initMiddleWare };

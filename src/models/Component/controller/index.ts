@@ -1,4 +1,5 @@
 import { RequestIE, ResponseIE } from "../../../lib";
+import { ComponentIE } from "../entity";
 import {
   findComponent,
   findComponentCount,
@@ -6,7 +7,6 @@ import {
   removeComponent,
   updateComponent,
 } from "../service";
-import { ComponentIE } from "../entity";
 
 /**
  * @description

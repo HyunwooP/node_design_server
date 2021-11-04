@@ -1,12 +1,12 @@
 import { RequestIE, ResponseIE } from "../../../lib";
+import { StyleIE } from "../entity";
 import {
-  findStyle,
   findOneStyle,
+  findStyle,
+  findStyleCount,
   removeStyle,
   updateStyle,
-  findStyleCount,
 } from "../service";
-import { StyleIE } from "../entity";
 
 /**
  * @description

@@ -1,11 +1,11 @@
 import * as express from "express";
 import {
-  createExpress,
-  createServer,
   connectMongo,
   connectRepository,
-  generateTestData,
+  createExpress,
   createRoute,
+  createServer,
+  generateTestData,
 } from "./lib";
 
 class App {

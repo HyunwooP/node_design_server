@@ -1,8 +1,7 @@
 import { ObjectID } from "mongodb";
-import { Entity, ObjectIdColumn, Column, ManyToOne } from "typeorm";
+import { Column, Entity, ObjectIdColumn } from "typeorm";
 import { CommonEntity, CommonEntityIE } from "../../Common/entity";
 import { SortType } from "../../Common/interface";
-import { Theme } from "../../../models/Theme/entity";
 
 export interface StyleIE extends CommonEntityIE {
   // 클라이언트에서 넘기는 데이터

@@ -1,13 +1,13 @@
 import { RequestIE, ResponseIE } from "../../../lib";
+import { ThemeIE } from "../entity";
 import {
-  findTheme,
   findOneTheme,
+  findTheme,
+  findThemeCount,
+  findThemeItem,
   removeTheme,
   updateTheme,
-  findThemeItem,
-  findThemeCount,
 } from "../service";
-import { ThemeIE } from "../entity";
 
 /**
  * @description

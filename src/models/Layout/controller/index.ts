@@ -1,4 +1,5 @@
 import { RequestIE, ResponseIE } from "../../../lib";
+import { LayoutIE } from "../entity";
 import {
   findLayout,
   findLayoutCount,
@@ -6,7 +7,6 @@ import {
   removeLayout,
   updateLayout,
 } from "../service";
-import { LayoutIE } from "../entity";
 
 /**
  * @description

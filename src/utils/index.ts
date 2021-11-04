@@ -1,6 +1,5 @@
-import * as os from "os";
-import * as _ from "lodash";
 import { ObjectID } from "mongodb";
+import * as os from "os";
 
 /**
  * healthCheckMemory
