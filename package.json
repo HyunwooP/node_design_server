@@ -9,19 +9,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HyunwooP/node_design_server.git"
+    "url": "git+https://github.com/awakelife93/node_design_server.git"
   },
   "keywords": [
     "node",
     "design",
     "style"
   ],
-  "author": "HyunwooP",
+  "author": "HyunwooPark",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/HyunwooP/node_design_server/issues"
+    "url": "https://github.com/awakelife93/node_design_server/issues"
   },
-  "homepage": "https://github.com/HyunwooP/node_design_server#readme",
+  "homepage": "https://github.com/awakelife93/node_design_server#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
