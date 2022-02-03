@@ -20,19 +20,19 @@
 
 ## Client Repository
 
-https://github.com/awakelife93/react_client_template
+https://github.com/awakelife93/react-client-template
 
 ## Admin Repository
 
-https://github.com/awakelife93/react_admin_template
+https://github.com/awakelife93/react-admin-template
 
 ## Gateway Server Repository
 
-https://github.com/awakelife93/study_spring_boot
+https://github.com/awakelife93/study-spring-boot
 
 ## API Server Repository
 
-https://github.com/awakelife93/node_api_server
+https://github.com/awakelife93/node-api-server
 
 ## [노트]
 
