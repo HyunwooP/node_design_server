@@ -6,12 +6,12 @@ import { _health } from "../service";
  * @param {RequestIE} request
  * @param {ResponseIE} response
  * @param {Function} next
- * @returns {Promise<object>}
+ * @returns {object}
  */
-export const health = async (
+export const health = (
   request: RequestIE,
   response: ResponseIE,
   next: Function
-): Promise<object> => {
-  return await _health();
+): object => {
+  return _health();
 };

@@ -5,7 +5,7 @@ import {
 } from "../../../lib";
 import { healthCheckMemory } from "../../../utils";
 
-export const _health = async (): Promise<object> => {
+export const _health = (): object => {
   try {
     if (healthCheckMemory()) {
       onFailureHandler({
