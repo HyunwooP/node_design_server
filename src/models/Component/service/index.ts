@@ -3,6 +3,7 @@ import {
   AppRepository,
   CommonStatusCode,
   CommonStatusMessage,
+  getErrorItems,
   onFailureHandler,
 } from "../../../lib";
 import { QueryIE } from "../../../models/Common/interface";
@@ -12,11 +13,13 @@ import { ComponentIE } from "../entity";
 export const findComponentCount = async (): Promise<String> => {
   try {
     return String(await AppRepository.Component.count());
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };
@@ -26,11 +29,13 @@ export const findOneComponent = async (
 ): Promise<ComponentIE> => {
   try {
     return await AppRepository.Component.findOne({ ...conditions });
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };
@@ -61,11 +66,13 @@ export const findComponent = async (
       ...conditions,
       ...query,
     });
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };
@@ -75,11 +82,13 @@ export const createComponent = async (
 ): Promise<ComponentIE> => {
   try {
     return await AppRepository.Component.create(conditions);
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };
@@ -113,11 +122,13 @@ export const updateComponent = async (
       : conditions.isDeleted;
 
     return await AppRepository.Component.save(component);
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };
@@ -128,11 +139,13 @@ export const removeComponent = async (
   try {
     await updateComponent({ _id: conditions._id, isDeleted: true });
     return {};
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };

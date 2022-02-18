@@ -26,7 +26,7 @@ import App from "./App";
      * Create Mysql Sample Data
      */
     await App.onCreateTestSample();
-  } catch (e) {
-    console.log(e);
+  } catch (error: unknown) {
+    console.log(error);
   }
 })();

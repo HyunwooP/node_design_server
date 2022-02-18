@@ -90,8 +90,8 @@ export const generateTestData = async (): Promise<void> => {
     await generateLayoutCollection();
     await generateStyleCollection();
     await generateThemeCollection();
-  } catch (e) {
-    console.log("generateTestData Failed!!", e);
+  } catch (error: unknown) {
+    console.log("generateTestData Failed!!", error);
   }
 };
 
@@ -103,8 +103,8 @@ export const connectMongo = async (): Promise<void> => {
   };
   try {
     await createConnection(option);
-  } catch (e) {
-    console.log(`connectMongo Connect Failed!! ${e}`);
+  } catch (error: unknown) {
+    console.log(`connectMongo Connect Failed!! ${error}`);
   }
 };
 

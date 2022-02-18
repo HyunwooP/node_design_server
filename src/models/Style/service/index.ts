@@ -3,6 +3,7 @@ import {
   AppRepository,
   CommonStatusCode,
   CommonStatusMessage,
+  getErrorItems,
   onFailureHandler,
 } from "../../../lib";
 import { QueryIE } from "../../../models/Common/interface";
@@ -12,11 +13,13 @@ import { StyleIE } from "../entity";
 export const findStyleCount = async (): Promise<String> => {
   try {
     return String(await AppRepository.Style.count());
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };
@@ -24,11 +27,13 @@ export const findStyleCount = async (): Promise<String> => {
 export const findOneStyle = async (conditions: StyleIE): Promise<StyleIE> => {
   try {
     return await AppRepository.Style.findOne({ ...conditions });
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };
@@ -59,11 +64,13 @@ export const findStyle = async (
       ...conditions,
       ...query,
     });
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };
@@ -71,11 +78,13 @@ export const findStyle = async (
 export const createStyle = async (conditions: StyleIE): Promise<StyleIE> => {
   try {
     return await AppRepository.Style.create(conditions);
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };
@@ -113,11 +122,13 @@ export const updateStyle = async (conditions: StyleIE): Promise<StyleIE> => {
       : conditions.isDeleted;
 
     return await AppRepository.Style.save(style);
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };
@@ -126,11 +137,13 @@ export const removeStyle = async (conditions: StyleIE): Promise<object> => {
   try {
     await updateStyle({ _id: conditions._id, isDeleted: true });
     return {};
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };

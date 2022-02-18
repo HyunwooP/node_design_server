@@ -5,7 +5,7 @@ import {
   generateTestData,
 } from "./database/mongo";
 import { createExpress } from "./express";
-import { onFailureHandler } from "./function";
+import { getErrorItems, onFailureHandler } from "./function";
 import { initMiddleWare, RequestIE, ResponseIE } from "./middleware";
 import createRoute from "./route";
 import { createServer } from "./server";
@@ -17,6 +17,7 @@ export {
   createRoute,
   // common function
   onFailureHandler,
+  getErrorItems,
   // common status
   CommonStatusCode,
   CommonStatusMessage,

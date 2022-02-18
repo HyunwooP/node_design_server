@@ -4,6 +4,7 @@ import {
   AppRepository,
   CommonStatusCode,
   CommonStatusMessage,
+  getErrorItems,
   onFailureHandler,
 } from "../../../lib";
 import { QueryIE } from "../../../models/Common/interface";
@@ -13,11 +14,13 @@ import { Theme, ThemeIE } from "../entity";
 export const findThemeCount = async (): Promise<String> => {
   try {
     return String(await AppRepository.Theme.count());
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };
@@ -34,11 +37,13 @@ export const aggregateTheme = async (
 ): Promise<any> => {
   try {
     return await AppRepository.Theme.aggregate(pipeline).toArray();
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };
@@ -47,11 +52,13 @@ export const findThemeItem = async (): Promise<ThemeIE> => {
   try {
     const theme = new Theme();
     return await aggregateTheme(theme.findThemeItem());
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };
@@ -59,11 +66,13 @@ export const findThemeItem = async (): Promise<ThemeIE> => {
 export const findOneTheme = async (conditions: ThemeIE): Promise<ThemeIE> => {
   try {
     return await AppRepository.Theme.findOne({ ...conditions });
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };
@@ -94,11 +103,13 @@ export const findTheme = async (
       ...conditions,
       ...query,
     });
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };
@@ -106,11 +117,13 @@ export const findTheme = async (
 export const createTheme = async (conditions: ThemeIE): Promise<ThemeIE> => {
   try {
     return await AppRepository.Theme.create(conditions);
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };
@@ -144,11 +157,13 @@ export const updateTheme = async (conditions: ThemeIE): Promise<ThemeIE> => {
       : conditions.isDeleted;
 
     return await AppRepository.Theme.save(theme);
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };
@@ -157,11 +172,13 @@ export const removeTheme = async (conditions: ThemeIE): Promise<object> => {
   try {
     await updateTheme({ _id: conditions._id, isDeleted: true });
     return {};
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };

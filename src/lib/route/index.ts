@@ -1,6 +1,7 @@
 import * as express from "express";
 import * as _ from "lodash";
 import { CommonStatusCode, initMiddleWare, RequestIE, ResponseIE } from "..";
+import { getErrorItems } from "../../lib";
 import RouteItems, { RouteItemIE } from "./routes";
 
 export default (app: express.Application): void => {
@@ -14,11 +15,13 @@ export default (app: express.Application): void => {
           console.log(`SUCCESS_${_.toUpper(item.method)}_${item.path}`);
           res.status(result.status ?? CommonStatusCode.OK);
           res.send(result);
-        } catch (e) {
+        } catch (error: unknown) {
+          const _error = getErrorItems(error);
+
           console.log(`ERROR_${_.toUpper(item.method)}_${item.path}`);
-          console.log(e);
-          res.status(e.status ?? CommonStatusCode.BAD_REQUEST);
-          res.send(e);
+          console.log(_error);
+          res.status(_error.status ?? CommonStatusCode.BAD_REQUEST);
+          res.send(_error);
         }
       }
     );

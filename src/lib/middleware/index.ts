@@ -23,8 +23,8 @@ const initMiddleWare = async (
     await generateRequest(req);
     await generateResponse(res);
     next();
-  } catch (e) {
-    console.log("initMiddleWare Error", e);
+  } catch (error: unknown) {
+    console.log("initMiddleWare Error", error);
   }
 };
 

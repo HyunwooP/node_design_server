@@ -3,6 +3,7 @@ import {
   AppRepository,
   CommonStatusCode,
   CommonStatusMessage,
+  getErrorItems,
   onFailureHandler,
 } from "../../../lib";
 import { QueryIE } from "../../../models/Common/interface";
@@ -12,11 +13,13 @@ import { LayoutIE } from "../entity";
 export const findLayoutCount = async (): Promise<String> => {
   try {
     return String(await AppRepository.Layout.count());
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };
@@ -26,11 +29,13 @@ export const findOneLayout = async (
 ): Promise<LayoutIE> => {
   try {
     return await AppRepository.Layout.findOne({ ...conditions });
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };
@@ -61,11 +66,13 @@ export const findLayout = async (
       ...conditions,
       ...query,
     });
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };
@@ -73,11 +80,13 @@ export const findLayout = async (
 export const createLayout = async (conditions: LayoutIE): Promise<LayoutIE> => {
   try {
     return await AppRepository.Layout.create(conditions);
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };
@@ -109,11 +118,13 @@ export const updateLayout = async (conditions: LayoutIE): Promise<LayoutIE> => {
       : conditions.isDeleted;
 
     return await AppRepository.Layout.save(layout);
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };
@@ -122,11 +133,13 @@ export const removeLayout = async (conditions: LayoutIE): Promise<object> => {
   try {
     await updateLayout({ _id: conditions._id, isDeleted: true });
     return {};
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };

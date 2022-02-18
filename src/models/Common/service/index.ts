@@ -1,6 +1,6 @@
 import {
   CommonStatusCode,
-  CommonStatusMessage,
+  getErrorItems,
   onFailureHandler,
 } from "../../../lib";
 import { healthCheckMemory } from "../../../utils";
@@ -15,11 +15,13 @@ export const _health = async (): Promise<object> => {
     }
 
     return {};
-  } catch (e) {
+  } catch (error: unknown) {
+    const _error = getErrorItems(error);
+
     onFailureHandler({
-      status: e.status ?? CommonStatusCode.INTERNAL_SERVER_ERROR,
-      message: e.message ?? CommonStatusMessage.INTERNAL_SERVER_ERROR,
-      data: e.data ?? {},
+      status: _error.status,
+      message: _error.message,
+      data: _error.data,
     });
   }
 };
