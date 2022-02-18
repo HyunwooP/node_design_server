@@ -16,14 +16,14 @@ import {
 
 /**
  * @method GET
- * @param {RequestIE} req
- * @param {ResponseIE} res
+ * @param {RequestIE} request
+ * @param {ResponseIE} response
  * @param {Function} next
  * @returns {Promise<String>}
  */
 export const findCount = async (
-  req: RequestIE,
-  res: ResponseIE,
+  request: RequestIE,
+  response: ResponseIE,
   next: Function
 ): Promise<String> => {
   return await findStyleCount();
@@ -31,64 +31,64 @@ export const findCount = async (
 
 /**
  * @method GET
- * @param {RequestIE} req
- * @param {ResponseIE} res
+ * @param {RequestIE} request
+ * @param {ResponseIE} response
  * @param {Function} next
  * @returns {Promise<StyleIE>}
  */
 export const findOne = async (
-  req: RequestIE,
-  res: ResponseIE,
+  request: RequestIE,
+  response: ResponseIE,
   next: Function
 ): Promise<StyleIE> => {
-  const conditions: StyleIE = req.item;
+  const conditions: StyleIE = request.item;
   return await findOneStyle(conditions);
 };
 
 /**
  * @method GET
- * @param {RequestIE} req
- * @param {ResponseIE} res
+ * @param {RequestIE} request
+ * @param {ResponseIE} response
  * @param {Function} next
  * @returns {Promise<StyleIE[]>}
  */
 export const find = async (
-  req: RequestIE,
-  res: ResponseIE,
+  request: RequestIE,
+  response: ResponseIE,
   next: Function
 ): Promise<[StyleIE[], number]> => {
-  const conditions: StyleIE = req.item;
+  const conditions: StyleIE = request.item;
   return await findStyle(conditions);
 };
 
 /**
  * @method POST
- * @param {RequestIE} req
- * @param {ResponseIE} res
+ * @param {RequestIE} request
+ * @param {ResponseIE} response
  * @param {Function} next
  * @returns {Promise<StyleIE>}
  */
 export const update = async (
-  req: RequestIE,
-  res: ResponseIE,
+  request: RequestIE,
+  response: ResponseIE,
   next: Function
 ): Promise<StyleIE> => {
-  const conditions: StyleIE = req.item;
+  const conditions: StyleIE = request.item;
   return await updateStyle(conditions);
 };
 
 /**
  * @method DELETE
- * @param {RequestIE} req
- * @param {ResponseIE} res
+ * @param {RequestIE} request
+ * @param {ResponseIE} response
  * @param {Function} next
  * @returns {Promise<object>}
  */
 export const remove = async (
-  req: RequestIE,
-  res: ResponseIE,
+  request: RequestIE,
+  response: ResponseIE,
   next: Function
 ): Promise<object> => {
-  const conditions: StyleIE = req.item;
+  const conditions: StyleIE = request.item;
   return await removeStyle(conditions);
 };

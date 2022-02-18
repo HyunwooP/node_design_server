@@ -16,14 +16,14 @@ import {
 
 /**
  * @method GET
- * @param {RequestIE} req
- * @param {ResponseIE} res
+ * @param {RequestIE} request
+ * @param {ResponseIE} response
  * @param {Function} next
  * @returns {Promise<String>}
  */
 export const findCount = async (
-  req: RequestIE,
-  res: ResponseIE,
+  request: RequestIE,
+  response: ResponseIE,
   next: Function
 ): Promise<String> => {
   return await findLayoutCount();
@@ -31,64 +31,64 @@ export const findCount = async (
 
 /**
  * @method GET
- * @param {RequestIE} req
- * @param {ResponseIE} res
+ * @param {RequestIE} request
+ * @param {ResponseIE} response
  * @param {Function} next
  * @returns {Promise<LayoutIE>}
  */
 export const findOne = async (
-  req: RequestIE,
-  res: ResponseIE,
+  request: RequestIE,
+  response: ResponseIE,
   next: Function
 ): Promise<LayoutIE> => {
-  const conditions: LayoutIE = req.item;
+  const conditions: LayoutIE = request.item;
   return await findOneLayout(conditions);
 };
 
 /**
  * @method GET
- * @param {RequestIE} req
- * @param {ResponseIE} res
+ * @param {RequestIE} request
+ * @param {ResponseIE} response
  * @param {Function} next
  * @returns {Promise<[LayoutIE[], number]>}
  */
 export const find = async (
-  req: RequestIE,
-  res: ResponseIE,
+  request: RequestIE,
+  response: ResponseIE,
   next: Function
 ): Promise<[LayoutIE[], number]> => {
-  const conditions: LayoutIE = req.item;
+  const conditions: LayoutIE = request.item;
   return await findLayout(conditions);
 };
 
 /**
  * @method POST
- * @param {RequestIE} req
- * @param {ResponseIE} res
+ * @param {RequestIE} request
+ * @param {ResponseIE} response
  * @param {Function} next
  * @returns {Promise<LayoutIE>}
  */
 export const update = async (
-  req: RequestIE,
-  res: ResponseIE,
+  request: RequestIE,
+  response: ResponseIE,
   next: Function
 ): Promise<LayoutIE> => {
-  const conditions: LayoutIE = req.item;
+  const conditions: LayoutIE = request.item;
   return await updateLayout(conditions);
 };
 
 /**
  * @method DELETE
- * @param {RequestIE} req
- * @param {ResponseIE} res
+ * @param {RequestIE} request
+ * @param {ResponseIE} response
  * @param {Function} next
  * @returns {Promise<object>}
  */
 export const remove = async (
-  req: RequestIE,
-  res: ResponseIE,
+  request: RequestIE,
+  response: ResponseIE,
   next: Function
 ): Promise<object> => {
-  const conditions: LayoutIE = req.item;
+  const conditions: LayoutIE = request.item;
   return await removeLayout(conditions);
 };

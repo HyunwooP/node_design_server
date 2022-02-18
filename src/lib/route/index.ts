@@ -9,19 +9,19 @@ export default (app: express.Application): void => {
     app[item.method](
       item.path,
       initMiddleWare,
-      async (req: RequestIE, res: ResponseIE) => {
+      async (request: RequestIE, response: ResponseIE) => {
         try {
-          const result = await item.next(req, res);
+          const result = await item.next(request, response);
           console.log(`SUCCESS_${_.toUpper(item.method)}_${item.path}`);
-          res.status(result.status ?? CommonStatusCode.OK);
-          res.send(result);
+          response.status(result.status ?? CommonStatusCode.OK);
+          response.send(result);
         } catch (error: unknown) {
           const _error = getErrorItems(error);
 
           console.log(`ERROR_${_.toUpper(item.method)}_${item.path}`);
           console.log(_error);
-          res.status(_error.status ?? CommonStatusCode.BAD_REQUEST);
-          res.send(_error);
+          response.status(_error.status);
+          response.send(_error);
         }
       }
     );

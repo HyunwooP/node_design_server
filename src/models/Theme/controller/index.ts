@@ -17,14 +17,14 @@ import {
 
 /**
  * @method GET
- * @param {RequestIE} req
- * @param {ResponseIE} res
+ * @param {RequestIE} request
+ * @param {ResponseIE} response
  * @param {Function} next
  * @returns {Promise<String>}
  */
 export const findCount = async (
-  req: RequestIE,
-  res: ResponseIE,
+  request: RequestIE,
+  response: ResponseIE,
   next: Function
 ): Promise<String> => {
   return await findThemeCount();
@@ -32,14 +32,14 @@ export const findCount = async (
 
 /**
  * @method GET
- * @param {RequestIE} req
- * @param {ResponseIE} res
+ * @param {RequestIE} request
+ * @param {ResponseIE} response
  * @param {Function} next
  * @returns {Promise<ThemeIE>}
  */
 export const findItem = async (
-  req: RequestIE,
-  res: ResponseIE,
+  request: RequestIE,
+  response: ResponseIE,
   next: Function
 ): Promise<ThemeIE> => {
   return await findThemeItem();
@@ -47,64 +47,64 @@ export const findItem = async (
 
 /**
  * @method GET
- * @param {RequestIE} req
- * @param {ResponseIE} res
+ * @param {RequestIE} request
+ * @param {ResponseIE} response
  * @param {Function} next
  * @returns {Promise<ThemeIE>}
  */
 export const findOne = async (
-  req: RequestIE,
-  res: ResponseIE,
+  request: RequestIE,
+  response: ResponseIE,
   next: Function
 ): Promise<ThemeIE> => {
-  const conditions: ThemeIE = req.item;
+  const conditions: ThemeIE = request.item;
   return await findOneTheme(conditions);
 };
 
 /**
  * @method GET
- * @param {RequestIE} req
- * @param {ResponseIE} res
+ * @param {RequestIE} request
+ * @param {ResponseIE} response
  * @param {Function} next
  * @returns {Promise<ThemeIE[]>}
  */
 export const find = async (
-  req: RequestIE,
-  res: ResponseIE,
+  request: RequestIE,
+  response: ResponseIE,
   next: Function
 ): Promise<[ThemeIE[], number]> => {
-  const conditions: ThemeIE = req.item;
+  const conditions: ThemeIE = request.item;
   return await findTheme(conditions);
 };
 
 /**
  * @method POST
- * @param {RequestIE} req
- * @param {ResponseIE} res
+ * @param {RequestIE} request
+ * @param {ResponseIE} response
  * @param {Function} next
  * @returns {Promise<ThemeIE>}
  */
 export const update = async (
-  req: RequestIE,
-  res: ResponseIE,
+  request: RequestIE,
+  response: ResponseIE,
   next: Function
 ): Promise<ThemeIE> => {
-  const conditions: ThemeIE = req.item;
+  const conditions: ThemeIE = request.item;
   return await updateTheme(conditions);
 };
 
 /**
  * @method DELETE
- * @param {RequestIE} req
- * @param {ResponseIE} res
+ * @param {RequestIE} request
+ * @param {ResponseIE} response
  * @param {Function} next
  * @returns {Promise<object>}
  */
 export const remove = async (
-  req: RequestIE,
-  res: ResponseIE,
+  request: RequestIE,
+  response: ResponseIE,
   next: Function
 ): Promise<object> => {
-  const conditions: ThemeIE = req.item;
+  const conditions: ThemeIE = request.item;
   return await removeTheme(conditions);
 };

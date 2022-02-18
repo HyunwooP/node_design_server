@@ -17,13 +17,13 @@ interface RequestIE extends express.Request {
 interface ResponseIE extends express.Response {}
 
 const initMiddleWare = async (
-  req: RequestIE,
-  res: ResponseIE,
+  request: RequestIE,
+  response: ResponseIE,
   next: Function
 ): Promise<void> => {
   try {
-    await generateRequest(req);
-    await generateResponse(res);
+    await generateRequest(request);
+    await generateResponse(response);
     next();
   } catch (error: unknown) {
     console.log("initMiddleWare Error", error);

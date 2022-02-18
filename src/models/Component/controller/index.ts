@@ -16,14 +16,14 @@ import {
 
 /**
  * @method GET
- * @param {RequestIE} req
- * @param {ResponseIE} res
+ * @param {RequestIE} request
+ * @param {ResponseIE} response
  * @param {Function} next
  * @returns {Promise<String>}
  */
 export const findCount = async (
-  req: RequestIE,
-  res: ResponseIE,
+  request: RequestIE,
+  response: ResponseIE,
   next: Function
 ): Promise<String> => {
   return await findComponentCount();
@@ -31,64 +31,64 @@ export const findCount = async (
 
 /**
  * @method GET
- * @param {RequestIE} req
- * @param {ResponseIE} res
+ * @param {RequestIE} request
+ * @param {ResponseIE} response
  * @param {Function} next
  * @returns {Promise<ComponentIE>}
  */
 export const findOne = async (
-  req: RequestIE,
-  res: ResponseIE,
+  request: RequestIE,
+  response: ResponseIE,
   next: Function
 ): Promise<ComponentIE> => {
-  const conditions: ComponentIE = req.item;
+  const conditions: ComponentIE = request.item;
   return await findOneComponent(conditions);
 };
 
 /**
  * @method GET
- * @param {RequestIE} req
- * @param {ResponseIE} res
+ * @param {RequestIE} request
+ * @param {ResponseIE} response
  * @param {Function} next
  * @returns {Promise<[ComponentIE[], number]>}
  */
 export const find = async (
-  req: RequestIE,
-  res: ResponseIE,
+  request: RequestIE,
+  response: ResponseIE,
   next: Function
 ): Promise<[ComponentIE[], number]> => {
-  const conditions: ComponentIE = req.item;
+  const conditions: ComponentIE = request.item;
   return await findComponent(conditions);
 };
 
 /**
  * @method POST
- * @param {RequestIE} req
- * @param {ResponseIE} res
+ * @param {RequestIE} request
+ * @param {ResponseIE} response
  * @param {Function} next
  * @returns {Promise<ComponentIE>}
  */
 export const update = async (
-  req: RequestIE,
-  res: ResponseIE,
+  request: RequestIE,
+  response: ResponseIE,
   next: Function
 ): Promise<ComponentIE> => {
-  const conditions: ComponentIE = req.item;
+  const conditions: ComponentIE = request.item;
   return await updateComponent(conditions);
 };
 
 /**
  * @method DELETE
- * @param {RequestIE} req
- * @param {ResponseIE} res
+ * @param {RequestIE} request
+ * @param {ResponseIE} response
  * @param {Function} next
  * @returns {Promise<object>}
  */
 export const remove = async (
-  req: RequestIE,
-  res: ResponseIE,
+  request: RequestIE,
+  response: ResponseIE,
   next: Function
 ): Promise<object> => {
-  const conditions: ComponentIE = req.item;
+  const conditions: ComponentIE = request.item;
   return await removeComponent(conditions);
 };
