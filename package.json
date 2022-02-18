@@ -1,5 +1,5 @@
 {
-  "name": "node_design_server",
+  "name": "node-design-template",
   "version": "1.0.0",
   "description": "design style server",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/awakelife93/node_design_server.git"
+    "url": "git+https://github.com/awakelife93/node-design-template.git"
   },
   "keywords": [
     "node",
@@ -19,9 +19,9 @@
   "author": "HyunwooPark",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/awakelife93/node_design_server/issues"
+    "url": "https://github.com/awakelife93/node-design-template/issues"
   },
-  "homepage": "https://github.com/awakelife93/node_design_server#readme",
+  "homepage": "https://github.com/awakelife93/node-design-template#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",

@@ -2,7 +2,7 @@
 
 ## React Client + React Admin + Gateway Server + API Server + Style Server
 
-![구조](https://user-images.githubusercontent.com/20429356/124894845-f89eef80-e016-11eb-9a37-0c037dbc0fe4.png)
+![구조](https://user-images.githubusercontent.com/20429356/153713139-ce6588af-2ab7-40d1-8bda-1de14a8a3257.png)
 
 ### Client에 참조되는 Style객체를 관리하는 서버를 목적으로 둠.
 
@@ -20,19 +20,19 @@
 
 ## Client Repository
 
-https://github.com/awakelife93/react_client_template
+https://github.com/awakelife93/react-client-template
 
 ## Admin Repository
 
-https://github.com/awakelife93/react_admin_template
+https://github.com/awakelife93/react-admin-template
 
 ## Gateway Server Repository
 
-https://github.com/awakelife93/study_spring_boot
+https://github.com/awakelife93/study-spring-boot
 
 ## API Server Repository
 
-https://github.com/awakelife93/node_api_server
+https://github.com/awakelife93/node-api-server
 
 ## [노트]
 
