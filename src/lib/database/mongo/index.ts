@@ -96,13 +96,11 @@ export const generateTestData = async (): Promise<void> => {
 };
 
 export const connectMongo = async (): Promise<void> => {
-  const option: any = {
-    ...mongoConfig[env.node],
-    password: env.mongoPassword,
-    useUnifiedTopology: true,
-  };
   try {
-    await createConnection(option);
+    await createConnection({
+      ...mongoConfig[env.node],
+      useUnifiedTopology: true,
+    });
   } catch (error: unknown) {
     console.log(`connectMongo Connect Failed!! ${error}`);
   }

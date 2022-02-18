@@ -15,6 +15,7 @@ const createItem = (req: RequestIE): void => {
 
       // Mysql과 다르게 Mongo는 take, skip을 number타입으로 무조건 제공해야함.
       if (!_.isEmpty(query.take)) query.take = Number(query.take);
+
       if (!_.isEmpty(query.skip)) query.skip = Number(query.skip);
 
       req.item = query;
