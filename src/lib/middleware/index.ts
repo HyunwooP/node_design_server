@@ -1,6 +1,8 @@
 import * as express from "express";
+import { UnknownObject } from "../../lib";
 import generateRequest from "./request";
 import generateResponse from "./response";
+
 interface RequestIE extends express.Request {
   /**
    * Header의 토큰을 꺼내기 쉽게 정제한다.
@@ -9,7 +11,7 @@ interface RequestIE extends express.Request {
   /**
    * Method Type에 상관없이 쉽게 꺼내쓰기 위해 정제한다.
    */
-  item: any;
+  item: UnknownObject;
 }
 
 interface ResponseIE extends express.Response {}

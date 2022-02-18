@@ -1,5 +1,7 @@
+import { UnknownObject } from "../../../../lib";
+
 interface SampleComponentIE {
-  [index: string]: any;
+  [index: string]: UnknownObject;
 }
 export const sampleComponents: SampleComponentIE = {
   BLACK_THEME__MENU_BOX: {

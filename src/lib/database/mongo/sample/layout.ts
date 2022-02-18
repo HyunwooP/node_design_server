@@ -1,5 +1,7 @@
+import { UnknownObject } from "../../../../lib";
+
 interface SampleLayoutIE {
-  [index: string]: any;
+  [index: string]: UnknownObject;
 }
 export const sampleLayouts: SampleLayoutIE = {
   BLACK_THEME__CONTAINER_LAYOUT: {

@@ -10,24 +10,22 @@ import { initMiddleWare, RequestIE, ResponseIE } from "./middleware";
 import createRoute from "./route";
 import { createServer } from "./server";
 import { CommonStatusCode, CommonStatusMessage } from "./status";
+import { UnknownObject } from "./type";
 
 export {
   createExpress,
   createServer,
   createRoute,
-  // common function
   onFailureHandler,
   getErrorItems,
-  // common status
   CommonStatusCode,
   CommonStatusMessage,
-  // database
   connectMongo,
   AppRepository,
   connectRepository,
   generateTestData,
-  // middleware
   initMiddleWare,
   RequestIE,
   ResponseIE,
+  UnknownObject,
 };
