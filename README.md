@@ -20,7 +20,7 @@
 
 ## Client Repository
 
-https://github.com/awakelife93/react-client-template
+https://github.com/awakelife93/react-template
 
 ## Admin Repository
 
