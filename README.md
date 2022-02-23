@@ -32,7 +32,7 @@ https://github.com/awakelife93/study-spring-boot
 
 ## API Server Repository
 
-https://github.com/awakelife93/node-api-server
+https://github.com/awakelife93/node-api-template
 
 ## [노트]
 
