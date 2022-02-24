@@ -1,5 +1,6 @@
 import * as cors from "cors";
 import * as express from "express";
+import helmet from "helmet";
 import * as path from "path";
 import env from "../config";
 
@@ -11,6 +12,7 @@ const corsConfig = {
 export const createExpress = (): express.Application => {
   const app: express.Application = express();
 
+  app.use(helmet());
   app.use(cors(corsConfig));
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
