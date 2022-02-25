@@ -2,11 +2,11 @@ import {
   AppRepository,
   connectMongo,
   connectRepository,
-  generateTestData,
+  generateTestData
 } from "./database/mongo";
 import { createExpress } from "./express";
 import { getErrorItems, onFailureHandler } from "./function";
-import { initMiddleWare, RequestIE, ResponseIE } from "./middleware";
+import { initMiddleWare, IRequest, IResponse } from "./middleware";
 import createRoute from "./route";
 import { createServer } from "./server";
 import { CommonStatusCode, CommonStatusMessage } from "./status";
@@ -25,7 +25,7 @@ export {
   connectRepository,
   generateTestData,
   initMiddleWare,
-  RequestIE,
-  ResponseIE,
+  IRequest,
+  IResponse,
   UnknownObject,
 };

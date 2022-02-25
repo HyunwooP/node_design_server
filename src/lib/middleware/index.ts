@@ -2,7 +2,7 @@ import * as express from "express";
 import generateRequest from "./request";
 import generateResponse from "./response";
 
-interface RequestIE extends express.Request {
+interface IRequest extends express.Request {
   /**
    * Header의 토큰을 꺼내기 쉽게 정제한다.
    */
@@ -13,11 +13,11 @@ interface RequestIE extends express.Request {
   item: unknown;
 }
 
-interface ResponseIE extends express.Response {}
+interface IResponse extends express.Response {}
 
 const initMiddleWare = async (
-  request: RequestIE,
-  response: ResponseIE,
+  request: IRequest,
+  response: IResponse,
   next: Function
 ): Promise<void> => {
   try {
@@ -29,4 +29,4 @@ const initMiddleWare = async (
   }
 };
 
-export { RequestIE, ResponseIE, initMiddleWare };
+export { IRequest, IResponse, initMiddleWare };

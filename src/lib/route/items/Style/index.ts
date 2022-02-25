@@ -1,7 +1,7 @@
-import { RouteItemIE } from "lib/route/routes";
+import { RouteItemType } from "lib/route/routes";
 import * as Style from "../../../../models/Style/controller";
 
-const StyleRoute: RouteItemIE[] = [
+const StyleRoute: RouteItemType[] = [
   // GET
   {
     path: "/findStyleCount",

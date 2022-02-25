@@ -1,4 +1,4 @@
-import { RequestIE, ResponseIE } from "../../../lib";
+import { IRequest, IResponse } from "../../../lib";
 import { Layout } from "../entity";
 import {
   findLayout,
@@ -16,14 +16,14 @@ import { LayoutRequestType } from "../type";
 
 /**
  * @method GET
- * @param {RequestIE} request
- * @param {ResponseIE} response
+ * @param {IRequest} request
+ * @param {IResponse} response
  * @param {Function} next
  * @returns {Promise<String>}
  */
 export const findCount = async (
-  request: RequestIE,
-  response: ResponseIE,
+  request: IRequest,
+  response: IResponse,
   next: Function
 ): Promise<String> => {
   return await findLayoutCount();
@@ -31,14 +31,14 @@ export const findCount = async (
 
 /**
  * @method GET
- * @param {RequestIE} request
- * @param {ResponseIE} response
+ * @param {IRequest} request
+ * @param {IResponse} response
  * @param {Function} next
  * @returns {Promise<Layout>}
  */
 export const findOne = async (
-  request: RequestIE,
-  response: ResponseIE,
+  request: IRequest,
+  response: IResponse,
   next: Function
 ): Promise<Layout> => {
   const conditions = request.item as LayoutRequestType;
@@ -47,14 +47,14 @@ export const findOne = async (
 
 /**
  * @method GET
- * @param {RequestIE} request
- * @param {ResponseIE} response
+ * @param {IRequest} request
+ * @param {IResponse} response
  * @param {Function} next
  * @returns {Promise<[Layout[], number]>}
  */
 export const find = async (
-  request: RequestIE,
-  response: ResponseIE,
+  request: IRequest,
+  response: IResponse,
   next: Function
 ): Promise<[Layout[], number]> => {
   const conditions = request.item as LayoutRequestType;
@@ -63,14 +63,14 @@ export const find = async (
 
 /**
  * @method POST
- * @param {RequestIE} request
- * @param {ResponseIE} response
+ * @param {IRequest} request
+ * @param {IResponse} response
  * @param {Function} next
  * @returns {Promise<Layout>}
  */
 export const update = async (
-  request: RequestIE,
-  response: ResponseIE,
+  request: IRequest,
+  response: IResponse,
   next: Function
 ): Promise<Layout> => {
   const conditions = request.item as Layout;
@@ -79,14 +79,14 @@ export const update = async (
 
 /**
  * @method DELETE
- * @param {RequestIE} request
- * @param {ResponseIE} response
+ * @param {IRequest} request
+ * @param {IResponse} response
  * @param {Function} next
  * @returns {Promise<object>}
  */
 export const remove = async (
-  request: RequestIE,
-  response: ResponseIE,
+  request: IRequest,
+  response: IResponse,
   next: Function
 ): Promise<object> => {
   const conditions = request.item as Layout;

@@ -1,16 +1,16 @@
-import { RequestIE, ResponseIE } from "../../../lib";
+import { IRequest, IResponse } from "../../../lib";
 import { _health } from "../service";
 
 /**
  * @method GET
- * @param {RequestIE} request
- * @param {ResponseIE} response
+ * @param {IRequest} request
+ * @param {IResponse} response
  * @param {Function} next
  * @returns {object}
  */
 export const health = (
-  request: RequestIE,
-  response: ResponseIE,
+  request: IRequest,
+  response: IResponse,
   next: Function
 ): object => {
   return _health();

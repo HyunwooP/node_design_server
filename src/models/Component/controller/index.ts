@@ -1,4 +1,4 @@
-import { RequestIE, ResponseIE } from "../../../lib";
+import { IRequest, IResponse } from "../../../lib";
 import { Component } from "../entity";
 import {
   findComponent,
@@ -16,14 +16,14 @@ import { ComponentRequestType } from "../type";
 
 /**
  * @method GET
- * @param {RequestIE} request
- * @param {ResponseIE} response
+ * @param {IRequest} request
+ * @param {IResponse} response
  * @param {Function} next
  * @returns {Promise<String>}
  */
 export const findCount = async (
-  request: RequestIE,
-  response: ResponseIE,
+  request: IRequest,
+  response: IResponse,
   next: Function
 ): Promise<String> => {
   return await findComponentCount();
@@ -31,14 +31,14 @@ export const findCount = async (
 
 /**
  * @method GET
- * @param {RequestIE} request
- * @param {ResponseIE} response
+ * @param {IRequest} request
+ * @param {IResponse} response
  * @param {Function} next
  * @returns {Promise<Component>}
  */
 export const findOne = async (
-  request: RequestIE,
-  response: ResponseIE,
+  request: IRequest,
+  response: IResponse,
   next: Function
 ): Promise<Component> => {
   const conditions = request.item as ComponentRequestType;
@@ -47,14 +47,14 @@ export const findOne = async (
 
 /**
  * @method GET
- * @param {RequestIE} request
- * @param {ResponseIE} response
+ * @param {IRequest} request
+ * @param {IResponse} response
  * @param {Function} next
  * @returns {Promise<[Component[], number]>}
  */
 export const find = async (
-  request: RequestIE,
-  response: ResponseIE,
+  request: IRequest,
+  response: IResponse,
   next: Function
 ): Promise<[Component[], number]> => {
   const conditions = request.item as ComponentRequestType;
@@ -63,14 +63,14 @@ export const find = async (
 
 /**
  * @method POST
- * @param {RequestIE} request
- * @param {ResponseIE} response
+ * @param {IRequest} request
+ * @param {IResponse} response
  * @param {Function} next
  * @returns {Promise<Component>}
  */
 export const update = async (
-  request: RequestIE,
-  response: ResponseIE,
+  request: IRequest,
+  response: IResponse,
   next: Function
 ): Promise<Component> => {
   const conditions = request.item as Component;
@@ -79,14 +79,14 @@ export const update = async (
 
 /**
  * @method DELETE
- * @param {RequestIE} request
- * @param {ResponseIE} response
+ * @param {IRequest} request
+ * @param {IResponse} response
  * @param {Function} next
  * @returns {Promise<object>}
  */
 export const remove = async (
-  request: RequestIE,
-  response: ResponseIE,
+  request: IRequest,
+  response: IResponse,
   next: Function
 ): Promise<object> => {
   const conditions = request.item as Component;

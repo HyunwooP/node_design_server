@@ -1,7 +1,7 @@
-import { RouteItemIE } from "lib/route/routes";
+import { RouteItemType } from "lib/route/routes";
 import * as Common from "../../../../models/Common/controller";
 
-const CommonRoute: RouteItemIE[] = [
+const CommonRoute: RouteItemType[] = [
   // GET
   {
     path: "/health",

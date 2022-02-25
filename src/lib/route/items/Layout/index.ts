@@ -1,7 +1,7 @@
-import { RouteItemIE } from "lib/route/routes";
+import { RouteItemType } from "lib/route/routes";
 import * as Layout from "../../../../models/Layout/controller";
 
-const LayoutRoute: RouteItemIE[] = [
+const LayoutRoute: RouteItemType[] = [
   // GET
   {
     path: "/findLayoutCount",

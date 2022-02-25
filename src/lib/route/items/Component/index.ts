@@ -1,7 +1,7 @@
-import { RouteItemIE } from "lib/route/routes";
+import { RouteItemType } from "lib/route/routes";
 import * as Component from "../../../../models/Component/controller";
 
-const ComponentRoute: RouteItemIE[] = [
+const ComponentRoute: RouteItemType[] = [
   // GET
   {
     path: "/findComponentCount",

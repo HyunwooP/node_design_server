@@ -1,14 +1,14 @@
 import * as _ from "lodash";
-import { RequestIE } from ".";
+import { IRequest } from ".";
 import { UnknownObject } from "../../lib";
 
-export default (request: RequestIE): void => {
+export default (request: IRequest): void => {
   Promise.all([createToken(request), createItem(request)]).catch((e) =>
     console.log("Generate Middleware Failed", e)
   );
 };
 
-const createItem = (request: RequestIE): void => {
+const createItem = (request: IRequest): void => {
   switch (request.method) {
     case "GET":
     case "DELETE":
@@ -30,7 +30,7 @@ const createItem = (request: RequestIE): void => {
   }
 };
 
-const createToken = (request: RequestIE): void => {
+const createToken = (request: IRequest): void => {
   const token =
     !_.isEmpty(request.headers.authorization) &&
     request.headers.authorization.replace("Bearer ", "");

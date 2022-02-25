@@ -1,7 +1,7 @@
-import { RouteItemIE } from "lib/route/routes";
+import { RouteItemType } from "lib/route/routes";
 import * as Theme from "../../../../models/Theme/controller";
 
-const ThemeRoute: RouteItemIE[] = [
+const ThemeRoute: RouteItemType[] = [
   // GET
   {
     path: "/findThemeCount",

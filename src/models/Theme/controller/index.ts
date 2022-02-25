@@ -1,4 +1,4 @@
-import { RequestIE, ResponseIE } from "../../../lib";
+import { IRequest, IResponse } from "../../../lib";
 import { Theme } from "../entity";
 import {
   findOneTheme,
@@ -17,14 +17,14 @@ import { ThemeRequestType } from "../type";
 
 /**
  * @method GET
- * @param {RequestIE} request
- * @param {ResponseIE} response
+ * @param {IRequest} request
+ * @param {IResponse} response
  * @param {Function} next
  * @returns {Promise<String>}
  */
 export const findCount = async (
-  request: RequestIE,
-  response: ResponseIE,
+  request: IRequest,
+  response: IResponse,
   next: Function
 ): Promise<String> => {
   return await findThemeCount();
@@ -32,14 +32,14 @@ export const findCount = async (
 
 /**
  * @method GET
- * @param {RequestIE} request
- * @param {ResponseIE} response
+ * @param {IRequest} request
+ * @param {IResponse} response
  * @param {Function} next
  * @returns {Promise<Theme>}
  */
 export const findItem = async (
-  request: RequestIE,
-  response: ResponseIE,
+  request: IRequest,
+  response: IResponse,
   next: Function
 ): Promise<Theme> => {
   return await findThemeItem();
@@ -47,14 +47,14 @@ export const findItem = async (
 
 /**
  * @method GET
- * @param {RequestIE} request
- * @param {ResponseIE} response
+ * @param {IRequest} request
+ * @param {IResponse} response
  * @param {Function} next
  * @returns {Promise<Theme>}
  */
 export const findOne = async (
-  request: RequestIE,
-  response: ResponseIE,
+  request: IRequest,
+  response: IResponse,
   next: Function
 ): Promise<Theme> => {
   const conditions = request.item as ThemeRequestType;
@@ -63,14 +63,14 @@ export const findOne = async (
 
 /**
  * @method GET
- * @param {RequestIE} request
- * @param {ResponseIE} response
+ * @param {IRequest} request
+ * @param {IResponse} response
  * @param {Function} next
  * @returns {Promise<Theme[], number>}
  */
 export const find = async (
-  request: RequestIE,
-  response: ResponseIE,
+  request: IRequest,
+  response: IResponse,
   next: Function
 ): Promise<[Theme[], number]> => {
   const conditions = request.item as ThemeRequestType;
@@ -79,14 +79,14 @@ export const find = async (
 
 /**
  * @method POST
- * @param {RequestIE} request
- * @param {ResponseIE} response
+ * @param {IRequest} request
+ * @param {IResponse} response
  * @param {Function} next
  * @returns {Promise<Theme>}
  */
 export const update = async (
-  request: RequestIE,
-  response: ResponseIE,
+  request: IRequest,
+  response: IResponse,
   next: Function
 ): Promise<Theme> => {
   const conditions = request.item as Theme;
@@ -95,14 +95,14 @@ export const update = async (
 
 /**
  * @method DELETE
- * @param {RequestIE} request
- * @param {ResponseIE} response
+ * @param {IRequest} request
+ * @param {IResponse} response
  * @param {Function} next
  * @returns {Promise<object>}
  */
 export const remove = async (
-  request: RequestIE,
-  response: ResponseIE,
+  request: IRequest,
+  response: IResponse,
   next: Function
 ): Promise<object> => {
   const conditions = request.item as Theme;
