@@ -1,4 +1,4 @@
-import { UnknownObject } from "../../../../lib";
+import { UnknownObject } from "@/lib";
 
 type SampleComponentType = {
   [index: string]: UnknownObject;

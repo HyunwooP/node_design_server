@@ -1,9 +1,9 @@
 import {
   CommonStatusCode,
   getErrorItems,
-  onFailureHandler,
-} from "../../../lib";
-import { healthCheckMemory } from "../../../utils";
+  onFailureHandler
+} from "@/lib";
+import { healthCheckMemory } from "@/utils";
 
 export const _health = (): object => {
   try {

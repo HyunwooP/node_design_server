@@ -1,6 +1,6 @@
+import { UnknownObject } from "@/lib";
 import * as _ from "lodash";
 import { IRequest } from ".";
-import { UnknownObject } from "../../lib";
 
 export default (request: IRequest): void => {
   Promise.all([createToken(request), createItem(request)]).catch((e) =>

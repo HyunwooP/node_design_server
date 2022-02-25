@@ -1,6 +1,6 @@
+import { CommonEntity } from "@/models/Common/entity";
 import { ObjectID } from "mongodb";
 import { Column, Entity, ObjectIdColumn } from "typeorm";
-import { CommonEntity } from "../../Common/entity";
 
 @Entity("Layout")
 export class Layout extends CommonEntity {

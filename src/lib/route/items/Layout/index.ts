@@ -1,5 +1,5 @@
-import { RouteItemType } from "lib/route/routes";
-import * as Layout from "../../../../models/Layout/controller";
+import { RouteItemType } from "@/lib/route/routes";
+import * as Layout from "@/models/Layout/controller";
 
 const LayoutRoute: RouteItemType[] = [
   // GET

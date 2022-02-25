@@ -1,5 +1,5 @@
-import { RouteItemType } from "lib/route/routes";
-import * as Style from "../../../../models/Style/controller";
+import { RouteItemType } from "@/lib/route/routes";
+import * as Style from "@/models/Style/controller";
 
 const StyleRoute: RouteItemType[] = [
   // GET

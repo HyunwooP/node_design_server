@@ -1,4 +1,4 @@
-import { UnknownObject } from "../../../../lib";
+import { UnknownObject } from "@/lib";
 
 type SampleLayoutType = {
   [index: string]: UnknownObject;

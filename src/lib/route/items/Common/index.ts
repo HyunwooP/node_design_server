@@ -1,5 +1,5 @@
-import { RouteItemType } from "lib/route/routes";
-import * as Common from "../../../../models/Common/controller";
+import { RouteItemType } from "@/lib/route/routes";
+import * as Common from "@/models/Common/controller";
 
 const CommonRoute: RouteItemType[] = [
   // GET

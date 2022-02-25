@@ -1,4 +1,4 @@
-import { IRequest, IResponse } from "../../../lib";
+import { IRequest, IResponse } from "@/lib";
 import { Theme } from "../entity";
 import {
   findOneTheme,

@@ -1,5 +1,5 @@
-import { RouteItemType } from "lib/route/routes";
-import * as Theme from "../../../../models/Theme/controller";
+import { RouteItemType } from "@/lib/route/routes";
+import * as Theme from "@/models/Theme/controller";
 
 const ThemeRoute: RouteItemType[] = [
   // GET

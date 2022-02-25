@@ -1,13 +1,13 @@
-import * as _ from "lodash";
 import {
   AppRepository,
   CommonStatusCode,
   CommonStatusMessage,
   getErrorItems,
   onFailureHandler
-} from "../../../lib";
-import { QueryType } from "../../../models/Common/type";
-import { toObjectId } from "../../../utils";
+} from "@/lib";
+import { QueryType } from "@/models/Common/type";
+import { toObjectId } from "@/utils";
+import * as _ from "lodash";
 import { Layout } from "../entity";
 import { LayoutRequestType } from "../type";
 

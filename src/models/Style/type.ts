@@ -1,4 +1,4 @@
-import { CommonRequestType, SortType } from "../../models/Common/type";
+import { CommonRequestType, SortType } from "@/models/Common/type";
 import { Style } from "./entity";
 
 type StyleRequestSubOptionType = {

@@ -1,7 +1,7 @@
+import { getErrorItems } from "@/lib";
 import * as express from "express";
 import * as _ from "lodash";
 import { CommonStatusCode, initMiddleWare, IRequest, IResponse } from "..";
-import { getErrorItems } from "../../lib";
 import RouteItems, { RouteItemType } from "./routes";
 
 export default (app: express.Application): void => {

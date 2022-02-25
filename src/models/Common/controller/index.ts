@@ -1,4 +1,4 @@
-import { IRequest, IResponse } from "../../../lib";
+import { IRequest, IResponse } from "@/lib";
 import { _health } from "../service";
 
 /**

@@ -1,5 +1,5 @@
+import env from "@/config";
 import { MongoConnectionOptions } from "typeorm/driver/mongodb/MongoConnectionOptions";
-import env from "../../../config";
 
 export type TypeOrmConfigType = {
   [index: string]: MongoConnectionOptions;
