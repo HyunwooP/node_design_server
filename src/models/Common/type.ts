@@ -5,14 +5,14 @@ export type CommonRequestType = {
 };
 
 export type QueryType = {
-  where?: {
+  where: {
     // search
     [index: string]: {
-      $regex?: string;
-      $options?: string;
+      $regex: string;
+      $options: string;
     };
   };
-  order?: {
+  order: {
     [index: string]: SortType;
   };
 };
