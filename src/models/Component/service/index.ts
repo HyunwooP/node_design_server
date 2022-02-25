@@ -6,9 +6,10 @@ import {
   getErrorItems,
   onFailureHandler
 } from "../../../lib";
+import { QueryType } from "../../../models/Common/type";
 import { toObjectId } from "../../../utils";
-import { QueryIE } from "../../Common/type";
-import { ComponentIE } from "../entity";
+import { Component } from "../entity";
+import { ComponentRequestType } from "../type";
 
 export const findComponentCount = async (): Promise<String> => {
   try {
@@ -25,8 +26,8 @@ export const findComponentCount = async (): Promise<String> => {
 };
 
 export const findOneComponent = async (
-  conditions: ComponentIE
-): Promise<ComponentIE> => {
+  conditions: Partial<ComponentRequestType>
+): Promise<Component> => {
   try {
     return await AppRepository.Component.findOne({ ...conditions });
   } catch (error: unknown) {
@@ -41,13 +42,10 @@ export const findOneComponent = async (
 };
 
 export const findComponent = async (
-  conditions: ComponentIE
-): Promise<[ComponentIE[], number]> => {
+  conditions: Partial<ComponentRequestType>
+): Promise<[Component[], number]> => {
   try {
-    let query: QueryIE = {
-      where: {},
-      order: {},
-    };
+    let query = {} as QueryType;
 
     if (!_.isEmpty(conditions.searchKeyword)) {
       query.where = {
@@ -78,8 +76,8 @@ export const findComponent = async (
 };
 
 export const createComponent = async (
-  conditions: ComponentIE
-): Promise<ComponentIE> => {
+  conditions: Component
+): Promise<Component> => {
   try {
     return await AppRepository.Component.create(conditions);
   } catch (error: unknown) {
@@ -94,10 +92,10 @@ export const createComponent = async (
 };
 
 export const updateComponent = async (
-  conditions: ComponentIE
-): Promise<ComponentIE> => {
+  conditions: Partial<Component>
+): Promise<Component> => {
   try {
-    const component: ComponentIE = await findOneComponent({
+    const component = await findOneComponent({
       _id: toObjectId(conditions._id),
     });
 
@@ -134,7 +132,7 @@ export const updateComponent = async (
 };
 
 export const removeComponent = async (
-  conditions: ComponentIE
+  conditions: Partial<Component>
 ): Promise<object> => {
   try {
     await updateComponent({ _id: conditions._id, isDeleted: true });

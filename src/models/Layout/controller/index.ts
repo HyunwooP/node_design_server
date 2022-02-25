@@ -1,17 +1,17 @@
 import { RequestIE, ResponseIE } from "../../../lib";
-import { LayoutIE } from "../entity";
+import { Layout } from "../entity";
 import {
   findLayout,
   findLayoutCount,
   findOneLayout,
   removeLayout,
-  updateLayout,
+  updateLayout
 } from "../service";
+import { LayoutRequestType } from "../type";
 
 /**
  * @description
  * 대표 CRUD를 통해 중복되는 객체 호출을 방지한다.
- * @returns {LayoutIE}
  */
 
 /**
@@ -34,14 +34,14 @@ export const findCount = async (
  * @param {RequestIE} request
  * @param {ResponseIE} response
  * @param {Function} next
- * @returns {Promise<LayoutIE>}
+ * @returns {Promise<Layout>}
  */
 export const findOne = async (
   request: RequestIE,
   response: ResponseIE,
   next: Function
-): Promise<LayoutIE> => {
-  const conditions: LayoutIE = request.item;
+): Promise<Layout> => {
+  const conditions = request.item as LayoutRequestType;
   return await findOneLayout(conditions);
 };
 
@@ -50,14 +50,14 @@ export const findOne = async (
  * @param {RequestIE} request
  * @param {ResponseIE} response
  * @param {Function} next
- * @returns {Promise<[LayoutIE[], number]>}
+ * @returns {Promise<[Layout[], number]>}
  */
 export const find = async (
   request: RequestIE,
   response: ResponseIE,
   next: Function
-): Promise<[LayoutIE[], number]> => {
-  const conditions: LayoutIE = request.item;
+): Promise<[Layout[], number]> => {
+  const conditions = request.item as LayoutRequestType;
   return await findLayout(conditions);
 };
 
@@ -66,14 +66,14 @@ export const find = async (
  * @param {RequestIE} request
  * @param {ResponseIE} response
  * @param {Function} next
- * @returns {Promise<LayoutIE>}
+ * @returns {Promise<Layout>}
  */
 export const update = async (
   request: RequestIE,
   response: ResponseIE,
   next: Function
-): Promise<LayoutIE> => {
-  const conditions: LayoutIE = request.item;
+): Promise<Layout> => {
+  const conditions = request.item as Layout;
   return await updateLayout(conditions);
 };
 
@@ -89,6 +89,6 @@ export const remove = async (
   response: ResponseIE,
   next: Function
 ): Promise<object> => {
-  const conditions: LayoutIE = request.item;
+  const conditions = request.item as Layout;
   return await removeLayout(conditions);
 };

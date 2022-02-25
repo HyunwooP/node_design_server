@@ -6,9 +6,10 @@ import {
   getErrorItems,
   onFailureHandler
 } from "../../../lib";
+import { QueryType } from "../../../models/Common/type";
 import { toObjectId } from "../../../utils";
-import { QueryIE } from "../../Common/type";
-import { LayoutIE } from "../entity";
+import { Layout } from "../entity";
+import { LayoutRequestType } from "../type";
 
 export const findLayoutCount = async (): Promise<String> => {
   try {
@@ -25,8 +26,8 @@ export const findLayoutCount = async (): Promise<String> => {
 };
 
 export const findOneLayout = async (
-  conditions: LayoutIE
-): Promise<LayoutIE> => {
+  conditions: Partial<LayoutRequestType>
+): Promise<Layout> => {
   try {
     return await AppRepository.Layout.findOne({ ...conditions });
   } catch (error: unknown) {
@@ -41,13 +42,10 @@ export const findOneLayout = async (
 };
 
 export const findLayout = async (
-  conditions: LayoutIE
-): Promise<[LayoutIE[], number]> => {
+  conditions: Partial<LayoutRequestType>
+): Promise<[Layout[], number]> => {
   try {
-    let query: QueryIE = {
-      where: {},
-      order: {},
-    };
+    let query = {} as QueryType;
 
     if (!_.isEmpty(conditions.searchKeyword)) {
       query.where = {
@@ -77,7 +75,7 @@ export const findLayout = async (
   }
 };
 
-export const createLayout = async (conditions: LayoutIE): Promise<LayoutIE> => {
+export const createLayout = async (conditions: Layout): Promise<Layout> => {
   try {
     return await AppRepository.Layout.create(conditions);
   } catch (error: unknown) {
@@ -91,9 +89,9 @@ export const createLayout = async (conditions: LayoutIE): Promise<LayoutIE> => {
   }
 };
 
-export const updateLayout = async (conditions: LayoutIE): Promise<LayoutIE> => {
+export const updateLayout = async (conditions: Partial<Layout>): Promise<Layout> => {
   try {
-    const layout: LayoutIE = await findOneLayout({
+    const layout = await findOneLayout({
       _id: toObjectId(conditions._id),
     });
 
@@ -129,7 +127,7 @@ export const updateLayout = async (conditions: LayoutIE): Promise<LayoutIE> => {
   }
 };
 
-export const removeLayout = async (conditions: LayoutIE): Promise<object> => {
+export const removeLayout = async (conditions: Partial<Layout>): Promise<object> => {
   try {
     await updateLayout({ _id: conditions._id, isDeleted: true });
     return {};

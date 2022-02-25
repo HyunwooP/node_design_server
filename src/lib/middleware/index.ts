@@ -1,5 +1,4 @@
 import * as express from "express";
-import { UnknownObject } from "../../lib";
 import generateRequest from "./request";
 import generateResponse from "./response";
 
@@ -11,7 +10,7 @@ interface RequestIE extends express.Request {
   /**
    * Method Type에 상관없이 쉽게 꺼내쓰기 위해 정제한다.
    */
-  item: UnknownObject;
+  item: unknown;
 }
 
 interface ResponseIE extends express.Response {}

@@ -1,13 +1,6 @@
 import { CreateDateColumn, UpdateDateColumn } from "typeorm";
 
-export interface CommonReqIE {
-  searchKeyword?: string;
-}
-export interface CommonEntityIE extends CommonReqIE {
-  createdAt?: Date;
-  updatedAt?: Date;
-}
-export class CommonEntity implements CommonEntityIE {
+export class CommonEntity {
   @CreateDateColumn({
     name: "crt_dt",
     type: "timestamp",

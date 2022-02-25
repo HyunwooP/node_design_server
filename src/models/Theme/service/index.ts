@@ -7,9 +7,10 @@ import {
   getErrorItems,
   onFailureHandler
 } from "../../../lib";
+import { QueryType } from "../../../models/Common/type";
 import { toObjectId } from "../../../utils";
-import { QueryIE } from "../../Common/type";
-import { Theme, ThemeIE } from "../entity";
+import { Theme } from "../entity";
+import { ThemeRequestType } from "../type";
 
 export const findThemeCount = async (): Promise<String> => {
   try {
@@ -33,7 +34,7 @@ export const findThemeCount = async (): Promise<String> => {
  * @returns {Document[]}
  */
 export const aggregateTheme = async (
-  pipeline?: ObjectLiteral[]
+  pipeline: ObjectLiteral[]
 ): Promise<any> => {
   try {
     return await AppRepository.Theme.aggregate(pipeline).toArray();
@@ -48,7 +49,7 @@ export const aggregateTheme = async (
   }
 };
 
-export const findThemeItem = async (): Promise<ThemeIE> => {
+export const findThemeItem = async (): Promise<Theme> => {
   try {
     const theme = new Theme();
     return await aggregateTheme(theme.findThemeItem());
@@ -63,7 +64,7 @@ export const findThemeItem = async (): Promise<ThemeIE> => {
   }
 };
 
-export const findOneTheme = async (conditions: ThemeIE): Promise<ThemeIE> => {
+export const findOneTheme = async (conditions: Partial<ThemeRequestType>): Promise<Theme> => {
   try {
     return await AppRepository.Theme.findOne({ ...conditions });
   } catch (error: unknown) {
@@ -78,13 +79,10 @@ export const findOneTheme = async (conditions: ThemeIE): Promise<ThemeIE> => {
 };
 
 export const findTheme = async (
-  conditions: ThemeIE
-): Promise<[ThemeIE[], number]> => {
+  conditions: Partial<ThemeRequestType>
+): Promise<[Theme[], number]> => {
   try {
-    let query: QueryIE = {
-      where: {},
-      order: {},
-    };
+    let query = {} as QueryType;
 
     if (!_.isEmpty(conditions.searchKeyword)) {
       query.where = {
@@ -114,7 +112,7 @@ export const findTheme = async (
   }
 };
 
-export const createTheme = async (conditions: ThemeIE): Promise<ThemeIE> => {
+export const createTheme = async (conditions: Theme): Promise<Theme> => {
   try {
     return await AppRepository.Theme.create(conditions);
   } catch (error: unknown) {
@@ -128,9 +126,9 @@ export const createTheme = async (conditions: ThemeIE): Promise<ThemeIE> => {
   }
 };
 
-export const updateTheme = async (conditions: ThemeIE): Promise<ThemeIE> => {
+export const updateTheme = async (conditions: Partial<Theme>): Promise<Theme> => {
   try {
-    const theme: ThemeIE = await findOneTheme({
+    const theme = await findOneTheme({
       _id: toObjectId(conditions._id),
     });
 
@@ -168,7 +166,7 @@ export const updateTheme = async (conditions: ThemeIE): Promise<ThemeIE> => {
   }
 };
 
-export const removeTheme = async (conditions: ThemeIE): Promise<object> => {
+export const removeTheme = async (conditions: Partial<Theme>): Promise<object> => {
   try {
     await updateTheme({ _id: conditions._id, isDeleted: true });
     return {};

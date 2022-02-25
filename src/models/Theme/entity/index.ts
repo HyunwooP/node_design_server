@@ -1,23 +1,9 @@
 import { ObjectID } from "mongodb";
 import { Column, Entity, ObjectIdColumn } from "typeorm";
-import { CommonEntity, CommonEntityIE } from "../../Common/entity";
-import { SortType } from "../../Common/type";
-
-export interface ThemeIE extends CommonEntityIE {
-  // 클라이언트에서 넘기는 데이터
-  nameSort?: SortType;
-  ///////////////////////
-
-  _id?: ObjectID;
-  name?: string;
-  // styles?: Style[];
-  styles?: ObjectID[];
-  isActive?: boolean;
-  isDeleted?: boolean;
-}
+import { CommonEntity } from "../../Common/entity";
 
 @Entity("Theme")
-export class Theme extends CommonEntity implements ThemeIE {
+export class Theme extends CommonEntity {
   @ObjectIdColumn()
   _id: ObjectID;
 

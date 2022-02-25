@@ -1,17 +1,17 @@
 import { RequestIE, ResponseIE } from "../../../lib";
-import { ComponentIE } from "../entity";
+import { Component } from "../entity";
 import {
   findComponent,
   findComponentCount,
   findOneComponent,
   removeComponent,
-  updateComponent,
+  updateComponent
 } from "../service";
+import { ComponentRequestType } from "../type";
 
 /**
  * @description
  * 대표 CRUD를 통해 중복되는 객체 호출을 방지한다.
- * @returns {ComponentIE}
  */
 
 /**
@@ -34,14 +34,14 @@ export const findCount = async (
  * @param {RequestIE} request
  * @param {ResponseIE} response
  * @param {Function} next
- * @returns {Promise<ComponentIE>}
+ * @returns {Promise<Component>}
  */
 export const findOne = async (
   request: RequestIE,
   response: ResponseIE,
   next: Function
-): Promise<ComponentIE> => {
-  const conditions: ComponentIE = request.item;
+): Promise<Component> => {
+  const conditions = request.item as ComponentRequestType;
   return await findOneComponent(conditions);
 };
 
@@ -50,14 +50,14 @@ export const findOne = async (
  * @param {RequestIE} request
  * @param {ResponseIE} response
  * @param {Function} next
- * @returns {Promise<[ComponentIE[], number]>}
+ * @returns {Promise<[Component[], number]>}
  */
 export const find = async (
   request: RequestIE,
   response: ResponseIE,
   next: Function
-): Promise<[ComponentIE[], number]> => {
-  const conditions: ComponentIE = request.item;
+): Promise<[Component[], number]> => {
+  const conditions = request.item as ComponentRequestType;
   return await findComponent(conditions);
 };
 
@@ -66,14 +66,14 @@ export const find = async (
  * @param {RequestIE} request
  * @param {ResponseIE} response
  * @param {Function} next
- * @returns {Promise<ComponentIE>}
+ * @returns {Promise<Component>}
  */
 export const update = async (
   request: RequestIE,
   response: ResponseIE,
   next: Function
-): Promise<ComponentIE> => {
-  const conditions: ComponentIE = request.item;
+): Promise<Component> => {
+  const conditions = request.item as Component;
   return await updateComponent(conditions);
 };
 
@@ -89,6 +89,6 @@ export const remove = async (
   response: ResponseIE,
   next: Function
 ): Promise<object> => {
-  const conditions: ComponentIE = request.item;
+  const conditions = request.item as Component;
   return await removeComponent(conditions);
 };

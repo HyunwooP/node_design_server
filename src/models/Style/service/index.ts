@@ -6,9 +6,10 @@ import {
   getErrorItems,
   onFailureHandler
 } from "../../../lib";
+import { QueryType } from "../../../models/Common/type";
 import { toObjectId } from "../../../utils";
-import { QueryIE } from "../../Common/type";
-import { StyleIE } from "../entity";
+import { Style } from "../entity";
+import { StyleRequestType } from "../type";
 
 export const findStyleCount = async (): Promise<String> => {
   try {
@@ -24,7 +25,7 @@ export const findStyleCount = async (): Promise<String> => {
   }
 };
 
-export const findOneStyle = async (conditions: StyleIE): Promise<StyleIE> => {
+export const findOneStyle = async (conditions: Partial<StyleRequestType>): Promise<Style> => {
   try {
     return await AppRepository.Style.findOne({ ...conditions });
   } catch (error: unknown) {
@@ -39,13 +40,10 @@ export const findOneStyle = async (conditions: StyleIE): Promise<StyleIE> => {
 };
 
 export const findStyle = async (
-  conditions: StyleIE
-): Promise<[StyleIE[], number]> => {
+  conditions: Partial<StyleRequestType>
+): Promise<[Style[], number]> => {
   try {
-    let query: QueryIE = {
-      where: {},
-      order: {},
-    };
+    let query = {} as QueryType;
 
     if (!_.isEmpty(conditions.searchKeyword)) {
       query.where = {
@@ -75,7 +73,7 @@ export const findStyle = async (
   }
 };
 
-export const createStyle = async (conditions: StyleIE): Promise<StyleIE> => {
+export const createStyle = async (conditions: Style): Promise<Style> => {
   try {
     return await AppRepository.Style.create(conditions);
   } catch (error: unknown) {
@@ -89,9 +87,9 @@ export const createStyle = async (conditions: StyleIE): Promise<StyleIE> => {
   }
 };
 
-export const updateStyle = async (conditions: StyleIE): Promise<StyleIE> => {
+export const updateStyle = async (conditions: Partial<Style>): Promise<Style> => {
   try {
-    const style: StyleIE = await findOneStyle({
+    const style = await findOneStyle({
       _id: toObjectId(conditions._id),
     });
 
@@ -133,7 +131,7 @@ export const updateStyle = async (conditions: StyleIE): Promise<StyleIE> => {
   }
 };
 
-export const removeStyle = async (conditions: StyleIE): Promise<object> => {
+export const removeStyle = async (conditions: Partial<Style>): Promise<object> => {
   try {
     await updateStyle({ _id: conditions._id, isDeleted: true });
     return {};

@@ -1,18 +1,18 @@
 import { RequestIE, ResponseIE } from "../../../lib";
-import { ThemeIE } from "../entity";
+import { Theme } from "../entity";
 import {
   findOneTheme,
   findTheme,
   findThemeCount,
   findThemeItem,
   removeTheme,
-  updateTheme,
+  updateTheme
 } from "../service";
+import { ThemeRequestType } from "../type";
 
 /**
  * @description
  * 대표 CRUD를 통해 중복되는 객체 호출을 방지한다.
- * @returns {ThemeIE}
  */
 
 /**
@@ -35,13 +35,13 @@ export const findCount = async (
  * @param {RequestIE} request
  * @param {ResponseIE} response
  * @param {Function} next
- * @returns {Promise<ThemeIE>}
+ * @returns {Promise<Theme>}
  */
 export const findItem = async (
   request: RequestIE,
   response: ResponseIE,
   next: Function
-): Promise<ThemeIE> => {
+): Promise<Theme> => {
   return await findThemeItem();
 };
 
@@ -50,14 +50,14 @@ export const findItem = async (
  * @param {RequestIE} request
  * @param {ResponseIE} response
  * @param {Function} next
- * @returns {Promise<ThemeIE>}
+ * @returns {Promise<Theme>}
  */
 export const findOne = async (
   request: RequestIE,
   response: ResponseIE,
   next: Function
-): Promise<ThemeIE> => {
-  const conditions: ThemeIE = request.item;
+): Promise<Theme> => {
+  const conditions = request.item as ThemeRequestType;
   return await findOneTheme(conditions);
 };
 
@@ -66,14 +66,14 @@ export const findOne = async (
  * @param {RequestIE} request
  * @param {ResponseIE} response
  * @param {Function} next
- * @returns {Promise<ThemeIE[]>}
+ * @returns {Promise<Theme[], number>}
  */
 export const find = async (
   request: RequestIE,
   response: ResponseIE,
   next: Function
-): Promise<[ThemeIE[], number]> => {
-  const conditions: ThemeIE = request.item;
+): Promise<[Theme[], number]> => {
+  const conditions = request.item as ThemeRequestType;
   return await findTheme(conditions);
 };
 
@@ -82,14 +82,14 @@ export const find = async (
  * @param {RequestIE} request
  * @param {ResponseIE} response
  * @param {Function} next
- * @returns {Promise<ThemeIE>}
+ * @returns {Promise<Theme>}
  */
 export const update = async (
   request: RequestIE,
   response: ResponseIE,
   next: Function
-): Promise<ThemeIE> => {
-  const conditions: ThemeIE = request.item;
+): Promise<Theme> => {
+  const conditions = request.item as Theme;
   return await updateTheme(conditions);
 };
 
@@ -105,6 +105,6 @@ export const remove = async (
   response: ResponseIE,
   next: Function
 ): Promise<object> => {
-  const conditions: ThemeIE = request.item;
+  const conditions = request.item as Theme;
   return await removeTheme(conditions);
 };

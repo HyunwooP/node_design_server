@@ -1,17 +1,17 @@
 import { RequestIE, ResponseIE } from "../../../lib";
-import { StyleIE } from "../entity";
+import { Style } from "../entity";
 import {
   findOneStyle,
   findStyle,
   findStyleCount,
   removeStyle,
-  updateStyle,
+  updateStyle
 } from "../service";
+import { StyleRequestType } from "../type";
 
 /**
  * @description
  * 대표 CRUD를 통해 중복되는 객체 호출을 방지한다.
- * @returns {StyleIE}
  */
 
 /**
@@ -34,14 +34,14 @@ export const findCount = async (
  * @param {RequestIE} request
  * @param {ResponseIE} response
  * @param {Function} next
- * @returns {Promise<StyleIE>}
+ * @returns {Promise<Style>}
  */
 export const findOne = async (
   request: RequestIE,
   response: ResponseIE,
   next: Function
-): Promise<StyleIE> => {
-  const conditions: StyleIE = request.item;
+): Promise<Style> => {
+  const conditions = request.item as StyleRequestType;
   return await findOneStyle(conditions);
 };
 
@@ -50,14 +50,14 @@ export const findOne = async (
  * @param {RequestIE} request
  * @param {ResponseIE} response
  * @param {Function} next
- * @returns {Promise<StyleIE[]>}
+ * @returns {Promise<Style[], number>}
  */
 export const find = async (
   request: RequestIE,
   response: ResponseIE,
   next: Function
-): Promise<[StyleIE[], number]> => {
-  const conditions: StyleIE = request.item;
+): Promise<[Style[], number]> => {
+  const conditions = request.item as StyleRequestType;
   return await findStyle(conditions);
 };
 
@@ -66,14 +66,14 @@ export const find = async (
  * @param {RequestIE} request
  * @param {ResponseIE} response
  * @param {Function} next
- * @returns {Promise<StyleIE>}
+ * @returns {Promise<Style>}
  */
 export const update = async (
   request: RequestIE,
   response: ResponseIE,
   next: Function
-): Promise<StyleIE> => {
-  const conditions: StyleIE = request.item;
+): Promise<Style> => {
+  const conditions = request.item as Style;
   return await updateStyle(conditions);
 };
 
@@ -89,6 +89,6 @@ export const remove = async (
   response: ResponseIE,
   next: Function
 ): Promise<object> => {
-  const conditions: StyleIE = request.item;
+  const conditions = request.item as Style;
   return await removeStyle(conditions);
 };
