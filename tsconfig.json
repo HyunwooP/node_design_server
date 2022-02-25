@@ -5,6 +5,9 @@
     "target": "es2017",
     "outDir": "./dist",
     "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./*"],
+    },
     "alwaysStrict": true,
     "noImplicitAny": true,
     "experimentalDecorators": true,
