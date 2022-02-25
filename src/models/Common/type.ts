@@ -1,6 +1,6 @@
 export type SortType = "ASC" | "DESC" | undefined;
 
-export interface QueryIE {
+export type QueryType = {
   where?: {
     // search
     [index: string]: {
@@ -11,4 +11,4 @@ export interface QueryIE {
   order?: {
     [index: string]: SortType;
   };
-}
+};

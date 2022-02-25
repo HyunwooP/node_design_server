@@ -4,10 +4,10 @@ import {
   CommonStatusCode,
   CommonStatusMessage,
   getErrorItems,
-  onFailureHandler,
+  onFailureHandler
 } from "../../../lib";
-import { QueryIE } from "../../../models/Common/interface";
 import { toObjectId } from "../../../utils";
+import { QueryIE } from "../../Common/type";
 import { LayoutIE } from "../entity";
 
 export const findLayoutCount = async (): Promise<String> => {

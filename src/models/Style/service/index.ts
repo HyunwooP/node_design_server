@@ -4,10 +4,10 @@ import {
   CommonStatusCode,
   CommonStatusMessage,
   getErrorItems,
-  onFailureHandler,
+  onFailureHandler
 } from "../../../lib";
-import { QueryIE } from "../../../models/Common/interface";
 import { toObjectId } from "../../../utils";
+import { QueryIE } from "../../Common/type";
 import { StyleIE } from "../entity";
 
 export const findStyleCount = async (): Promise<String> => {

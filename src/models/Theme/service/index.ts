@@ -5,10 +5,10 @@ import {
   CommonStatusCode,
   CommonStatusMessage,
   getErrorItems,
-  onFailureHandler,
+  onFailureHandler
 } from "../../../lib";
-import { QueryIE } from "../../../models/Common/interface";
 import { toObjectId } from "../../../utils";
+import { QueryIE } from "../../Common/type";
 import { Theme, ThemeIE } from "../entity";
 
 export const findThemeCount = async (): Promise<String> => {
