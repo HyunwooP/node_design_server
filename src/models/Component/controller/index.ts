@@ -5,7 +5,7 @@ import {
   findComponentCount,
   findOneComponent,
   removeComponent,
-  updateComponent
+  updateComponent,
 } from "../service";
 import { ComponentRequestType } from "../type";
 

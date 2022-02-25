@@ -5,4 +5,6 @@ type StyleRequestSubOptionType = {
   nameSort: SortType;
 };
 
-export type StyleRequestType = StyleRequestSubOptionType & CommonRequestType & Style;
+export type StyleRequestType = StyleRequestSubOptionType &
+  CommonRequestType &
+  Style;

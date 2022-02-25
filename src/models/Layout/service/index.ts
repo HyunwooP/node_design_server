@@ -3,7 +3,7 @@ import {
   CommonStatusCode,
   CommonStatusMessage,
   getErrorItems,
-  onFailureHandler
+  onFailureHandler,
 } from "@/lib";
 import { QueryType } from "@/models/Common/type";
 import { toObjectId } from "@/utils";
@@ -89,7 +89,9 @@ export const createLayout = async (conditions: Layout): Promise<Layout> => {
   }
 };
 
-export const updateLayout = async (conditions: Partial<Layout>): Promise<Layout> => {
+export const updateLayout = async (
+  conditions: Partial<Layout>
+): Promise<Layout> => {
   try {
     const layout = await findOneLayout({
       _id: toObjectId(conditions._id),
@@ -127,7 +129,9 @@ export const updateLayout = async (conditions: Partial<Layout>): Promise<Layout>
   }
 };
 
-export const removeLayout = async (conditions: Partial<Layout>): Promise<object> => {
+export const removeLayout = async (
+  conditions: Partial<Layout>
+): Promise<object> => {
   try {
     await updateLayout({ _id: conditions._id, isDeleted: true });
     return {};

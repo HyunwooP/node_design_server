@@ -3,7 +3,7 @@ import {
   CommonStatusCode,
   CommonStatusMessage,
   getErrorItems,
-  onFailureHandler
+  onFailureHandler,
 } from "@/lib";
 import { QueryType } from "@/models/Common/type";
 import { toObjectId } from "@/utils";
@@ -25,7 +25,9 @@ export const findStyleCount = async (): Promise<String> => {
   }
 };
 
-export const findOneStyle = async (conditions: Partial<StyleRequestType>): Promise<Style> => {
+export const findOneStyle = async (
+  conditions: Partial<StyleRequestType>
+): Promise<Style> => {
   try {
     return await AppRepository.Style.findOne({ ...conditions });
   } catch (error: unknown) {
@@ -87,7 +89,9 @@ export const createStyle = async (conditions: Style): Promise<Style> => {
   }
 };
 
-export const updateStyle = async (conditions: Partial<Style>): Promise<Style> => {
+export const updateStyle = async (
+  conditions: Partial<Style>
+): Promise<Style> => {
   try {
     const style = await findOneStyle({
       _id: toObjectId(conditions._id),
@@ -131,7 +135,9 @@ export const updateStyle = async (conditions: Partial<Style>): Promise<Style> =>
   }
 };
 
-export const removeStyle = async (conditions: Partial<Style>): Promise<object> => {
+export const removeStyle = async (
+  conditions: Partial<Style>
+): Promise<object> => {
   try {
     await updateStyle({ _id: conditions._id, isDeleted: true });
     return {};

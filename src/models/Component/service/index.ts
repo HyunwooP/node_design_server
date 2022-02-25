@@ -3,7 +3,7 @@ import {
   CommonStatusCode,
   CommonStatusMessage,
   getErrorItems,
-  onFailureHandler
+  onFailureHandler,
 } from "@/lib";
 import { QueryType } from "@/models/Common/type";
 import { toObjectId } from "@/utils";

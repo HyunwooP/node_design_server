@@ -3,7 +3,7 @@ import {
   CommonStatusCode,
   CommonStatusMessage,
   getErrorItems,
-  onFailureHandler
+  onFailureHandler,
 } from "@/lib";
 import { QueryType } from "@/models/Common/type";
 import { toObjectId } from "@/utils";
@@ -64,7 +64,9 @@ export const findThemeItem = async (): Promise<Theme> => {
   }
 };
 
-export const findOneTheme = async (conditions: Partial<ThemeRequestType>): Promise<Theme> => {
+export const findOneTheme = async (
+  conditions: Partial<ThemeRequestType>
+): Promise<Theme> => {
   try {
     return await AppRepository.Theme.findOne({ ...conditions });
   } catch (error: unknown) {
@@ -126,7 +128,9 @@ export const createTheme = async (conditions: Theme): Promise<Theme> => {
   }
 };
 
-export const updateTheme = async (conditions: Partial<Theme>): Promise<Theme> => {
+export const updateTheme = async (
+  conditions: Partial<Theme>
+): Promise<Theme> => {
   try {
     const theme = await findOneTheme({
       _id: toObjectId(conditions._id),
@@ -166,7 +170,9 @@ export const updateTheme = async (conditions: Partial<Theme>): Promise<Theme> =>
   }
 };
 
-export const removeTheme = async (conditions: Partial<Theme>): Promise<object> => {
+export const removeTheme = async (
+  conditions: Partial<Theme>
+): Promise<object> => {
   try {
     await updateTheme({ _id: conditions._id, isDeleted: true });
     return {};
