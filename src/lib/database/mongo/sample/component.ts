@@ -1,4 +1,9 @@
-export const sampleComponents = {
+import { UnknownObject } from "../../../../lib";
+
+type SampleComponentType = {
+  [index: string]: UnknownObject;
+};
+export const sampleComponents: SampleComponentType = {
   BLACK_THEME__MENU_BOX: {
     CONTAINER: {
       backgroundColor: "black",
