@@ -2,7 +2,6 @@ import { RouteItemType } from "@/lib/route/routes";
 import * as Theme from "@/models/Theme/controller";
 
 const ThemeRoute: RouteItemType[] = [
-  // GET
   {
     path: "/findThemeCount",
     method: "get",
@@ -21,7 +20,6 @@ const ThemeRoute: RouteItemType[] = [
     next: Theme.find,
     auth: false,
   },
-  // DELETE
   {
     path: "/removeTheme",
     method: "delete",

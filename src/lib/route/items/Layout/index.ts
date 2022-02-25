@@ -2,7 +2,6 @@ import { RouteItemType } from "@/lib/route/routes";
 import * as Layout from "@/models/Layout/controller";
 
 const LayoutRoute: RouteItemType[] = [
-  // GET
   {
     path: "/findLayoutCount",
     method: "get",
@@ -15,7 +14,6 @@ const LayoutRoute: RouteItemType[] = [
     next: Layout.find,
     auth: false,
   },
-  // DELETE
   {
     path: "/removeLayout",
     method: "delete",
