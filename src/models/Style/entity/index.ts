@@ -2,7 +2,7 @@ import { CommonEntity } from "@/models/Common/entity";
 import { ObjectID } from "mongodb";
 import { Column, Entity, ObjectIdColumn } from "typeorm";
 
-@Entity("Style")
+@Entity("style")
 export class Style extends CommonEntity {
   @ObjectIdColumn()
   _id: ObjectID;
