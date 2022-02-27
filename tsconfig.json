@@ -1,13 +1,10 @@
 {
+  "extends": "./tsconfig.paths.json",
   "compilerOptions": {
     "lib": [ "es5", "es6" ],
     "sourceMap": true,
     "target": "es2017",
     "outDir": "./dist",
-    "baseUrl": "./src",
-    "paths": {
-      "@/*": ["./*"],
-    },
     "alwaysStrict": true,
     "noImplicitAny": true,
     "experimentalDecorators": true,
