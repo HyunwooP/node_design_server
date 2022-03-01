@@ -74,3 +74,8 @@ Module Alias
   2-1. 현재 개발중으로 인해 nodemon을 붙인 상태이므로, package.json 수정해서 사용하길 요망
 3. 설명란 참고
 ```
+
+#
+### Thanks To JetBrains
+![Thanks To JetBrains](https://user-images.githubusercontent.com/20429356/156112274-1e0d4de3-b62d-4a67-989b-dadb52a2ff3f.png)
+![JetBrains Logo (Main) logo](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png)
