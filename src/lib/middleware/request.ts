@@ -3,8 +3,8 @@ import * as _ from "lodash";
 import { IRequest } from ".";
 
 export default (request: IRequest): void => {
-  Promise.all([createToken(request), createItem(request)]).catch((error: unknown) =>
-    console.log("Generate Middleware Failed", error)
+  Promise.all([createToken(request), createItem(request)]).catch(
+    (error: unknown) => console.log("Generate Middleware Failed", error)
   );
 };
 

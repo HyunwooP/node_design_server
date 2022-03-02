@@ -5,7 +5,7 @@ import {
   createExpress,
   createRoute,
   createServer,
-  generateTestData
+  generateTestData,
 } from "./lib";
 
 class App {

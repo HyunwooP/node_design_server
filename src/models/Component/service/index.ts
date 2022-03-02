@@ -3,7 +3,7 @@ import {
   CommonStatusCode,
   CommonStatusMessage,
   getErrorItems,
-  onFailureHandler
+  onFailureHandler,
 } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
 import { QueryType } from "@/models/Common/type";
@@ -13,19 +13,20 @@ import { ObjectId } from "mongodb";
 import { Component } from "../entity";
 import { ComponentRequestType } from "../type";
 
-export const findComponentCount = async (): CommonPromiseAPIResponseType<String> => {
-  try {
-    return String(await AppRepository.Component.count());
-  } catch (error: unknown) {
-    const _error = getErrorItems(error);
+export const findComponentCount =
+  async (): CommonPromiseAPIResponseType<String> => {
+    try {
+      return String(await AppRepository.Component.count());
+    } catch (error: unknown) {
+      const _error = getErrorItems(error);
 
-    onFailureHandler({
-      status: _error.status,
-      message: _error.message,
-      data: _error.data,
-    });
-  }
-};
+      onFailureHandler({
+        status: _error.status,
+        message: _error.message,
+        data: _error.data,
+      });
+    }
+  };
 
 export const findOneComponent = async (
   conditions: Partial<ComponentRequestType>
@@ -97,9 +98,9 @@ export const updateComponent = async (
   conditions: Partial<Component>
 ): CommonPromiseAPIResponseType<Component> => {
   try {
-    const component = await findOneComponent({
+    const component = (await findOneComponent({
       _id: toObjectId(conditions._id) as ObjectId,
-    }) as Component;
+    })) as Component;
 
     if (_.isUndefined(component)) {
       onFailureHandler({

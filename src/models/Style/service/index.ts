@@ -3,7 +3,7 @@ import {
   CommonStatusCode,
   CommonStatusMessage,
   getErrorItems,
-  onFailureHandler
+  onFailureHandler,
 } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
 import { QueryType } from "@/models/Common/type";
@@ -12,19 +12,20 @@ import * as _ from "lodash";
 import { Style } from "../entity";
 import { StyleRequestType } from "../type";
 
-export const findStyleCount = async (): CommonPromiseAPIResponseType<String> => {
-  try {
-    return String(await AppRepository.Style.count());
-  } catch (error: unknown) {
-    const _error = getErrorItems(error);
+export const findStyleCount =
+  async (): CommonPromiseAPIResponseType<String> => {
+    try {
+      return String(await AppRepository.Style.count());
+    } catch (error: unknown) {
+      const _error = getErrorItems(error);
 
-    onFailureHandler({
-      status: _error.status,
-      message: _error.message,
-      data: _error.data,
-    });
-  }
-};
+      onFailureHandler({
+        status: _error.status,
+        message: _error.message,
+        data: _error.data,
+      });
+    }
+  };
 
 export const findOneStyle = async (
   conditions: Partial<StyleRequestType>
@@ -76,7 +77,9 @@ export const findStyle = async (
   }
 };
 
-export const createStyle = async (conditions: Style): CommonPromiseAPIResponseType<Style> => {
+export const createStyle = async (
+  conditions: Style
+): CommonPromiseAPIResponseType<Style> => {
   try {
     return await AppRepository.Style.create(conditions);
   } catch (error: unknown) {
@@ -94,9 +97,9 @@ export const updateStyle = async (
   conditions: Partial<Style>
 ): CommonPromiseAPIResponseType<Style> => {
   try {
-    const style = await findOneStyle({
+    const style = (await findOneStyle({
       _id: toObjectId(conditions._id),
-    }) as Style;
+    })) as Style;
 
     if (_.isUndefined(style)) {
       onFailureHandler({

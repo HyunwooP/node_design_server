@@ -3,7 +3,7 @@ import {
   CommonStatusCode,
   CommonStatusMessage,
   getErrorItems,
-  onFailureHandler
+  onFailureHandler,
 } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
 import { QueryType } from "@/models/Common/type";
@@ -13,19 +13,20 @@ import { ObjectLiteral } from "typeorm";
 import { Theme } from "../entity";
 import { ThemeRequestType } from "../type";
 
-export const findThemeCount = async (): CommonPromiseAPIResponseType<String> => {
-  try {
-    return String(await AppRepository.Theme.count());
-  } catch (error: unknown) {
-    const _error = getErrorItems(error);
+export const findThemeCount =
+  async (): CommonPromiseAPIResponseType<String> => {
+    try {
+      return String(await AppRepository.Theme.count());
+    } catch (error: unknown) {
+      const _error = getErrorItems(error);
 
-    onFailureHandler({
-      status: _error.status,
-      message: _error.message,
-      data: _error.data,
-    });
-  }
-};
+      onFailureHandler({
+        status: _error.status,
+        message: _error.message,
+        data: _error.data,
+      });
+    }
+  };
 
 /**
  * @description
@@ -115,7 +116,9 @@ export const findTheme = async (
   }
 };
 
-export const createTheme = async (conditions: Theme): CommonPromiseAPIResponseType<Theme> => {
+export const createTheme = async (
+  conditions: Theme
+): CommonPromiseAPIResponseType<Theme> => {
   try {
     return await AppRepository.Theme.create(conditions);
   } catch (error: unknown) {
@@ -133,9 +136,9 @@ export const updateTheme = async (
   conditions: Partial<Theme>
 ): CommonPromiseAPIResponseType<Theme> => {
   try {
-    const theme = await findOneTheme({
+    const theme = (await findOneTheme({
       _id: toObjectId(conditions._id),
-    }) as Theme;
+    })) as Theme;
 
     if (_.isUndefined(theme)) {
       onFailureHandler({

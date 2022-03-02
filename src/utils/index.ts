@@ -28,6 +28,6 @@ export const toObjectId = (_id: string | ObjectID | undefined): ObjectID => {
   if (_.isUndefined(_id)) {
     throw new Error("toObjectId Failed - id is Undefined");
   }
-  
+
   return typeof _id === "string" ? new ObjectID(_id) : _id;
 };

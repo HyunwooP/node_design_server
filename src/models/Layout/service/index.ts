@@ -3,7 +3,7 @@ import {
   CommonStatusCode,
   CommonStatusMessage,
   getErrorItems,
-  onFailureHandler
+  onFailureHandler,
 } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
 import { QueryType } from "@/models/Common/type";
@@ -12,19 +12,20 @@ import * as _ from "lodash";
 import { Layout } from "../entity";
 import { LayoutRequestType } from "../type";
 
-export const findLayoutCount = async (): CommonPromiseAPIResponseType<String> => {
-  try {
-    return String(await AppRepository.Layout.count());
-  } catch (error: unknown) {
-    const _error = getErrorItems(error);
+export const findLayoutCount =
+  async (): CommonPromiseAPIResponseType<String> => {
+    try {
+      return String(await AppRepository.Layout.count());
+    } catch (error: unknown) {
+      const _error = getErrorItems(error);
 
-    onFailureHandler({
-      status: _error.status,
-      message: _error.message,
-      data: _error.data,
-    });
-  }
-};
+      onFailureHandler({
+        status: _error.status,
+        message: _error.message,
+        data: _error.data,
+      });
+    }
+  };
 
 export const findOneLayout = async (
   conditions: Partial<LayoutRequestType>
@@ -76,7 +77,9 @@ export const findLayout = async (
   }
 };
 
-export const createLayout = async (conditions: Layout): CommonPromiseAPIResponseType<Layout> => {
+export const createLayout = async (
+  conditions: Layout
+): CommonPromiseAPIResponseType<Layout> => {
   try {
     return await AppRepository.Layout.create(conditions);
   } catch (error: unknown) {
@@ -94,9 +97,9 @@ export const updateLayout = async (
   conditions: Partial<Layout>
 ): CommonPromiseAPIResponseType<Layout> => {
   try {
-    const layout = await findOneLayout({
+    const layout = (await findOneLayout({
       _id: toObjectId(conditions._id),
-    }) as Layout;
+    })) as Layout;
 
     if (_.isUndefined(layout)) {
       onFailureHandler({

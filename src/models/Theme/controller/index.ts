@@ -7,7 +7,7 @@ import {
   findThemeCount,
   findThemeItem,
   removeTheme,
-  updateTheme
+  updateTheme,
 } from "../service";
 import { ThemeRequestType } from "../type";
 
