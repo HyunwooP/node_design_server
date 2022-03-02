@@ -1,4 +1,4 @@
-export type SortType = "ASC" | "DESC" | undefined;
+export type SortType = "ASC" | "DESC";
 
 export type CommonRequestType = {
   searchKeyword: string;
