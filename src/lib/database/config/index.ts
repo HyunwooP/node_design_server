@@ -9,8 +9,8 @@ export type TypeOrmConfigType = {
  * Typeorm Mongo config
  */
 export const mongoConfig: TypeOrmConfigType = {
-  dev: {
-    name: "dev",
+  development: {
+    name: "development",
     type: "mongodb",
     host: "127.0.0.1",
     port: 27017,
