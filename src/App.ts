@@ -1,15 +1,15 @@
-import * as express from "express";
+import { Application } from "express";
 import {
   connectMongo,
   connectRepository,
   createExpress,
   createRoute,
   createServer,
-  generateTestData,
+  generateTestData
 } from "./lib";
 
 class App {
-  private readonly server: express.Application = createExpress();
+  private readonly server: Application = createExpress();
 
   public onCreateRoute(): void {
     console.log("App Created Route");
