@@ -1,11 +1,12 @@
 import { IRequest, IResponse } from "@/lib";
+import { CommonPromiseAPIResponseType } from "@/lib/type";
 import { Component } from "../entity";
 import {
   findComponent,
   findComponentCount,
   findOneComponent,
   removeComponent,
-  updateComponent,
+  updateComponent
 } from "../service";
 import { ComponentRequestType } from "../type";
 
@@ -19,13 +20,13 @@ import { ComponentRequestType } from "../type";
  * @param {IRequest} request
  * @param {IResponse} response
  * @param {Function} next
- * @returns {Promise<String>}
+ * @returns {CommonPromiseAPIResponseType<String>}
  */
 export const findCount = async (
   request: IRequest,
   response: IResponse,
   next: Function
-): Promise<String> => {
+): CommonPromiseAPIResponseType<String> => {
   return await findComponentCount();
 };
 
@@ -34,13 +35,13 @@ export const findCount = async (
  * @param {IRequest} request
  * @param {IResponse} response
  * @param {Function} next
- * @returns {Promise<Component>}
+ * @returns {CommonPromiseAPIResponseType<Component>}
  */
 export const findOne = async (
   request: IRequest,
   response: IResponse,
   next: Function
-): Promise<Component> => {
+): CommonPromiseAPIResponseType<Component> => {
   const conditions = request.item as ComponentRequestType;
   return await findOneComponent(conditions);
 };
@@ -50,13 +51,13 @@ export const findOne = async (
  * @param {IRequest} request
  * @param {IResponse} response
  * @param {Function} next
- * @returns {Promise<[Component[], number]>}
+ * @returns {CommonPromiseAPIResponseType<[Component[], number]>}
  */
 export const find = async (
   request: IRequest,
   response: IResponse,
   next: Function
-): Promise<[Component[], number]> => {
+): CommonPromiseAPIResponseType<[Component[], number]> => {
   const conditions = request.item as ComponentRequestType;
   return await findComponent(conditions);
 };
@@ -66,13 +67,13 @@ export const find = async (
  * @param {IRequest} request
  * @param {IResponse} response
  * @param {Function} next
- * @returns {Promise<Component>}
+ * @returns {CommonPromiseAPIResponseType<Component>}
  */
 export const update = async (
   request: IRequest,
   response: IResponse,
   next: Function
-): Promise<Component> => {
+): CommonPromiseAPIResponseType<Component> => {
   const conditions = request.item as Component;
   return await updateComponent(conditions);
 };
@@ -82,13 +83,13 @@ export const update = async (
  * @param {IRequest} request
  * @param {IResponse} response
  * @param {Function} next
- * @returns {Promise<object>}
+ * @returns {CommonPromiseAPIResponseType<object>}
  */
 export const remove = async (
   request: IRequest,
   response: IResponse,
   next: Function
-): Promise<object> => {
+): CommonPromiseAPIResponseType<object> => {
   const conditions = request.item as Component;
   return await removeComponent(conditions);
 };

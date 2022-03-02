@@ -5,15 +5,15 @@ import { Column, Entity, ObjectIdColumn } from "typeorm";
 @Entity("layout")
 export class Layout extends CommonEntity {
   @ObjectIdColumn()
-  _id: ObjectID;
+  _id!: ObjectID;
 
   @Column({
     unique: true,
   })
-  name: string;
+  name!: string;
 
   @Column()
-  attribute: object;
+  attribute!: object;
 
   // @ManyToOne(() => Style, (style) => style.layout)
   // parent: Style;

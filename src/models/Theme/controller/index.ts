@@ -1,4 +1,5 @@
 import { IRequest, IResponse } from "@/lib";
+import { CommonPromiseAPIResponseType } from "@/lib/type";
 import { Theme } from "../entity";
 import {
   findOneTheme,
@@ -6,7 +7,7 @@ import {
   findThemeCount,
   findThemeItem,
   removeTheme,
-  updateTheme,
+  updateTheme
 } from "../service";
 import { ThemeRequestType } from "../type";
 
@@ -20,13 +21,13 @@ import { ThemeRequestType } from "../type";
  * @param {IRequest} request
  * @param {IResponse} response
  * @param {Function} next
- * @returns {Promise<String>}
+ * @returns {CommonPromiseAPIResponseType<String>}
  */
 export const findCount = async (
   request: IRequest,
   response: IResponse,
   next: Function
-): Promise<String> => {
+): CommonPromiseAPIResponseType<String> => {
   return await findThemeCount();
 };
 
@@ -35,13 +36,13 @@ export const findCount = async (
  * @param {IRequest} request
  * @param {IResponse} response
  * @param {Function} next
- * @returns {Promise<Theme>}
+ * @returns {CommonPromiseAPIResponseType<Theme>}
  */
 export const findItem = async (
   request: IRequest,
   response: IResponse,
   next: Function
-): Promise<Theme> => {
+): CommonPromiseAPIResponseType<Theme> => {
   return await findThemeItem();
 };
 
@@ -50,13 +51,13 @@ export const findItem = async (
  * @param {IRequest} request
  * @param {IResponse} response
  * @param {Function} next
- * @returns {Promise<Theme>}
+ * @returns {CommonPromiseAPIResponseType<Theme>}
  */
 export const findOne = async (
   request: IRequest,
   response: IResponse,
   next: Function
-): Promise<Theme> => {
+): CommonPromiseAPIResponseType<Theme> => {
   const conditions = request.item as ThemeRequestType;
   return await findOneTheme(conditions);
 };
@@ -66,13 +67,13 @@ export const findOne = async (
  * @param {IRequest} request
  * @param {IResponse} response
  * @param {Function} next
- * @returns {Promise<Theme[], number>}
+ * @returns {CommonPromiseAPIResponseType<Theme[], number>}
  */
 export const find = async (
   request: IRequest,
   response: IResponse,
   next: Function
-): Promise<[Theme[], number]> => {
+): CommonPromiseAPIResponseType<[Theme[], number]> => {
   const conditions = request.item as ThemeRequestType;
   return await findTheme(conditions);
 };
@@ -82,13 +83,13 @@ export const find = async (
  * @param {IRequest} request
  * @param {IResponse} response
  * @param {Function} next
- * @returns {Promise<Theme>}
+ * @returns {CommonPromiseAPIResponseType<Theme>}
  */
 export const update = async (
   request: IRequest,
   response: IResponse,
   next: Function
-): Promise<Theme> => {
+): CommonPromiseAPIResponseType<Theme> => {
   const conditions = request.item as Theme;
   return await updateTheme(conditions);
 };
@@ -98,13 +99,13 @@ export const update = async (
  * @param {IRequest} request
  * @param {IResponse} response
  * @param {Function} next
- * @returns {Promise<object>}
+ * @returns {CommonPromiseAPIResponseType<object>}
  */
 export const remove = async (
   request: IRequest,
   response: IResponse,
   next: Function
-): Promise<object> => {
+): CommonPromiseAPIResponseType<object> => {
   const conditions = request.item as Theme;
   return await removeTheme(conditions);
 };

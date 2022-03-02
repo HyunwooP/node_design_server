@@ -106,12 +106,13 @@ export const connectMongo = async (): Promise<void> => {
   }
 };
 
-export const AppRepository: {
-  Theme?: MongoRepository<Theme>;
-  Style?: MongoRepository<Style>;
-  Layout?: MongoRepository<Layout>;
-  Component?: MongoRepository<Component>;
-} = {};
+type AppRepositoryType = {
+  Theme: MongoRepository<Theme>;
+  Style: MongoRepository<Style>;
+  Layout: MongoRepository<Layout>;
+  Component: MongoRepository<Component>;
+};
+export const AppRepository = {} as AppRepositoryType;
 export const connectRepository = async (): Promise<void> => {
   if (_.isEmpty(AppRepository)) {
     AppRepository.Theme = getManager(env.node).getMongoRepository(Theme);

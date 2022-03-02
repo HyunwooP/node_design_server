@@ -1,10 +1,10 @@
 import { getErrorItems } from "@/lib";
-import * as express from "express";
+import { Application } from "express";
 import * as _ from "lodash";
 import { CommonStatusCode, initMiddleWare, IRequest, IResponse } from "..";
 import RouteItems, { RouteItemType } from "./routes";
 
-export default (app: express.Application): void => {
+export default (app: Application): void => {
   RouteItems.forEach((item: RouteItemType) => {
     app[item.method](
       item.path,

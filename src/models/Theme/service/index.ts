@@ -3,8 +3,9 @@ import {
   CommonStatusCode,
   CommonStatusMessage,
   getErrorItems,
-  onFailureHandler,
+  onFailureHandler
 } from "@/lib";
+import { CommonPromiseAPIResponseType } from "@/lib/type";
 import { QueryType } from "@/models/Common/type";
 import { toObjectId } from "@/utils";
 import * as _ from "lodash";
@@ -12,7 +13,7 @@ import { ObjectLiteral } from "typeorm";
 import { Theme } from "../entity";
 import { ThemeRequestType } from "../type";
 
-export const findThemeCount = async (): Promise<String> => {
+export const findThemeCount = async (): CommonPromiseAPIResponseType<String> => {
   try {
     return String(await AppRepository.Theme.count());
   } catch (error: unknown) {
@@ -35,7 +36,7 @@ export const findThemeCount = async (): Promise<String> => {
  */
 export const aggregateTheme = async (
   pipeline: ObjectLiteral[]
-): Promise<any> => {
+): CommonPromiseAPIResponseType<any> => {
   try {
     return await AppRepository.Theme.aggregate(pipeline).toArray();
   } catch (error: unknown) {
@@ -49,7 +50,7 @@ export const aggregateTheme = async (
   }
 };
 
-export const findThemeItem = async (): Promise<Theme> => {
+export const findThemeItem = async (): CommonPromiseAPIResponseType<Theme> => {
   try {
     const theme = new Theme();
     return await aggregateTheme(theme.findThemeItem());
@@ -66,7 +67,7 @@ export const findThemeItem = async (): Promise<Theme> => {
 
 export const findOneTheme = async (
   conditions: Partial<ThemeRequestType>
-): Promise<Theme> => {
+): CommonPromiseAPIResponseType<Theme> => {
   try {
     return await AppRepository.Theme.findOne({ ...conditions });
   } catch (error: unknown) {
@@ -82,11 +83,11 @@ export const findOneTheme = async (
 
 export const findTheme = async (
   conditions: Partial<ThemeRequestType>
-): Promise<[Theme[], number]> => {
+): CommonPromiseAPIResponseType<[Theme[], number]> => {
   try {
     let query = {} as QueryType;
 
-    if (!_.isEmpty(conditions.searchKeyword)) {
+    if (!_.isUndefined(conditions.searchKeyword)) {
       query.where = {
         name: {
           $regex: conditions.searchKeyword,
@@ -95,7 +96,7 @@ export const findTheme = async (
       };
     }
 
-    if (!_.isEmpty(conditions.nameSort)) {
+    if (!_.isUndefined(conditions.nameSort)) {
       query.order.name = conditions.nameSort;
     }
 
@@ -114,7 +115,7 @@ export const findTheme = async (
   }
 };
 
-export const createTheme = async (conditions: Theme): Promise<Theme> => {
+export const createTheme = async (conditions: Theme): CommonPromiseAPIResponseType<Theme> => {
   try {
     return await AppRepository.Theme.create(conditions);
   } catch (error: unknown) {
@@ -130,11 +131,11 @@ export const createTheme = async (conditions: Theme): Promise<Theme> => {
 
 export const updateTheme = async (
   conditions: Partial<Theme>
-): Promise<Theme> => {
+): CommonPromiseAPIResponseType<Theme> => {
   try {
     const theme = await findOneTheme({
       _id: toObjectId(conditions._id),
-    });
+    }) as Theme;
 
     if (_.isUndefined(theme)) {
       onFailureHandler({
@@ -172,7 +173,7 @@ export const updateTheme = async (
 
 export const removeTheme = async (
   conditions: Partial<Theme>
-): Promise<object> => {
+): CommonPromiseAPIResponseType<object> => {
   try {
     await updateTheme({ _id: conditions._id, isDeleted: true });
     return {};

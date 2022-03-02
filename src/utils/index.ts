@@ -1,3 +1,4 @@
+import _ = require("lodash");
 import { ObjectID } from "mongodb";
 import * as os from "os";
 
@@ -23,6 +24,10 @@ export const healthCheckMemory = (): boolean => {
  * @param {string | ObjectID} value
  * @returns
  */
-export const toObjectId = (value: string | ObjectID): ObjectID => {
-  return typeof value === "string" ? new ObjectID(value) : value;
+export const toObjectId = (_id: string | ObjectID | undefined): ObjectID => {
+  if (_.isUndefined(_id)) {
+    throw new Error("toObjectId Failed - id is Undefined");
+  }
+  
+  return typeof _id === "string" ? new ObjectID(_id) : _id;
 };

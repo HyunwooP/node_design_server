@@ -5,16 +5,16 @@ import { Column, Entity, ObjectIdColumn } from "typeorm";
 @Entity("theme")
 export class Theme extends CommonEntity {
   @ObjectIdColumn()
-  _id: ObjectID;
+  _id!: ObjectID;
 
   @Column({
     unique: true,
   })
-  name: string;
+  name!: string;
 
   // @OneToMany(() => Style, (style) => style.parent)
   @Column()
-  styles: ObjectID[];
+  styles!: ObjectID[];
 
   @Column({ default: true })
   isActive: boolean = true;

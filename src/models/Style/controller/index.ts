@@ -1,11 +1,12 @@
 import { IRequest, IResponse } from "@/lib";
+import { CommonPromiseAPIResponseType } from "@/lib/type";
 import { Style } from "../entity";
 import {
   findOneStyle,
   findStyle,
   findStyleCount,
   removeStyle,
-  updateStyle,
+  updateStyle
 } from "../service";
 import { StyleRequestType } from "../type";
 
@@ -19,13 +20,13 @@ import { StyleRequestType } from "../type";
  * @param {IRequest} request
  * @param {IResponse} response
  * @param {Function} next
- * @returns {Promise<String>}
+ * @returns {CommonPromiseAPIResponseType<String>}
  */
 export const findCount = async (
   request: IRequest,
   response: IResponse,
   next: Function
-): Promise<String> => {
+): CommonPromiseAPIResponseType<String> => {
   return await findStyleCount();
 };
 
@@ -34,13 +35,13 @@ export const findCount = async (
  * @param {IRequest} request
  * @param {IResponse} response
  * @param {Function} next
- * @returns {Promise<Style>}
+ * @returns {CommonPromiseAPIResponseType<Style>}
  */
 export const findOne = async (
   request: IRequest,
   response: IResponse,
   next: Function
-): Promise<Style> => {
+): CommonPromiseAPIResponseType<Style> => {
   const conditions = request.item as StyleRequestType;
   return await findOneStyle(conditions);
 };
@@ -50,13 +51,13 @@ export const findOne = async (
  * @param {IRequest} request
  * @param {IResponse} response
  * @param {Function} next
- * @returns {Promise<Style[], number>}
+ * @returns {CommonPromiseAPIResponseType<Style[], number>}
  */
 export const find = async (
   request: IRequest,
   response: IResponse,
   next: Function
-): Promise<[Style[], number]> => {
+): CommonPromiseAPIResponseType<[Style[], number]> => {
   const conditions = request.item as StyleRequestType;
   return await findStyle(conditions);
 };
@@ -66,13 +67,13 @@ export const find = async (
  * @param {IRequest} request
  * @param {IResponse} response
  * @param {Function} next
- * @returns {Promise<Style>}
+ * @returns {CommonPromiseAPIResponseType<Style>}
  */
 export const update = async (
   request: IRequest,
   response: IResponse,
   next: Function
-): Promise<Style> => {
+): CommonPromiseAPIResponseType<Style> => {
   const conditions = request.item as Style;
   return await updateStyle(conditions);
 };
@@ -82,13 +83,13 @@ export const update = async (
  * @param {IRequest} request
  * @param {IResponse} response
  * @param {Function} next
- * @returns {Promise<object>}
+ * @returns {CommonPromiseAPIResponseType<object>}
  */
 export const remove = async (
   request: IRequest,
   response: IResponse,
   next: Function
-): Promise<object> => {
+): CommonPromiseAPIResponseType<object> => {
   const conditions = request.item as Style;
   return await removeStyle(conditions);
 };

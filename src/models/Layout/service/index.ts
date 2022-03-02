@@ -3,15 +3,16 @@ import {
   CommonStatusCode,
   CommonStatusMessage,
   getErrorItems,
-  onFailureHandler,
+  onFailureHandler
 } from "@/lib";
+import { CommonPromiseAPIResponseType } from "@/lib/type";
 import { QueryType } from "@/models/Common/type";
 import { toObjectId } from "@/utils";
 import * as _ from "lodash";
 import { Layout } from "../entity";
 import { LayoutRequestType } from "../type";
 
-export const findLayoutCount = async (): Promise<String> => {
+export const findLayoutCount = async (): CommonPromiseAPIResponseType<String> => {
   try {
     return String(await AppRepository.Layout.count());
   } catch (error: unknown) {
@@ -27,7 +28,7 @@ export const findLayoutCount = async (): Promise<String> => {
 
 export const findOneLayout = async (
   conditions: Partial<LayoutRequestType>
-): Promise<Layout> => {
+): CommonPromiseAPIResponseType<Layout> => {
   try {
     return await AppRepository.Layout.findOne({ ...conditions });
   } catch (error: unknown) {
@@ -43,11 +44,11 @@ export const findOneLayout = async (
 
 export const findLayout = async (
   conditions: Partial<LayoutRequestType>
-): Promise<[Layout[], number]> => {
+): CommonPromiseAPIResponseType<[Layout[], number]> => {
   try {
     let query = {} as QueryType;
 
-    if (!_.isEmpty(conditions.searchKeyword)) {
+    if (!_.isUndefined(conditions.searchKeyword)) {
       query.where = {
         name: {
           $regex: conditions.searchKeyword,
@@ -56,7 +57,7 @@ export const findLayout = async (
       };
     }
 
-    if (!_.isEmpty(conditions.nameSort)) {
+    if (!_.isUndefined(conditions.nameSort)) {
       query.order.name = conditions.nameSort;
     }
 
@@ -75,7 +76,7 @@ export const findLayout = async (
   }
 };
 
-export const createLayout = async (conditions: Layout): Promise<Layout> => {
+export const createLayout = async (conditions: Layout): CommonPromiseAPIResponseType<Layout> => {
   try {
     return await AppRepository.Layout.create(conditions);
   } catch (error: unknown) {
@@ -91,11 +92,11 @@ export const createLayout = async (conditions: Layout): Promise<Layout> => {
 
 export const updateLayout = async (
   conditions: Partial<Layout>
-): Promise<Layout> => {
+): CommonPromiseAPIResponseType<Layout> => {
   try {
     const layout = await findOneLayout({
       _id: toObjectId(conditions._id),
-    });
+    }) as Layout;
 
     if (_.isUndefined(layout)) {
       onFailureHandler({
@@ -131,7 +132,7 @@ export const updateLayout = async (
 
 export const removeLayout = async (
   conditions: Partial<Layout>
-): Promise<object> => {
+): CommonPromiseAPIResponseType<object> => {
   try {
     await updateLayout({ _id: conditions._id, isDeleted: true });
     return {};

@@ -1,4 +1,5 @@
 import { IRequest, IResponse } from "@/lib";
+import { CommonAPIResponseType } from "@/lib/type";
 import { _health } from "../service";
 
 /**
@@ -6,12 +7,12 @@ import { _health } from "../service";
  * @param {IRequest} request
  * @param {IResponse} response
  * @param {Function} next
- * @returns {object}
+ * @returns {CommonAPIResponseType<object>}
  */
 export const health = (
   request: IRequest,
   response: IResponse,
   next: Function
-): object => {
+): CommonAPIResponseType<object> => {
   return _health();
 };

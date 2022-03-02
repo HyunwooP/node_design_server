@@ -6,7 +6,7 @@ export class CommonEntity {
     type: "timestamp",
     default: () => "CURRENT_TIMESTAMP(6)",
   })
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn({
     name: "udt_dt",
@@ -14,5 +14,5 @@ export class CommonEntity {
     default: () => "CURRENT_TIMESTAMP(6)",
     onUpdate: "CURRENT_TIMESTAMP(6)",
   })
-  updatedAt: Date;
+  updatedAt!: Date;
 }

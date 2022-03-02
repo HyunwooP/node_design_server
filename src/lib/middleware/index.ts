@@ -1,8 +1,8 @@
-import * as express from "express";
+import { Request, Response } from "express";
 import generateRequest from "./request";
 import generateResponse from "./response";
 
-interface IRequest extends express.Request {
+type ClientRequestItemType = {
   /**
    * Header의 토큰을 꺼내기 쉽게 정제한다.
    */
@@ -11,9 +11,11 @@ interface IRequest extends express.Request {
    * Method Type에 상관없이 쉽게 꺼내쓰기 위해 정제한다.
    */
   item: unknown;
-}
+};
 
-interface IResponse extends express.Response {}
+interface IRequest extends Request, Partial<ClientRequestItemType> {}
+
+interface IResponse extends Response {}
 
 const initMiddleWare = async (
   request: IRequest,

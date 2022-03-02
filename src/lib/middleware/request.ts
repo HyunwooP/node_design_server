@@ -31,9 +31,8 @@ const createItem = (request: IRequest): void => {
 };
 
 const createToken = (request: IRequest): void => {
-  const token =
-    !_.isEmpty(request.headers.authorization) &&
-    request.headers.authorization.replace("Bearer ", "");
-
-  request.token = token ?? "";
+  if (!_.isUndefined(request.headers.authorization)) {
+    const token = request.headers.authorization.replace("Bearer ", "");
+    request.token = token ?? "";
+  }
 };

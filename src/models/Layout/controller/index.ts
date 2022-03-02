@@ -1,11 +1,12 @@
 import { IRequest, IResponse } from "@/lib";
+import { CommonPromiseAPIResponseType } from "@/lib/type";
 import { Layout } from "../entity";
 import {
   findLayout,
   findLayoutCount,
   findOneLayout,
   removeLayout,
-  updateLayout,
+  updateLayout
 } from "../service";
 import { LayoutRequestType } from "../type";
 
@@ -19,13 +20,13 @@ import { LayoutRequestType } from "../type";
  * @param {IRequest} request
  * @param {IResponse} response
  * @param {Function} next
- * @returns {Promise<String>}
+ * @returns {CommonPromiseAPIResponseType<String>}
  */
 export const findCount = async (
   request: IRequest,
   response: IResponse,
   next: Function
-): Promise<String> => {
+): CommonPromiseAPIResponseType<String> => {
   return await findLayoutCount();
 };
 
@@ -34,13 +35,13 @@ export const findCount = async (
  * @param {IRequest} request
  * @param {IResponse} response
  * @param {Function} next
- * @returns {Promise<Layout>}
+ * @returns {CommonPromiseAPIResponseType<Layout>}
  */
 export const findOne = async (
   request: IRequest,
   response: IResponse,
   next: Function
-): Promise<Layout> => {
+): CommonPromiseAPIResponseType<Layout> => {
   const conditions = request.item as LayoutRequestType;
   return await findOneLayout(conditions);
 };
@@ -50,13 +51,13 @@ export const findOne = async (
  * @param {IRequest} request
  * @param {IResponse} response
  * @param {Function} next
- * @returns {Promise<[Layout[], number]>}
+ * @returns {CommonPromiseAPIResponseType<[Layout[], number]>}
  */
 export const find = async (
   request: IRequest,
   response: IResponse,
   next: Function
-): Promise<[Layout[], number]> => {
+): CommonPromiseAPIResponseType<[Layout[], number]> => {
   const conditions = request.item as LayoutRequestType;
   return await findLayout(conditions);
 };
@@ -66,13 +67,13 @@ export const find = async (
  * @param {IRequest} request
  * @param {IResponse} response
  * @param {Function} next
- * @returns {Promise<Layout>}
+ * @returns {CommonPromiseAPIResponseType<Layout>}
  */
 export const update = async (
   request: IRequest,
   response: IResponse,
   next: Function
-): Promise<Layout> => {
+): CommonPromiseAPIResponseType<Layout> => {
   const conditions = request.item as Layout;
   return await updateLayout(conditions);
 };
@@ -82,13 +83,13 @@ export const update = async (
  * @param {IRequest} request
  * @param {IResponse} response
  * @param {Function} next
- * @returns {Promise<object>}
+ * @returns {CommonPromiseAPIResponseType<object>}
  */
 export const remove = async (
   request: IRequest,
   response: IResponse,
   next: Function
-): Promise<object> => {
+): CommonPromiseAPIResponseType<object> => {
   const conditions = request.item as Layout;
   return await removeLayout(conditions);
 };
