@@ -11,6 +11,7 @@ export default (app: Application): void => {
       initMiddleWare,
       async (request: IRequest, response: IResponse) => {
         try {
+          // todo: 인증을 위해 토큰을 받아와야함...
           const result = await item.next(request, response);
           console.log(`SUCCESS_${_.toUpper(item.method)}_${item.path}`);
           response.status(result.status ?? CommonStatusCode.OK);
