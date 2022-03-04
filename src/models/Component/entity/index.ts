@@ -19,5 +19,5 @@ export class Component extends CommonEntity {
   // parent: Style;
 
   @Column({ default: false })
-  isDeleted: boolean = false;
+  isDeleted!: boolean;
 }

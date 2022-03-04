@@ -20,7 +20,7 @@ export class Theme extends CommonEntity {
   isActive: boolean = true;
 
   @Column({ default: false })
-  isDeleted: boolean = false;
+  isDeleted!: boolean;
 
   findThemeItem() {
     return [
