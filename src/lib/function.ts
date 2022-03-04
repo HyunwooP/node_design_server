@@ -1,6 +1,6 @@
 import { CommonStatusCode, CommonStatusMessage, UnknownObject } from "@/lib";
 
-type HandlerParamsType = {
+export type HandlerParamsType = {
   status: number;
   message: string;
   data?: UnknownObject;
