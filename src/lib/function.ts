@@ -1,5 +1,4 @@
-import { CommonStatusCode, CommonStatusMessage } from "./status";
-import { UnknownObject } from "./type";
+import { CommonStatusCode, CommonStatusMessage, UnknownObject } from "@/lib";
 
 type HandlerParamsType = {
   status: number;
