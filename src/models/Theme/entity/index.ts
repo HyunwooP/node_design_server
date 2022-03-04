@@ -7,12 +7,9 @@ export class Theme extends CommonEntity {
   @ObjectIdColumn()
   _id!: ObjectID;
 
-  @Column({
-    unique: true,
-  })
+  @Column({ unique: true })
   name!: string;
 
-  // @OneToMany(() => Style, (style) => style.parent)
   @Column()
   styles!: ObjectID[];
 

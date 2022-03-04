@@ -7,16 +7,11 @@ export class Layout extends CommonEntity {
   @ObjectIdColumn()
   _id!: ObjectID;
 
-  @Column({
-    unique: true,
-  })
+  @Column({ unique: true })
   name!: string;
 
   @Column()
   attribute!: object;
-
-  // @ManyToOne(() => Style, (style) => style.layout)
-  // parent: Style;
 
   @Column({ default: false })
   isDeleted!: boolean;
