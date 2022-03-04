@@ -1,6 +1,6 @@
 import { CommonStatusCode, getErrorItems, onFailureHandler } from "@/lib";
 import { CommonAPIResponseType } from "@/lib/type";
-import { healthCheckMemory } from "@/utils";
+import { healthCheckMemory, nowMemoryPercent } from "@/utils";
 
 export const _health = (): CommonAPIResponseType<object> => {
   try {
@@ -11,7 +11,10 @@ export const _health = (): CommonAPIResponseType<object> => {
       });
     }
 
-    return {};
+    return {
+      status: CommonStatusCode.OK,
+      message: `현재 메모리는 ${nowMemoryPercent()}% 입니다. - ${new Date().toISOString()}`
+    };
   } catch (error: unknown) {
     const _error = getErrorItems(error);
 
