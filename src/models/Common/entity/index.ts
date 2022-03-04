@@ -2,17 +2,17 @@ import { CreateDateColumn, UpdateDateColumn } from "typeorm";
 
 export class CommonEntity {
   @CreateDateColumn({
-    name: "crt_dt",
+    name: "created_dt",
     type: "timestamp",
     default: () => "CURRENT_TIMESTAMP(6)",
   })
-  createdAt!: Date;
+  createdDt!: string;
 
   @UpdateDateColumn({
-    name: "udt_dt",
+    name: "updated_dt",
     type: "timestamp",
     default: () => "CURRENT_TIMESTAMP(6)",
     onUpdate: "CURRENT_TIMESTAMP(6)",
   })
-  updatedAt!: Date;
+  updatedDt!: string;
 }
