@@ -2,10 +2,8 @@ import { UnknownObject } from "@/lib";
 import * as _ from "lodash";
 import { IRequest } from ".";
 
-export default (request: IRequest): void => {
-  Promise.all([createToken(request), createItem(request)]).catch(
-    (error: unknown) => console.log("Generate Middleware Failed", error)
-  );
+export default async (request: IRequest): Promise<void> => {
+  await createItem(request);
 };
 
 const createItem = (request: IRequest): void => {
@@ -27,12 +25,5 @@ const createItem = (request: IRequest): void => {
       const body: UnknownObject = { ...request.body };
       request.item = body;
       break;
-  }
-};
-
-const createToken = (request: IRequest): void => {
-  if (!_.isUndefined(request.headers.authorization)) {
-    const token = request.headers.authorization.replace("Bearer ", "");
-    request.token = token ?? "";
   }
 };
