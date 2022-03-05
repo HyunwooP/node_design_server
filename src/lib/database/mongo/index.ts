@@ -1,10 +1,10 @@
 import env from "@/config";
+import { AppRepository } from "@/lib";
 import { Component } from "@/models/Component/entity";
 import { Layout } from "@/models/Layout/entity";
 import { Style } from "@/models/Style/entity";
 import { Theme } from "@/models/Theme/entity";
-import * as _ from "lodash";
-import { createConnection, getManager, MongoRepository } from "typeorm";
+import { createConnection } from "typeorm";
 import { mongoConfig } from "../config";
 import { sampleComponents } from "./sample/component";
 import { sampleLayouts } from "./sample/layout";
@@ -98,7 +98,7 @@ export const generateTestData = async (): Promise<void> => {
 export const connectMongo = async (): Promise<void> => {
   try {
     await createConnection({
-      ...mongoConfig[env.node],
+      ...mongoConfig[env.NODE_ENV],
       useUnifiedTopology: true,
     });
   } catch (error: unknown) {
@@ -106,20 +106,6 @@ export const connectMongo = async (): Promise<void> => {
   }
 };
 
-type AppRepositoryType = {
-  Theme: MongoRepository<Theme>;
-  Style: MongoRepository<Style>;
-  Layout: MongoRepository<Layout>;
-  Component: MongoRepository<Component>;
-};
-export const AppRepository = {} as AppRepositoryType;
-export const connectRepository = async (): Promise<void> => {
-  if (_.isEmpty(AppRepository)) {
-    AppRepository.Theme = getManager(env.node).getMongoRepository(Theme);
-    AppRepository.Style = getManager(env.node).getMongoRepository(Style);
-    AppRepository.Layout = getManager(env.node).getMongoRepository(Layout);
-    AppRepository.Component = getManager(env.node).getMongoRepository(
-      Component
-    );
-  }
+export const connectRepository = (): void => {
+  AppRepository.connect();
 };

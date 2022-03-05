@@ -1,9 +1,9 @@
 import {
-  AppRepository,
   connectMongo,
   connectRepository,
-  generateTestData,
+  generateTestData
 } from "./database/mongo";
+import AppRepository from "./database/mongo/repository";
 import { createExpress } from "./express";
 import { getErrorItems, onFailureHandler } from "./function";
 import { initMiddleWare, IRequest, IResponse } from "./middleware";
