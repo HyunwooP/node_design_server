@@ -1,11 +1,11 @@
 import { Application } from "express";
 import {
+  AppRepository,
   connectMongo,
   connectRepository,
   createExpress,
   createRoute,
-  createServer,
-  generateTestData,
+  createServer
 } from "./lib";
 
 class App {
@@ -33,7 +33,7 @@ class App {
 
   public async onCreateTestSample(): Promise<void> {
     console.log("App Created Test Datas");
-    await generateTestData();
+    await AppRepository.generateTestData();
   }
 }
 

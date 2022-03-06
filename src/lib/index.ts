@@ -1,7 +1,6 @@
 import {
   connectMongo,
-  connectRepository,
-  generateTestData
+  connectRepository
 } from "./database/mongo";
 import AppRepository from "./database/mongo/repository";
 import { createExpress } from "./express";
@@ -23,7 +22,6 @@ export {
   connectMongo,
   AppRepository,
   connectRepository,
-  generateTestData,
   initMiddleWare,
   IRequest,
   IResponse,
