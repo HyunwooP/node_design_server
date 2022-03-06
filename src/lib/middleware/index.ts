@@ -22,7 +22,7 @@ const initMiddleWare = async (
   try {
     await generateRequest(request);
     await generateResponse(response);
-    
+
     next();
   } catch (error: unknown) {
     const _error = getErrorItems(error);

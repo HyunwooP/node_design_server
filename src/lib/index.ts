@@ -1,7 +1,4 @@
-import {
-  connectMongo,
-  connectRepository
-} from "./database/mongo";
+import { connectMongo, connectRepository } from "./database/mongo";
 import AppRepository from "./database/mongo/repository";
 import { createExpress } from "./express";
 import { getErrorItems, onFailureHandler } from "./function";

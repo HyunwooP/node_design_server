@@ -14,7 +14,7 @@ export const _health = (): CommonAPIResponseType<HandlerParamsType> => {
 
     return {
       status: CommonStatusCode.OK,
-      message: `현재 메모리는 ${nowMemoryPercent()}% 입니다. - ${new Date().toISOString()}`
+      message: `현재 메모리는 ${nowMemoryPercent()}% 입니다. - ${new Date().toISOString()}`,
     };
   } catch (error: unknown) {
     const _error = getErrorItems(error);

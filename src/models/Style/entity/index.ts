@@ -15,7 +15,7 @@ export class Style extends CommonEntity {
 
   @Column({ nullable: true })
   components!: ObjectID[];
-  
+
   @Column({ default: true })
   isActive!: boolean;
 

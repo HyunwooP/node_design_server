@@ -27,7 +27,7 @@ class AppRepository {
       WHITE_THEME_STYLE: [],
       GREEN_THEME_STYLE: [],
     };
-  
+
     // Generate Component Collection
     const generateComponentCollection = async () => {
       const componentNames = Object.keys(sampleComponents);
@@ -35,7 +35,7 @@ class AppRepository {
         const component = new Component();
         component.name = name;
         component.attribute = sampleComponents[name];
-  
+
         const outputComponent = await this.component.save(component);
         if (outputComponent.name.indexOf("BLACK_THEME") !== -1) {
           componentInfos.BLACK_THEME_STYLE.push(outputComponent._id);
@@ -46,7 +46,7 @@ class AppRepository {
         }
       }
     };
-  
+
     // Generate Layout Collection
     const generateLayoutCollection = async () => {
       const layoutNames = Object.keys(sampleLayouts);
@@ -54,7 +54,7 @@ class AppRepository {
         const layout = new Layout();
         layout.name = name;
         layout.attribute = sampleLayouts[name];
-  
+
         const outputLayout = await this.layout.save(layout);
         if (outputLayout.name.indexOf("BLACK_THEME") !== -1) {
           layoutInfos.BLACK_THEME_STYLE.push(outputLayout._id);
@@ -65,7 +65,7 @@ class AppRepository {
         }
       }
     };
-  
+
     // Generate Style Collection
     const generateStyleCollection = async () => {
       for (const name of sampleStyles) {
@@ -77,7 +77,7 @@ class AppRepository {
         styleInfos.push(outputStyle._id);
       }
     };
-  
+
     // Generate Theme Collection
     const generateThemeCollection = async () => {
       for (const name of sampleTheme) {
@@ -88,13 +88,13 @@ class AppRepository {
         await this.theme.save(theme);
       }
     };
-  
+
     await generateComponentCollection();
     await generateLayoutCollection();
     await generateStyleCollection();
     await generateThemeCollection();
-  };
-  
+  }
+
   connect(): void {
     this.component = getManager(env.NODE_ENV).getMongoRepository(Component);
     this.layout = getManager(env.NODE_ENV).getMongoRepository(Layout);

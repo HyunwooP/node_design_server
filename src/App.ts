@@ -5,7 +5,7 @@ import {
   connectRepository,
   createExpress,
   createRoute,
-  createServer
+  createServer,
 } from "./lib";
 
 class App {
