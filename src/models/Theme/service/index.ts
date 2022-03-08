@@ -8,9 +8,9 @@ import { Theme } from "../entity";
 import { ThemeRequestType } from "../type";
 
 export const findThemeCount =
-  async (): CommonPromiseAPIResponseType<String> => {
+  async (): CommonPromiseAPIResponseType<number> => {
     try {
-      return String(await AppRepository.Theme.count());
+      return await AppRepository.Theme.count();
     } catch (error: unknown) {
       const _error = getErrorItems(error);
 

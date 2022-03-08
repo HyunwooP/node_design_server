@@ -7,9 +7,9 @@ import { Style } from "../entity";
 import { StyleRequestType } from "../type";
 
 export const findStyleCount =
-  async (): CommonPromiseAPIResponseType<String> => {
+  async (): CommonPromiseAPIResponseType<number> => {
     try {
-      return String(await AppRepository.Style.count());
+      return await AppRepository.Style.count();
     } catch (error: unknown) {
       const _error = getErrorItems(error);
 

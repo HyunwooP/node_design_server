@@ -7,9 +7,9 @@ import { Component } from "../entity";
 import { ComponentRequestType } from "../type";
 
 export const findComponentCount =
-  async (): CommonPromiseAPIResponseType<String> => {
+  async (): CommonPromiseAPIResponseType<number> => {
     try {
-      return String(await AppRepository.Component.count());
+      return await AppRepository.Component.count();
     } catch (error: unknown) {
       const _error = getErrorItems(error);
 

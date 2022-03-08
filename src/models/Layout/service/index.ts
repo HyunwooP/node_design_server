@@ -7,9 +7,9 @@ import { Layout } from "../entity";
 import { LayoutRequestType } from "../type";
 
 export const findLayoutCount =
-  async (): CommonPromiseAPIResponseType<String> => {
+  async (): CommonPromiseAPIResponseType<number> => {
     try {
-      return String(await AppRepository.Layout.count());
+      return await AppRepository.Layout.count();
     } catch (error: unknown) {
       const _error = getErrorItems(error);
 

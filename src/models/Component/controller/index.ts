@@ -20,13 +20,13 @@ import { ComponentRequestType } from "../type";
  * @param {IRequest} request
  * @param {IResponse} response
  * @param {Function} next
- * @returns {CommonPromiseAPIResponseType<String>}
+ * @returns {CommonPromiseAPIResponseType<number>}
  */
 export const findCount = async (
   request: IRequest,
   response: IResponse,
   next: Function
-): CommonPromiseAPIResponseType<String> => {
+): CommonPromiseAPIResponseType<number> => {
   return await findComponentCount();
 };
 
