@@ -14,7 +14,7 @@ export class Theme extends CommonEntity {
   styles!: ObjectID[];
 
   @Column({ default: true })
-  isActive: boolean = true;
+  isActive!: boolean;
 
   @Column({ default: false })
   isDeleted!: boolean;
