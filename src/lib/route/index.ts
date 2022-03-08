@@ -15,7 +15,11 @@ export default (app: Application): void => {
           const result = await item.next(request, response);
           console.log(`SUCCESS_${_.toUpper(item.method)}_${item.path}`);
           response.status(result.status ?? CommonStatusCode.OK);
-          response.send(result);
+          response.send({
+            item: {
+              ...result,
+            },
+          });
         } catch (error: unknown) {
           const _error = getErrorItems(error);
 
