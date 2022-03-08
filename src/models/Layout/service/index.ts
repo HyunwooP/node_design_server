@@ -1,10 +1,4 @@
-import {
-  AppRepository,
-  CommonStatusCode,
-  CommonStatusMessage,
-  getErrorItems,
-  onFailureHandler,
-} from "@/lib";
+import { AppRepository, getErrorItems, onFailureHandler } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
 import { QueryType } from "@/models/Common/type";
 import { toObjectId } from "@/utils";
@@ -97,31 +91,11 @@ export const updateLayout = async (
   conditions: Partial<Layout>
 ): CommonPromiseAPIResponseType<Layout> => {
   try {
-    const layout = (await findOneLayout({
-      _id: toObjectId(conditions._id),
-    })) as Layout;
-
-    if (_.isUndefined(layout)) {
-      onFailureHandler({
-        status: CommonStatusCode.NOT_FOUND,
-        message: CommonStatusMessage.NOT_FOUND,
-      });
-    }
-
-    // 레이아웃 이름
-    layout.name = _.isUndefined(conditions.name)
-      ? layout.name
-      : conditions.name;
-    // 레이아웃 CSS 속성
-    layout.attribute = _.isUndefined(conditions.attribute)
-      ? layout.attribute
-      : conditions.attribute;
-    // 삭제 유무
-    layout.isDeleted = _.isUndefined(conditions.isDeleted)
-      ? layout.isDeleted
-      : conditions.isDeleted;
-
-    return await AppRepository.Layout.save(layout);
+    await AppRepository.Layout.update(
+      { _id: toObjectId(conditions._id) },
+      conditions
+    );
+    return findOneLayout({ _id: toObjectId(conditions._id) });
   } catch (error: unknown) {
     const _error = getErrorItems(error);
 

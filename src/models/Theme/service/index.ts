@@ -1,10 +1,4 @@
-import {
-  AppRepository,
-  CommonStatusCode,
-  CommonStatusMessage,
-  getErrorItems,
-  onFailureHandler,
-} from "@/lib";
+import { AppRepository, getErrorItems, onFailureHandler } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
 import { QueryType } from "@/models/Common/type";
 import { toObjectId } from "@/utils";
@@ -136,33 +130,11 @@ export const updateTheme = async (
   conditions: Partial<Theme>
 ): CommonPromiseAPIResponseType<Theme> => {
   try {
-    const theme = (await findOneTheme({
-      _id: toObjectId(conditions._id),
-    })) as Theme;
-
-    if (_.isUndefined(theme)) {
-      onFailureHandler({
-        status: CommonStatusCode.NOT_FOUND,
-        message: CommonStatusMessage.NOT_FOUND,
-      });
-    }
-
-    // 스타일 이름
-    theme.name = _.isUndefined(conditions.name) ? theme.name : conditions.name;
-    // 테마에 포함된 스타일
-    theme.styles = _.isUndefined(conditions.styles)
-      ? theme.styles
-      : conditions.styles;
-    // 사용 유무
-    theme.isActive = _.isUndefined(conditions.isActive)
-      ? theme.isActive
-      : conditions.isActive;
-    // 삭제 유무
-    theme.isDeleted = _.isUndefined(conditions.isDeleted)
-      ? theme.isDeleted
-      : conditions.isDeleted;
-
-    return await AppRepository.Theme.save(theme);
+    await AppRepository.Theme.update(
+      { _id: toObjectId(conditions._id) },
+      conditions
+    );
+    return findOneTheme({ _id: toObjectId(conditions._id) });
   } catch (error: unknown) {
     const _error = getErrorItems(error);
 

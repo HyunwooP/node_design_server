@@ -1,15 +1,8 @@
-import {
-  AppRepository,
-  CommonStatusCode,
-  CommonStatusMessage,
-  getErrorItems,
-  onFailureHandler,
-} from "@/lib";
+import { AppRepository, getErrorItems, onFailureHandler } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
 import { QueryType } from "@/models/Common/type";
 import { toObjectId } from "@/utils";
 import * as _ from "lodash";
-import { ObjectId } from "mongodb";
 import { Component } from "../entity";
 import { ComponentRequestType } from "../type";
 
@@ -98,31 +91,11 @@ export const updateComponent = async (
   conditions: Partial<Component>
 ): CommonPromiseAPIResponseType<Component> => {
   try {
-    const component = (await findOneComponent({
-      _id: toObjectId(conditions._id) as ObjectId,
-    })) as Component;
-
-    if (_.isUndefined(component)) {
-      onFailureHandler({
-        status: CommonStatusCode.NOT_FOUND,
-        message: CommonStatusMessage.NOT_FOUND,
-      });
-    }
-
-    // 컴포넌트 이름
-    component.name = _.isUndefined(conditions.name)
-      ? component.name
-      : conditions.name;
-    // 컴포넌트 CSS 속성
-    component.attribute = _.isUndefined(conditions.attribute)
-      ? component.attribute
-      : conditions.attribute;
-    // 삭제 유무
-    component.isDeleted = _.isUndefined(conditions.isDeleted)
-      ? component.isDeleted
-      : conditions.isDeleted;
-
-    return await AppRepository.Component.save(component);
+    await AppRepository.Component.update(
+      { _id: toObjectId(conditions._id) },
+      conditions
+    );
+    return findOneComponent({ _id: toObjectId(conditions._id) });
   } catch (error: unknown) {
     const _error = getErrorItems(error);
 
