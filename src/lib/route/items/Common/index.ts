@@ -3,7 +3,7 @@ import * as Common from "@/models/Common/controller";
 
 const CommonRoute: RouteItemType[] = [
   {
-    path: "/health",
+    path: "/designHealth",
     method: "get",
     next: Common.health,
     auth: false,
