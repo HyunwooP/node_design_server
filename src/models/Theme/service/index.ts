@@ -1,4 +1,10 @@
-import { AppRepository, getErrorItems, onFailureHandler } from "@/lib";
+import {
+  AppRepository,
+  CommonStatusCode,
+  CommonStatusMessage,
+  getErrorItems,
+  onFailureHandler,
+} from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
 import { QueryType } from "@/models/Common/type";
 import { toObjectId } from "@/utils";
@@ -130,6 +136,13 @@ export const updateTheme = async (
   conditions: Partial<Theme>
 ): CommonPromiseAPIResponseType<Theme> => {
   try {
+    if (_.isUndefined(conditions._id)) {
+      onFailureHandler({
+        status: CommonStatusCode.BAD_REQUEST,
+        message: CommonStatusMessage.BAD_REQUEST,
+      });
+    }
+
     await AppRepository.Theme.update(
       { _id: toObjectId(conditions._id) },
       conditions
