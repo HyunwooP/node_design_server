@@ -5,7 +5,7 @@ export enum CommonStatusCode {
   OK = 200,
   CREATE = 201,
   BAD_REQUEST = 400,
-  DUPLICATE = 409,
+  CONFLICT = 409,
   INTERNAL_SERVER_ERROR = 500,
 }
 
@@ -16,6 +16,6 @@ export enum CommonStatusMessage {
   OK = "OK", // 정상 처리
   CREATE = "CREATE",
   BAD_REQUEST = "BAD_REQUEST", // 잘못된 요청
-  DUPLICATE = "DUPLICATE", // 리소스 및 데이터 중복
+  CONFLICT = "CONFLICT", // 리소스 및 데이터 중복
   INTERNAL_SERVER_ERROR = "INTERNAL_SERVER_ERROR", // 기타 예외 처리
 }
