@@ -7,13 +7,11 @@ import { _health } from "../service";
  * @method GET
  * @param {IRequest} request
  * @param {IResponse} response
- * @param {Function} next
  * @returns {CommonAPIResponseType<HandlerParamsType>}
  */
 export const health = (
   request: IRequest,
-  response: IResponse,
-  next: Function
+  response: IResponse
 ): CommonAPIResponseType<HandlerParamsType> => {
   return _health();
 };

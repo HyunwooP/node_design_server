@@ -19,13 +19,11 @@ import { StyleRequestType } from "../type";
  * @method GET
  * @param {IRequest} request
  * @param {IResponse} response
- * @param {Function} next
  * @returns {CommonPromiseAPIResponseType<number>}
  */
 export const findCount = async (
   request: IRequest,
-  response: IResponse,
-  next: Function
+  response: IResponse
 ): CommonPromiseAPIResponseType<number> => {
   return await findStyleCount();
 };
@@ -34,13 +32,11 @@ export const findCount = async (
  * @method GET
  * @param {IRequest} request
  * @param {IResponse} response
- * @param {Function} next
  * @returns {CommonPromiseAPIResponseType<Style>}
  */
 export const findOne = async (
   request: IRequest,
-  response: IResponse,
-  next: Function
+  response: IResponse
 ): CommonPromiseAPIResponseType<Style> => {
   const conditions = request.item as StyleRequestType;
   return await findOneStyle(conditions);
@@ -50,13 +46,11 @@ export const findOne = async (
  * @method GET
  * @param {IRequest} request
  * @param {IResponse} response
- * @param {Function} next
  * @returns {CommonPromiseAPIResponseType<Style[], number>}
  */
 export const find = async (
   request: IRequest,
-  response: IResponse,
-  next: Function
+  response: IResponse
 ): CommonPromiseAPIResponseType<[Style[], number]> => {
   const conditions = request.item as StyleRequestType;
   return await findStyle(conditions);
@@ -66,13 +60,11 @@ export const find = async (
  * @method POST
  * @param {IRequest} request
  * @param {IResponse} response
- * @param {Function} next
  * @returns {CommonPromiseAPIResponseType<Style>}
  */
 export const update = async (
   request: IRequest,
-  response: IResponse,
-  next: Function
+  response: IResponse
 ): CommonPromiseAPIResponseType<Style> => {
   const conditions = request.item as Style;
   return await updateStyle(conditions);
@@ -82,13 +74,11 @@ export const update = async (
  * @method DELETE
  * @param {IRequest} request
  * @param {IResponse} response
- * @param {Function} next
  * @returns {CommonPromiseAPIResponseType<object>}
  */
 export const remove = async (
   request: IRequest,
-  response: IResponse,
-  next: Function
+  response: IResponse
 ): CommonPromiseAPIResponseType<object> => {
   const conditions = request.item as Style;
   return await removeStyle(conditions);
