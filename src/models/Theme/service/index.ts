@@ -2,7 +2,6 @@ import {
   AppRepository,
   CommonStatusCode,
   CommonStatusMessage,
-  getErrorItems,
   onFailureHandler,
 } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
@@ -15,17 +14,7 @@ import { ThemeRequestType } from "../type";
 
 export const findThemeCount =
   async (): CommonPromiseAPIResponseType<number> => {
-    try {
-      return await AppRepository.Theme.count();
-    } catch (error: unknown) {
-      const _error = getErrorItems(error);
-
-      onFailureHandler({
-        status: _error.status,
-        message: _error.message,
-        data: _error.data,
-      });
-    }
+    return await AppRepository.Theme.count();
   };
 
 /**
@@ -38,140 +27,70 @@ export const findThemeCount =
 export const aggregateTheme = async (
   pipeline: ObjectLiteral[]
 ): CommonPromiseAPIResponseType<any> => {
-  try {
-    return await AppRepository.Theme.aggregate(pipeline).toArray();
-  } catch (error: unknown) {
-    const _error = getErrorItems(error);
-
-    onFailureHandler({
-      status: _error.status,
-      message: _error.message,
-      data: _error.data,
-    });
-  }
+  return await AppRepository.Theme.aggregate(pipeline).toArray();
 };
 
 export const findThemeItem = async (): CommonPromiseAPIResponseType<Theme> => {
-  try {
-    const theme = new Theme();
-    return await aggregateTheme(theme.findThemeItem());
-  } catch (error: unknown) {
-    const _error = getErrorItems(error);
-
-    onFailureHandler({
-      status: _error.status,
-      message: _error.message,
-      data: _error.data,
-    });
-  }
+  const theme = new Theme();
+  return await aggregateTheme(theme.findThemeItem());
 };
 
 export const findOneTheme = async (
   conditions: Partial<ThemeRequestType>
 ): CommonPromiseAPIResponseType<Theme> => {
-  try {
-    return await AppRepository.Theme.findOne({ ...conditions });
-  } catch (error: unknown) {
-    const _error = getErrorItems(error);
-
-    onFailureHandler({
-      status: _error.status,
-      message: _error.message,
-      data: _error.data,
-    });
-  }
+  return await AppRepository.Theme.findOne({ ...conditions });
 };
 
 export const findTheme = async (
   conditions: Partial<ThemeRequestType>
 ): CommonPromiseAPIResponseType<[Theme[], number]> => {
-  try {
-    let query = {} as QueryType;
+  let query = {} as QueryType;
 
-    if (!_.isUndefined(conditions.searchKeyword)) {
-      query.where = {
-        name: {
-          $regex: conditions.searchKeyword,
-          $options: "i",
-        },
-      };
-    }
-
-    if (!_.isUndefined(conditions.nameSort)) {
-      query.order.name = conditions.nameSort;
-    }
-
-    return await AppRepository.Theme.findAndCount({
-      ...conditions,
-      ...query,
-    });
-  } catch (error: unknown) {
-    const _error = getErrorItems(error);
-
-    onFailureHandler({
-      status: _error.status,
-      message: _error.message,
-      data: _error.data,
-    });
+  if (!_.isUndefined(conditions.searchKeyword)) {
+    query.where = {
+      name: {
+        $regex: conditions.searchKeyword,
+        $options: "i",
+      },
+    };
   }
+
+  if (!_.isUndefined(conditions.nameSort)) {
+    query.order.name = conditions.nameSort;
+  }
+
+  return await AppRepository.Theme.findAndCount({
+    ...conditions,
+    ...query,
+  });
 };
 
 export const createTheme = async (
   conditions: Theme
 ): CommonPromiseAPIResponseType<Theme> => {
-  try {
-    return await AppRepository.Theme.create(conditions);
-  } catch (error: unknown) {
-    const _error = getErrorItems(error);
-
-    onFailureHandler({
-      status: _error.status,
-      message: _error.message,
-      data: _error.data,
-    });
-  }
+  return await AppRepository.Theme.create(conditions);
 };
 
 export const updateTheme = async (
   conditions: Partial<Theme>
 ): CommonPromiseAPIResponseType<Theme> => {
-  try {
-    if (_.isUndefined(conditions._id)) {
-      onFailureHandler({
-        status: CommonStatusCode.BAD_REQUEST,
-        message: CommonStatusMessage.BAD_REQUEST,
-      });
-    }
-
-    await AppRepository.Theme.update(
-      { _id: toObjectId(conditions._id) },
-      conditions
-    );
-    return findOneTheme({ _id: toObjectId(conditions._id) });
-  } catch (error: unknown) {
-    const _error = getErrorItems(error);
-
+  if (_.isUndefined(conditions._id)) {
     onFailureHandler({
-      status: _error.status,
-      message: _error.message,
-      data: _error.data,
+      status: CommonStatusCode.BAD_REQUEST,
+      message: CommonStatusMessage.BAD_REQUEST,
     });
   }
+
+  await AppRepository.Theme.update(
+    { _id: toObjectId(conditions._id) },
+    conditions
+  );
+  return findOneTheme({ _id: toObjectId(conditions._id) });
 };
 
 export const removeTheme = async (
   conditions: Partial<Theme>
 ): CommonPromiseAPIResponseType<object> => {
-  try {
-    await updateTheme({ _id: conditions._id, isDeleted: true });
-    return {};
-  } catch (error: unknown) {
-    const _error = getErrorItems(error);
-
-    onFailureHandler({
-      status: _error.status,
-      message: _error.message,
-      data: _error.data,
-    });
-  }
+  await updateTheme({ _id: conditions._id, isDeleted: true });
+  return {};
 };

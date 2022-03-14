@@ -2,7 +2,6 @@ import {
   AppRepository,
   CommonStatusCode,
   CommonStatusMessage,
-  getErrorItems,
   onFailureHandler,
 } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
@@ -14,125 +13,65 @@ import { LayoutRequestType } from "../type";
 
 export const findLayoutCount =
   async (): CommonPromiseAPIResponseType<number> => {
-    try {
-      return await AppRepository.Layout.count();
-    } catch (error: unknown) {
-      const _error = getErrorItems(error);
-
-      onFailureHandler({
-        status: _error.status,
-        message: _error.message,
-        data: _error.data,
-      });
-    }
+    return await AppRepository.Layout.count();
   };
 
 export const findOneLayout = async (
   conditions: Partial<LayoutRequestType>
 ): CommonPromiseAPIResponseType<Layout> => {
-  try {
-    return await AppRepository.Layout.findOne({ ...conditions });
-  } catch (error: unknown) {
-    const _error = getErrorItems(error);
-
-    onFailureHandler({
-      status: _error.status,
-      message: _error.message,
-      data: _error.data,
-    });
-  }
+  return await AppRepository.Layout.findOne({ ...conditions });
 };
 
 export const findLayout = async (
   conditions: Partial<LayoutRequestType>
 ): CommonPromiseAPIResponseType<[Layout[], number]> => {
-  try {
-    let query = {} as QueryType;
+  let query = {} as QueryType;
 
-    if (!_.isUndefined(conditions.searchKeyword)) {
-      query.where = {
-        name: {
-          $regex: conditions.searchKeyword,
-          $options: "i",
-        },
-      };
-    }
-
-    if (!_.isUndefined(conditions.nameSort)) {
-      query.order.name = conditions.nameSort;
-    }
-
-    return await AppRepository.Layout.findAndCount({
-      ...conditions,
-      ...query,
-    });
-  } catch (error: unknown) {
-    const _error = getErrorItems(error);
-
-    onFailureHandler({
-      status: _error.status,
-      message: _error.message,
-      data: _error.data,
-    });
+  if (!_.isUndefined(conditions.searchKeyword)) {
+    query.where = {
+      name: {
+        $regex: conditions.searchKeyword,
+        $options: "i",
+      },
+    };
   }
+
+  if (!_.isUndefined(conditions.nameSort)) {
+    query.order.name = conditions.nameSort;
+  }
+
+  return await AppRepository.Layout.findAndCount({
+    ...conditions,
+    ...query,
+  });
 };
 
 export const createLayout = async (
   conditions: Layout
 ): CommonPromiseAPIResponseType<Layout> => {
-  try {
-    return await AppRepository.Layout.create(conditions);
-  } catch (error: unknown) {
-    const _error = getErrorItems(error);
-
-    onFailureHandler({
-      status: _error.status,
-      message: _error.message,
-      data: _error.data,
-    });
-  }
+  return await AppRepository.Layout.create(conditions);
 };
 
 export const updateLayout = async (
   conditions: Partial<Layout>
 ): CommonPromiseAPIResponseType<Layout> => {
-  try {
-    if (_.isUndefined(conditions._id)) {
-      onFailureHandler({
-        status: CommonStatusCode.BAD_REQUEST,
-        message: CommonStatusMessage.BAD_REQUEST,
-      });
-    }
-
-    await AppRepository.Layout.update(
-      { _id: toObjectId(conditions._id) },
-      conditions
-    );
-    return findOneLayout({ _id: toObjectId(conditions._id) });
-  } catch (error: unknown) {
-    const _error = getErrorItems(error);
-
+  if (_.isUndefined(conditions._id)) {
     onFailureHandler({
-      status: _error.status,
-      message: _error.message,
-      data: _error.data,
+      status: CommonStatusCode.BAD_REQUEST,
+      message: CommonStatusMessage.BAD_REQUEST,
     });
   }
+
+  await AppRepository.Layout.update(
+    { _id: toObjectId(conditions._id) },
+    conditions
+  );
+  return findOneLayout({ _id: toObjectId(conditions._id) });
 };
 
 export const removeLayout = async (
   conditions: Partial<Layout>
 ): CommonPromiseAPIResponseType<object> => {
-  try {
-    await updateLayout({ _id: conditions._id, isDeleted: true });
-    return {};
-  } catch (error: unknown) {
-    const _error = getErrorItems(error);
-
-    onFailureHandler({
-      status: _error.status,
-      message: _error.message,
-      data: _error.data,
-    });
-  }
+  await updateLayout({ _id: conditions._id, isDeleted: true });
+  return {};
 };

@@ -2,7 +2,6 @@ import {
   AppRepository,
   CommonStatusCode,
   CommonStatusMessage,
-  getErrorItems,
   onFailureHandler,
 } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
@@ -14,125 +13,65 @@ import { StyleRequestType } from "../type";
 
 export const findStyleCount =
   async (): CommonPromiseAPIResponseType<number> => {
-    try {
-      return await AppRepository.Style.count();
-    } catch (error: unknown) {
-      const _error = getErrorItems(error);
-
-      onFailureHandler({
-        status: _error.status,
-        message: _error.message,
-        data: _error.data,
-      });
-    }
+    return await AppRepository.Style.count();
   };
 
 export const findOneStyle = async (
   conditions: Partial<StyleRequestType>
 ): CommonPromiseAPIResponseType<Style> => {
-  try {
-    return await AppRepository.Style.findOne({ ...conditions });
-  } catch (error: unknown) {
-    const _error = getErrorItems(error);
-
-    onFailureHandler({
-      status: _error.status,
-      message: _error.message,
-      data: _error.data,
-    });
-  }
+  return await AppRepository.Style.findOne({ ...conditions });
 };
 
 export const findStyle = async (
   conditions: Partial<StyleRequestType>
 ): CommonPromiseAPIResponseType<[Style[], number]> => {
-  try {
-    let query = {} as QueryType;
+  let query = {} as QueryType;
 
-    if (!_.isUndefined(conditions.searchKeyword)) {
-      query.where = {
-        name: {
-          $regex: conditions.searchKeyword,
-          $options: "i",
-        },
-      };
-    }
-
-    if (!_.isUndefined(conditions.nameSort)) {
-      query.order.name = conditions.nameSort;
-    }
-
-    return await AppRepository.Style.findAndCount({
-      ...conditions,
-      ...query,
-    });
-  } catch (error: unknown) {
-    const _error = getErrorItems(error);
-
-    onFailureHandler({
-      status: _error.status,
-      message: _error.message,
-      data: _error.data,
-    });
+  if (!_.isUndefined(conditions.searchKeyword)) {
+    query.where = {
+      name: {
+        $regex: conditions.searchKeyword,
+        $options: "i",
+      },
+    };
   }
+
+  if (!_.isUndefined(conditions.nameSort)) {
+    query.order.name = conditions.nameSort;
+  }
+
+  return await AppRepository.Style.findAndCount({
+    ...conditions,
+    ...query,
+  });
 };
 
 export const createStyle = async (
   conditions: Style
 ): CommonPromiseAPIResponseType<Style> => {
-  try {
-    return await AppRepository.Style.create(conditions);
-  } catch (error: unknown) {
-    const _error = getErrorItems(error);
-
-    onFailureHandler({
-      status: _error.status,
-      message: _error.message,
-      data: _error.data,
-    });
-  }
+  return await AppRepository.Style.create(conditions);
 };
 
 export const updateStyle = async (
   conditions: Partial<Style>
 ): CommonPromiseAPIResponseType<Style> => {
-  try {
-    if (_.isUndefined(conditions._id)) {
-      onFailureHandler({
-        status: CommonStatusCode.BAD_REQUEST,
-        message: CommonStatusMessage.BAD_REQUEST,
-      });
-    }
-
-    await AppRepository.Style.update(
-      { _id: toObjectId(conditions._id) },
-      conditions
-    );
-    return findOneStyle({ _id: toObjectId(conditions._id) });
-  } catch (error: unknown) {
-    const _error = getErrorItems(error);
-
+  if (_.isUndefined(conditions._id)) {
     onFailureHandler({
-      status: _error.status,
-      message: _error.message,
-      data: _error.data,
+      status: CommonStatusCode.BAD_REQUEST,
+      message: CommonStatusMessage.BAD_REQUEST,
     });
   }
+
+  await AppRepository.Style.update(
+    { _id: toObjectId(conditions._id) },
+    conditions
+  );
+  return findOneStyle({ _id: toObjectId(conditions._id) });
 };
 
 export const removeStyle = async (
   conditions: Partial<Style>
 ): CommonPromiseAPIResponseType<object> => {
-  try {
-    await updateStyle({ _id: conditions._id, isDeleted: true });
-    return {};
-  } catch (error: unknown) {
-    const _error = getErrorItems(error);
-
-    onFailureHandler({
-      status: _error.status,
-      message: _error.message,
-      data: _error.data,
-    });
-  }
+  await updateStyle({ _id: conditions._id, isDeleted: true });
+  return {};
 };
