@@ -15,9 +15,7 @@ export default (app: Application): void => {
           console.log(`SUCCESS_${_.toUpper(item.method)}_${item.path}`);
           response.status(result.status ?? CommonStatusCode.OK);
           response.send({
-            item: {
-              ...result,
-            },
+            item: result,
           });
         } catch (error: unknown) {
           const _error = getErrorItems(error);
