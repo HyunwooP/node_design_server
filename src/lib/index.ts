@@ -4,11 +4,13 @@ import { createExpress } from "./express";
 import { getErrorItems, onFailureHandler } from "./function";
 import { initMiddleWare, IRequest, IResponse } from "./middleware";
 import createRoute from "./route";
+import { initializeSentry } from "./sentry";
 import { createServer } from "./server";
 import { CommonStatusCode, CommonStatusMessage } from "./status";
 import { UnknownObject } from "./type";
 
 export {
+  initializeSentry,
   createExpress,
   createServer,
   createRoute,

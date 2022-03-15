@@ -1,17 +1,16 @@
 import "module-alias/register";
 import App from "./App";
+import config from "./config";
 
 (async () => {
   try {
-    await App.onCreateRoute();
+    console.log(`NODE_ENV =======> ${config.NODE_ENV} Start`);
 
-    await App.onCreateServer();
-
-    await App.onConnectDB();
-
-    await App.onConnectRepository();
-
-    await App.onCreateTestSample();
+    if (config.NODE_ENV === "production") {
+      await App.onCreateProductionApp();
+    } else {
+      await App.onCreateDevelopmentApp();
+    }
   } catch (error: unknown) {
     console.log(error);
   }
