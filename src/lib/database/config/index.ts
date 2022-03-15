@@ -1,4 +1,4 @@
-import env from "@/config";
+import config from "@/config";
 import { MongoConnectionOptions } from "typeorm/driver/mongodb/MongoConnectionOptions";
 
 export type TypeOrmConfigType = {
@@ -15,7 +15,7 @@ export const mongoConfig: TypeOrmConfigType = {
     host: "127.0.0.1",
     port: 27017,
     username: "root",
-    password: env.mongoPassword,
+    password: config.mongoPassword,
     database: "localDB",
     synchronize: true,
     logging: false,

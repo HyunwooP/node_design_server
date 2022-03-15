@@ -1,11 +1,11 @@
-import env from "@/config";
+import config from "@/config";
 import * as cors from "cors";
 import * as express from "express";
 import helmet from "helmet";
 import * as path from "path";
 
 const corsConfig = {
-  origin: env.origin,
+  origin: config.origin,
   credentials: true,
 };
 

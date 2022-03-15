@@ -1,4 +1,4 @@
-import env from "@/config";
+import config from "@/config";
 import { Component } from "@/models/Component/entity";
 import { Layout } from "@/models/Layout/entity";
 import { Style } from "@/models/Style/entity";
@@ -96,10 +96,10 @@ class AppRepository {
   }
 
   connect(): void {
-    this.component = getManager(env.NODE_ENV).getMongoRepository(Component);
-    this.layout = getManager(env.NODE_ENV).getMongoRepository(Layout);
-    this.style = getManager(env.NODE_ENV).getMongoRepository(Style);
-    this.theme = getManager(env.NODE_ENV).getMongoRepository(Theme);
+    this.component = getManager(config.NODE_ENV).getMongoRepository(Component);
+    this.layout = getManager(config.NODE_ENV).getMongoRepository(Layout);
+    this.style = getManager(config.NODE_ENV).getMongoRepository(Style);
+    this.theme = getManager(config.NODE_ENV).getMongoRepository(Theme);
   }
 
   get Component(): MongoRepository<Component> {

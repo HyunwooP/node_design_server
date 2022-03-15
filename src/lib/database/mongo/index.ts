@@ -1,11 +1,11 @@
-import env from "@/config";
+import config from "@/config";
 import { AppRepository } from "@/lib";
 import { createConnection } from "typeorm";
 import { mongoConfig } from "../config";
 
 export const connectMongo = async (): Promise<void> => {
   await createConnection({
-    ...mongoConfig[env.NODE_ENV],
+    ...mongoConfig[config.NODE_ENV],
     useUnifiedTopology: true,
   });
 };
