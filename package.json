@@ -26,28 +26,30 @@
   },
   "homepage": "https://github.com/awakelife93/node-design-template#readme",
   "dependencies": {
+    "@sentry/node": "^6.18.2",
+    "@sentry/tracing": "^6.18.2",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "helmet": "^5.0.2",
     "http": "0.0.1-security",
     "https": "^1.0.0",
     "lodash": "^4.17.21",
     "module-alias": "^2.2.2",
     "mongodb": "^3.6.9",
     "mongoose": "^5.13.7",
-    "typeorm": "^0.2.34",
-    "helmet": "^5.0.2"
+    "typeorm": "^0.2.34"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.0",
     "@types/cors": "^2.8.10",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.12",
-    "@types/node": "^15.12.2",
     "@types/lodash": "^4.14.170",
     "@types/mongoose": "^5.11.97",
+    "@types/node": "^15.12.2",
     "ts-node": "^10.0.0",
     "typescript": "^4.3.2"
   }
