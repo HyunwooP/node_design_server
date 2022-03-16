@@ -5,7 +5,7 @@ import "dotenv/config";
  */
 export default {
   // "development" | "production" | "localhost"
-  NODE_ENV: process.env.NODE_ENV ?? "development",
+  NODE_ENV: process.env.NODE_ENV ?? "localhost",
   sentryDSN: process.env.sentryDSN ?? "",
   port: process.env.port ?? 3002,
   mongoPort: process.env.mongoPort ?? 27017,
