@@ -64,9 +64,7 @@ class App {
   };
 
   private getApplication = (): Function => {
-    const applications: {
-      [environment: string]: Function;
-    } = {
+    const applications = {
       production: this.onCreateProductionApp,
       development: this.onCreateDevelopmentApp,
       localhost: this.onCreateLocalHostApp,
@@ -79,6 +77,7 @@ class App {
       return application;
     } else {
       console.log(`NODE_ENV is Undefined!!! So, LocalHost Mode Start`);
+      config.NODE_ENV = "localhost";
       return this.onCreateLocalHostApp;
     }
   };
