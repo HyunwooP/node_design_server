@@ -8,13 +8,13 @@ const config: ConfigType = {
   // "development" | "production" | "localhost"
   NODE_ENV: (process.env.NODE_ENV as NodeEnvType) ?? "localhost",
   sentryDSN: process.env.sentryDSN ?? "",
-  port: process.env.port ?? 3002,
+  port: process.env.port ?? 3005,
   mongoPort: process.env.mongoPort ?? 27017,
   mongoHost: process.env.mongoHost ?? "127.0.0.1",
   mongoPassword: process.env.mongoPassword ?? "",
   origin:
-    process.env.clientDomain && process.env.clientPort
-      ? `http://${process.env.clientDomain}:${process.env.clientPort}`
+    process.env.gatewayDomain && process.env.gatewayPort
+      ? `http://${process.env.gatewayDomain}:${process.env.gatewayPort}`
       : "http://localhost:8080",
 };
 
