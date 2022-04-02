@@ -1,21 +1,28 @@
 import { RouteItemType } from "@/lib/route/routes";
 import * as Style from "@/models/Style/controller";
 
+const rootPath = "/styles";
 const StyleRoute: RouteItemType[] = [
   {
-    path: "/findStyleCount",
+    path: `${rootPath}/count`,
     method: "get",
     next: Style.findCount,
     auth: false,
   },
   {
-    path: "/findStyle",
+    path: `${rootPath}/:styleId`,
+    method: "get",
+    next: Style.findOne,
+    auth: false,
+  },
+  {
+    path: rootPath,
     method: "get",
     next: Style.find,
     auth: false,
   },
   {
-    path: "/removeStyle",
+    path: `${rootPath}/:styleId`,
     method: "delete",
     next: Style.remove,
     auth: true,
