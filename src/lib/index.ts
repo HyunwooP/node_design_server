@@ -1,6 +1,6 @@
 import { connectMongo, connectRepository } from "./database/mongo";
 import AppRepository from "./database/mongo/repository";
-import { createExpress } from "./express";
+import { createDevelopmentExpress, createProductionExpress } from "./express";
 import { getErrorItems, onFailureHandler } from "./function";
 import { initMiddleWare, IRequest, IResponse } from "./middleware";
 import createRoute from "./route";
@@ -11,7 +11,8 @@ import { UnknownObject } from "./type";
 
 export {
   initializeSentry,
-  createExpress,
+  createDevelopmentExpress,
+  createProductionExpress,
   createServer,
   createRoute,
   onFailureHandler,

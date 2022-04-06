@@ -5,28 +5,27 @@ import {
   AppRepository,
   connectMongo,
   connectRepository,
-  createExpress,
+  createDevelopmentExpress,
+  createProductionExpress,
   createRoute,
   createServer,
   initializeSentry,
 } from "./lib";
 
 class App {
-  private readonly server: Application = createExpress();
-
-  private onInitializeSentry(): void {
+  private onInitializeSentry(server: Application): void {
     console.log("App Initialize Sentry");
-    initializeSentry(this.server);
+    initializeSentry(server);
   }
 
-  private onCreateRoute(): void {
+  private onCreateRoute(server: Application): void {
     console.log("App Created Route");
-    createRoute(this.server);
+    createRoute(server);
   }
 
-  private onCreateServer(): void {
+  private onCreateServer(server: Application): void {
     console.log("App Created Server");
-    createServer(this.server);
+    createServer(server);
   }
 
   private async onConnectDB(): Promise<void> {
@@ -45,8 +44,10 @@ class App {
   }
 
   public onCreateLocalHostApp = async (): Promise<void> => {
-    this.onCreateRoute();
-    this.onCreateServer();
+    const server: Application = createDevelopmentExpress();
+
+    this.onCreateRoute(server);
+    this.onCreateServer(server);
     await this.onConnectDB();
     await this.onConnectRepository();
     await this.onCreateTestSample();
@@ -56,9 +57,11 @@ class App {
   private onCreateDevelopmentApp = this.onCreateLocalHostApp;
 
   public onCreateProductionApp = async (): Promise<void> => {
-    this.onInitializeSentry();
-    this.onCreateRoute();
-    this.onCreateServer();
+    const server: Application = createProductionExpress();
+
+    this.onInitializeSentry(server);
+    this.onCreateRoute(server);
+    this.onCreateServer(server);
     await this.onConnectDB();
     await this.onConnectRepository();
   };
