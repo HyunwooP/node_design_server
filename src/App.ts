@@ -9,7 +9,7 @@ import {
   createProductionExpress,
   createRoute,
   createServer,
-  initializeSentry,
+  initializeSentry
 } from "./lib";
 
 class App {
@@ -43,7 +43,7 @@ class App {
     await AppRepository.generateTestData();
   }
 
-  public onCreateLocalHostApp = async (): Promise<void> => {
+  private onCreateLocalHostApp = async (): Promise<void> => {
     const server: Application = createDevelopmentExpress();
 
     this.onCreateRoute(server);
@@ -56,7 +56,7 @@ class App {
   // * localhost환경과 달라야 할 경우 확장
   private onCreateDevelopmentApp = this.onCreateLocalHostApp;
 
-  public onCreateProductionApp = async (): Promise<void> => {
+  private onCreateProductionApp = async (): Promise<void> => {
     const server: Application = createProductionExpress();
 
     this.onInitializeSentry(server);
@@ -85,7 +85,7 @@ class App {
     }
   };
 
-  public startApplication = async (): Promise<void> => {
+  startApplication = async (): Promise<void> => {
     try {
       const application = this.getApplication();
       await application();
