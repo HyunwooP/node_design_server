@@ -1,3 +1,5 @@
+import config from "@/config";
+import { ConfigType } from "@/lib/type";
 import * as _ from "lodash";
 import { ObjectID } from "mongodb";
 import * as os from "os";
@@ -41,3 +43,9 @@ export const toObjectId = (_id: string | ObjectID | undefined): ObjectID => {
 
   return typeof _id === "string" ? new ObjectID(_id) : _id;
 };
+
+export const generateConfigLog = () => {
+  return Object.keys(config).forEach((key) => {
+    console.log(`${key}: ${config[key as keyof ConfigType]}`);
+  })
+}
