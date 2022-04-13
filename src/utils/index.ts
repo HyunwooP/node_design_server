@@ -44,8 +44,8 @@ export const toObjectId = (_id: string | ObjectID | undefined): ObjectID => {
   return typeof _id === "string" ? new ObjectID(_id) : _id;
 };
 
-export const generateConfigLog = () => {
-  return Object.keys(config).forEach((key) => {
+export const generateConfigLog = (): void => {
+  Object.keys(config).forEach((key) => {
     console.log(`${key}: ${config[key as keyof ConfigType]}`);
   })
-}
+};
