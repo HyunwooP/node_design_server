@@ -45,7 +45,20 @@ export const toObjectId = (_id: string | ObjectID | undefined): ObjectID => {
 };
 
 export const generateConfigLog = (): void => {
+  console.log('==================================');
+  console.log('*');
+  console.log('*');
+  console.log('*');
+  console.log('*');
+  console.log('*');
+  console.log(`* start time: ${new Date().getTime()}`);
   Object.keys(config).forEach((key) => {
-    console.log(`${key}: ${config[key as keyof ConfigType]}`);
-  })
+    console.log(`* ${key}: ${config[key as keyof ConfigType]}`);
+  });
+  console.log('*');
+  console.log('*');
+  console.log('*');
+  console.log('*');
+  console.log('*');
+  console.log('==================================');
 };
