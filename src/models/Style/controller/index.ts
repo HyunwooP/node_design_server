@@ -10,17 +10,6 @@ import {
 } from "../service";
 import { StyleRequestType } from "../type";
 
-/**
- * @description
- * 대표 CRUD를 통해 중복되는 객체 호출을 방지한다.
- */
-
-/**
- * @method GET
- * @param {IRequest} request
- * @param {IResponse} response
- * @returns {CommonPromiseAPIResponseType<number>}
- */
 export const findCount = async (
   request: IRequest,
   response: IResponse
@@ -28,12 +17,6 @@ export const findCount = async (
   return await findStyleCount();
 };
 
-/**
- * @method GET
- * @param {IRequest} request
- * @param {IResponse} response
- * @returns {CommonPromiseAPIResponseType<Style>}
- */
 export const findOne = async (
   request: IRequest,
   response: IResponse
@@ -42,12 +25,6 @@ export const findOne = async (
   return await findOneStyle(conditions);
 };
 
-/**
- * @method GET
- * @param {IRequest} request
- * @param {IResponse} response
- * @returns {CommonPromiseAPIResponseType<Style[], number>}
- */
 export const find = async (
   request: IRequest,
   response: IResponse
@@ -56,12 +33,6 @@ export const find = async (
   return await findStyle(conditions);
 };
 
-/**
- * @method POST
- * @param {IRequest} request
- * @param {IResponse} response
- * @returns {CommonPromiseAPIResponseType<Style>}
- */
 export const update = async (
   request: IRequest,
   response: IResponse
@@ -70,12 +41,6 @@ export const update = async (
   return await updateStyle(conditions);
 };
 
-/**
- * @method DELETE
- * @param {IRequest} request
- * @param {IResponse} response
- * @returns {CommonPromiseAPIResponseType<object>}
- */
 export const remove = async (
   request: IRequest,
   response: IResponse
