@@ -4,19 +4,19 @@ import { Column, Entity, ObjectIdColumn } from "typeorm";
 
 @Entity("theme")
 export class Theme extends CommonEntity {
-  @ObjectIdColumn()
+  @ObjectIdColumn({ comment: "고유키" })
   _id!: ObjectID;
 
-  @Column({ unique: true })
+  @Column({ unique: true, comment: "테마 이름" })
   name!: string;
 
-  @Column()
+  @Column({ comment: "테마에 포함되는 스타일 키값" })
   styles!: ObjectID[];
 
-  @Column({ default: true })
+  @Column({ default: true, comment: "활성 여부" })
   isActive!: boolean;
 
-  @Column({ default: false })
+  @Column({ default: false, comment: "삭제 여부" })
   isDeleted!: boolean;
 
   findThemeItem() {
