@@ -45,20 +45,29 @@ export const toObjectId = (_id: string | ObjectID | undefined): ObjectID => {
 };
 
 export const generateConfigLog = (): void => {
-  console.log('==================================');
-  console.log('*');
-  console.log('*');
-  console.log('*');
-  console.log('*');
-  console.log('*');
-  console.log(`* start time: ${new Date().getTime()}`);
+  console.log("==================================");
+  console.log("*");
+  console.log("*");
+  console.log("*");
+  console.log("*");
+  console.log("*");
+  console.log(
+    `* start time: ${new Date().toLocaleDateString(config.timezone, {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+    })}`
+  );
   Object.keys(config).forEach((key) => {
     console.log(`* ${key}: ${config[key as keyof ConfigType]}`);
   });
-  console.log('*');
-  console.log('*');
-  console.log('*');
-  console.log('*');
-  console.log('*');
-  console.log('==================================');
+  console.log("*");
+  console.log("*");
+  console.log("*");
+  console.log("*");
+  console.log("*");
+  console.log("==================================");
 };

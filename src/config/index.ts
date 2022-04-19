@@ -16,6 +16,7 @@ const config: ConfigType = {
     process.env.gatewayDomain && process.env.gatewayPort
       ? `http://${process.env.gatewayDomain}:${process.env.gatewayPort}`
       : "http://localhost:8080",
+  timezone: process.env.timezone ?? "ko",
 };
 
 export default config;

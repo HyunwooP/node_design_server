@@ -14,4 +14,5 @@ export type ConfigType = {
   mongoHost: string;
   mongoPassword: string;
   origin: string;
+  timezone: string;
 };

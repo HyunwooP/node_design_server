@@ -16,13 +16,13 @@ class AppRepository {
   private theme!: MongoRepository<Theme>;
 
   async generateTestData(): Promise<void> {
-    let styleInfos: any = [];
-    let layoutInfos: any = {
+    const styleInfos: any = [];
+    const layoutInfos: any = {
       BLACK_THEME_STYLE: [],
       WHITE_THEME_STYLE: [],
       GREEN_THEME_STYLE: [],
     };
-    let componentInfos: any = {
+    const componentInfos: any = {
       BLACK_THEME_STYLE: [],
       WHITE_THEME_STYLE: [],
       GREEN_THEME_STYLE: [],
