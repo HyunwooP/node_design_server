@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getErrorItems } from "..";
+import { getErrorItem } from "..";
 import generateRequest from "./request";
 import generateResponse from "./response";
 
@@ -25,7 +25,7 @@ const initMiddleWare = async (
 
     next();
   } catch (error: unknown) {
-    const _error = getErrorItems(error);
+    const _error = getErrorItem(error);
 
     response.status(_error.status);
     response.send(_error);

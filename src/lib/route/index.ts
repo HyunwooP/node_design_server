@@ -1,4 +1,4 @@
-import { getErrorItems } from "@/lib";
+import { getErrorItem } from "@/lib";
 import { Application } from "express";
 import * as _ from "lodash";
 import { CommonStatusCode, initMiddleWare, IRequest, IResponse } from "..";
@@ -18,7 +18,7 @@ export default (app: Application): void => {
             item: result,
           });
         } catch (error: unknown) {
-          const _error = getErrorItems(error);
+          const _error = getErrorItem(error);
 
           console.log(`ERROR_${_.toUpper(item.method)}_${item.path}`);
           console.log(_error);
