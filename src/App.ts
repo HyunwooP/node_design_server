@@ -9,7 +9,7 @@ import {
   createProductionExpress,
   createRoute,
   createServer,
-  initializeSentry
+  initializeSentry,
 } from "./lib";
 import { generateConfigLog } from "./utils";
 
