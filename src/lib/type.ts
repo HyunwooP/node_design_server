@@ -10,9 +10,11 @@ export type ConfigType = {
   NODE_ENV: NodeEnvType;
   sentryDSN: string;
   port: string | number;
+  mongoUserName: string;
   mongoPort: string | number;
   mongoHost: string;
   mongoPassword: string;
+  mongoDataBase: string;
   origin: string;
   timezone: string;
 };

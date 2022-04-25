@@ -9,9 +9,11 @@ const config: ConfigType = {
   NODE_ENV: (process.env.NODE_ENV as NodeEnvType) ?? "localhost",
   sentryDSN: process.env.sentryDSN ?? "",
   port: process.env.port ?? 3005,
+  mongoUserName: process.env.mongoUserName ?? "root",
   mongoPort: process.env.mongoPort ?? 27017,
   mongoHost: process.env.mongoHost ?? "127.0.0.1",
   mongoPassword: process.env.mongoPassword ?? "",
+  mongoDataBase: process.env.mongoDataBase ?? "localDB",
   origin:
     process.env.gatewayDomain && process.env.gatewayPort
       ? `http://${process.env.gatewayDomain}:${process.env.gatewayPort}`
