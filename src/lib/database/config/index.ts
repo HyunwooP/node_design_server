@@ -5,9 +5,6 @@ export type TypeOrmConfigType = {
   [key: string]: MongoConnectionOptions;
 };
 
-/**
- * Typeorm Mongo config
- */
 export const mongoConfig: TypeOrmConfigType = {
   localhost: {
     name: "localhost",
