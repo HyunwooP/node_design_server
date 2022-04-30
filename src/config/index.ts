@@ -5,7 +5,6 @@ import "dotenv/config";
  * 외부에 노출되는 데이터들이기 때문에 주의해서 사용해야 한다.
  */
 const config: ConfigType = {
-  // "development" | "production" | "localhost"
   NODE_ENV: (process.env.NODE_ENV as NodeEnvType) ?? "localhost",
   sentryDSN: process.env.sentryDSN ?? "",
   port: process.env.port ?? 3005,
