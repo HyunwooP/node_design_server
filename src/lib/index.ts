@@ -1,5 +1,5 @@
 import { connectMongo, connectRepository } from "./database/mongo";
-import AppRepository from "./database/mongo/repository";
+import AppRepository from "./database/mongo/AppRepository";
 import { createDevelopmentExpress, createProductionExpress } from "./express";
 import { getErrorItem, onFailureHandler } from "./function";
 import { initMiddleWare, IRequest, IResponse } from "./middleware";
