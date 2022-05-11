@@ -4,12 +4,6 @@ import * as _ from "lodash";
 import { ObjectID } from "mongodb";
 import * as os from "os";
 
-/**
- * nowMemoryPercent
- * @description
- * 해당 인스턴스 서버의 메모리 데이터 제공
- * @returns {number}
- */
 export const nowMemoryPercent = (): number => {
   const totalmem = os.totalmem();
   const freemem = os.freemem();
@@ -18,12 +12,6 @@ export const nowMemoryPercent = (): number => {
   return memPercent;
 };
 
-/**
- * healthCheckMemory
- * @description
- * 해당 인스턴스 서버의 메모리 체크
- * @returns {boolean}
- */
 export const healthCheckMemory = (): boolean => {
   const memoryLimit = 90;
   return nowMemoryPercent() >= memoryLimit;
