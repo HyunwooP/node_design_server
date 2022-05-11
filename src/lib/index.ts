@@ -1,7 +1,6 @@
 import { connectMongo, connectRepository } from "./database/mongo";
 import AppRepository from "./database/mongo/AppRepository";
 import { createDevelopmentExpress, createProductionExpress } from "./express";
-import { getErrorItem, onFailureHandler } from "./function";
 import { initMiddleWare, IRequest, IResponse } from "./middleware";
 import createRoute from "./route";
 import { initializeSentry } from "./sentry";
@@ -15,8 +14,6 @@ export {
     createProductionExpress,
     createServer,
     createRoute,
-    onFailureHandler,
-    getErrorItem,
     CommonStatusCode,
     CommonStatusMessage,
     connectMongo,

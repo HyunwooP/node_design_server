@@ -1,5 +1,5 @@
+import { getErrorItem } from "@/utils";
 import { Request, Response } from "express";
-import { getErrorItem } from "..";
 import generateRequest from "./request";
 import generateResponse from "./response";
 

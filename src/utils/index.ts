@@ -3,6 +3,7 @@ import { ConfigType } from "@/lib/type";
 import * as _ from "lodash";
 import { ObjectID } from "mongodb";
 import * as os from "os";
+import { getErrorItem, HandlerParamsType, onFailureHandler } from "./error";
 
 export const nowMemoryPercent = (): number => {
   const totalmem = os.totalmem();
@@ -58,4 +59,10 @@ export const generateConfigLog = (): void => {
   console.log("*");
   console.log("*");
   console.log("==================================");
+};
+
+export {
+  getErrorItem,
+  HandlerParamsType,
+  onFailureHandler
 };

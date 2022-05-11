@@ -1,12 +1,11 @@
 import {
   AppRepository,
   CommonStatusCode,
-  CommonStatusMessage,
-  onFailureHandler,
+  CommonStatusMessage
 } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
 import { QueryType } from "@/models/Common/type";
-import { toObjectId } from "@/utils";
+import { onFailureHandler, toObjectId } from "@/utils";
 import * as _ from "lodash";
 import { Style } from "../entity";
 import { StyleRequestType } from "../type";

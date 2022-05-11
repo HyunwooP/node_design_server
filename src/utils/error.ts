@@ -6,23 +6,7 @@ export type HandlerParamsType = {
   data?: UnknownObject;
 };
 
-export const onFailureHandler = ({
-  status = CommonStatusCode.INTERNAL_SERVER_ERROR,
-  message = CommonStatusMessage.INTERNAL_SERVER_ERROR,
-  data = {},
-}: HandlerParamsType): HandlerParamsType => {
-  throw {
-    status,
-    message,
-    data,
-  };
-};
-
-export const getErrorItem = (error: unknown): HandlerParamsType => {
-  const item = {
-    status: CommonStatusCode.INTERNAL_SERVER_ERROR,
-  } as HandlerParamsType;
-
+const generateErrorItem = (error: unknown, item: HandlerParamsType): HandlerParamsType => {
   if (typeof error === "string") {
     item.message = error;
   } else if (error instanceof Error) {
@@ -36,4 +20,24 @@ export const getErrorItem = (error: unknown): HandlerParamsType => {
   }
 
   return item;
+};
+
+export const getErrorItem = (error: unknown): HandlerParamsType => {
+  const item = {
+    status: CommonStatusCode.INTERNAL_SERVER_ERROR,
+  } as HandlerParamsType;
+
+  return generateErrorItem(error, item);
+};
+
+export const onFailureHandler = ({
+  status = CommonStatusCode.INTERNAL_SERVER_ERROR,
+  message = CommonStatusMessage.INTERNAL_SERVER_ERROR,
+  data = {},
+}: HandlerParamsType): HandlerParamsType => {
+  throw {
+    status,
+    message,
+    data,
+  };
 };

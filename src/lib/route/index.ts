@@ -1,4 +1,4 @@
-import { getErrorItem } from "@/lib";
+import { getErrorItem } from "@/utils";
 import { Application } from "express";
 import * as _ from "lodash";
 import { CommonStatusCode, initMiddleWare, IRequest, IResponse } from "..";

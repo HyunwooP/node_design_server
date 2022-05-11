@@ -1,7 +1,6 @@
-import { CommonStatusCode, onFailureHandler } from "@/lib";
-import { HandlerParamsType } from "@/lib/function";
+import { CommonStatusCode } from "@/lib";
 import { CommonAPIResponseType } from "@/lib/type";
-import { healthCheckMemory, nowMemoryPercent } from "@/utils";
+import { HandlerParamsType, healthCheckMemory, nowMemoryPercent, onFailureHandler } from "@/utils";
 
 export const _health = (): CommonAPIResponseType<HandlerParamsType> => {
   if (healthCheckMemory()) {
