@@ -14,6 +14,7 @@ import {
 import { generateConfigLog } from "./utils";
 
 class App {
+
   private onInitializeSentry(server: Application): void {
     console.log("App Initialize Sentry");
     initializeSentry(server);
@@ -69,9 +70,9 @@ class App {
 
   private getApplication(): Function {
     const applications = {
-      production: this.onCreateProductionApp,
-      development: this.onCreateDevelopmentApp,
-      localhost: this.onCreateLocalHostApp,
+      production: () => this.onCreateProductionApp(),
+      development: () => this.onCreateDevelopmentApp(),
+      localhost: () => this.onCreateLocalHostApp(),
     };
 
     const application = applications[config.NODE_ENV];
