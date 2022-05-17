@@ -1,11 +1,7 @@
-import {
-  AppRepository,
-  CommonStatusCode,
-  CommonStatusMessage
-} from "@/lib";
+import { AppRepository, CommonStatusCode, CommonStatusMessage } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
 import { QueryType } from "@/models/Common/type";
-import { onFailureHandler, toObjectId } from "@/utils";
+import { onFailureHandler } from "@/utils";
 import * as _ from "lodash";
 import { ObjectLiteral } from "typeorm";
 import { Theme } from "../entity";
@@ -80,11 +76,8 @@ export const updateTheme = async (
     });
   }
 
-  await AppRepository.Theme.update(
-    { _id: toObjectId(conditions._id) },
-    conditions
-  );
-  return findOneTheme({ _id: toObjectId(conditions._id) });
+  await AppRepository.Theme.update({ _id: conditions._id }, conditions);
+  return findOneTheme({ _id: conditions._id });
 };
 
 export const removeTheme = async (

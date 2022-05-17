@@ -1,11 +1,7 @@
-import {
-  AppRepository,
-  CommonStatusCode,
-  CommonStatusMessage
-} from "@/lib";
+import { AppRepository, CommonStatusCode, CommonStatusMessage } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
 import { QueryType } from "@/models/Common/type";
-import { onFailureHandler, toObjectId } from "@/utils";
+import { onFailureHandler } from "@/utils";
 import * as _ from "lodash";
 import { Layout } from "../entity";
 import { LayoutRequestType } from "../type";
@@ -61,11 +57,8 @@ export const updateLayout = async (
     });
   }
 
-  await AppRepository.Layout.update(
-    { _id: toObjectId(conditions._id) },
-    conditions
-  );
-  return findOneLayout({ _id: toObjectId(conditions._id) });
+  await AppRepository.Layout.update({ _id: conditions._id }, conditions);
+  return findOneLayout({ _id: conditions._id });
 };
 
 export const removeLayout = async (

@@ -1,11 +1,7 @@
-import {
-  AppRepository,
-  CommonStatusCode,
-  CommonStatusMessage
-} from "@/lib";
+import { AppRepository, CommonStatusCode, CommonStatusMessage } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
 import { QueryType } from "@/models/Common/type";
-import { onFailureHandler, toObjectId } from "@/utils";
+import { onFailureHandler } from "@/utils";
 import * as _ from "lodash";
 import { Component } from "../entity";
 import { ComponentRequestType } from "../type";
@@ -61,11 +57,8 @@ export const updateComponent = async (
     });
   }
 
-  await AppRepository.Component.update(
-    { _id: toObjectId(conditions._id) },
-    conditions
-  );
-  return findOneComponent({ _id: toObjectId(conditions._id) });
+  await AppRepository.Component.update({ _id: conditions._id }, conditions);
+  return findOneComponent({ _id: conditions._id });
 };
 
 export const removeComponent = async (
