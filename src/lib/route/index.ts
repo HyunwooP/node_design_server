@@ -1,7 +1,7 @@
 import { getErrorItem } from "@/utils";
 import { Application } from "express";
 import * as _ from "lodash";
-import { CommonStatusCode, initMiddleWare, IRequest, IResponse } from "..";
+import { initMiddleWare, IRequest, IResponse } from "..";
 import RouteItems, { RouteItemType } from "./routes";
 
 export default (app: Application): void => {
@@ -13,7 +13,6 @@ export default (app: Application): void => {
         try {
           const result = await item.next(request, response);
           console.log(`SUCCESS_${_.toUpper(item.method)}_${item.path}`);
-          response.status(result.status ?? CommonStatusCode.OK);
           response.send({
             item: result,
           });
