@@ -10,7 +10,7 @@ const LayoutRoute: RouteItemType[] = [
     auth: false,
   },
   {
-    path: `${rootPath}/:layoutId`,
+    path: `${rootPath}/:_id`,
     method: "get",
     next: Layout.findOne,
     auth: false,
@@ -22,7 +22,7 @@ const LayoutRoute: RouteItemType[] = [
     auth: false,
   },
   {
-    path: `${rootPath}/:layoutId`,
+    path: `${rootPath}/:_id`,
     method: "delete",
     next: Layout.remove,
     auth: true,

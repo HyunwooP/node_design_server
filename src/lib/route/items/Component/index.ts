@@ -10,7 +10,7 @@ const ComponentRoute: RouteItemType[] = [
     auth: false,
   },
   {
-    path: `${rootPath}/:componentId`,
+    path: `${rootPath}/:_id`,
     method: "get",
     next: Component.findOne,
     auth: false,
@@ -22,7 +22,7 @@ const ComponentRoute: RouteItemType[] = [
     auth: false,
   },
   {
-    path: `${rootPath}/:componentId`,
+    path: `${rootPath}/:_id`,
     method: "delete",
     next: Component.remove,
     auth: true,

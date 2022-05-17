@@ -16,7 +16,7 @@ const ThemeRoute: RouteItemType[] = [
     auth: false,
   },
   {
-    path: `${rootPath}/:themeId`,
+    path: `${rootPath}/:_id`,
     method: "get",
     next: Theme.findOne,
     auth: false,
@@ -28,7 +28,7 @@ const ThemeRoute: RouteItemType[] = [
     auth: false,
   },
   {
-    path: `${rootPath}/:themeId`,
+    path: `${rootPath}/:_id`,
     method: "delete",
     next: Theme.remove,
     auth: true,

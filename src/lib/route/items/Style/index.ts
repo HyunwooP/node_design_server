@@ -10,7 +10,7 @@ const StyleRoute: RouteItemType[] = [
     auth: false,
   },
   {
-    path: `${rootPath}/:styleId`,
+    path: `${rootPath}/:_id`,
     method: "get",
     next: Style.findOne,
     auth: false,
@@ -22,7 +22,7 @@ const StyleRoute: RouteItemType[] = [
     auth: false,
   },
   {
-    path: `${rootPath}/:styleId`,
+    path: `${rootPath}/:_id`,
     method: "delete",
     next: Style.remove,
     auth: true,
