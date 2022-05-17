@@ -1,5 +1,18 @@
-import { ConfigType, NodeEnvType } from "@/lib/type";
+import { NodeEnvType } from "@/lib/type";
 import "dotenv/config";
+
+export type ConfigType = {
+  NODE_ENV: NodeEnvType;
+  sentryDSN: string;
+  port: string | number;
+  mongoUserName: string;
+  mongoPort: string | number;
+  mongoHost: string;
+  mongoPassword: string;
+  mongoDataBase: string;
+  origin: string;
+  timezone: string;
+};
 
 /**
  * 외부에 노출되는 데이터들이기 때문에 주의해서 사용해야 한다.

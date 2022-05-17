@@ -1,5 +1,4 @@
-import config from "@/config";
-import { ConfigType } from "@/lib/type";
+import config, { ConfigType } from "@/config";
 import * as _ from "lodash";
 import { ObjectID } from "mongodb";
 import * as os from "os";
@@ -61,8 +60,4 @@ export const generateConfigLog = (): void => {
   console.log("==================================");
 };
 
-export {
-  getErrorItem,
-  HandlerParamsType,
-  onFailureHandler
-};
+export { getErrorItem, HandlerParamsType, onFailureHandler };
