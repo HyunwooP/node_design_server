@@ -1,6 +1,6 @@
 import { AppRepository, CommonStatusCode, CommonStatusMessage } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
-import { QueryType } from "@/models/Common/type";
+import { QueryType, SortType } from "@/models/Common/type";
 import { onFailureHandler } from "@/utils";
 import * as _ from "lodash";
 import { Layout } from "../entity";
@@ -22,17 +22,19 @@ export const findLayout = async (
 ): CommonPromiseAPIResponseType<[Layout[], number]> => {
   let query = {} as QueryType;
 
-  if (!_.isUndefined(conditions.searchKeyword)) {
+  if (!_.isEmpty(conditions.searchKeyword)) {
     query.where = {
       name: {
-        $regex: conditions.searchKeyword,
+        $regex: conditions.searchKeyword as string,
         $options: "i",
       },
     };
   }
 
-  if (!_.isUndefined(conditions.nameSort)) {
-    query.order.name = conditions.nameSort;
+  if (!_.isEmpty(conditions.nameSort)) {
+    query.order = {
+      name: conditions.nameSort as SortType,
+    };
   }
 
   return await AppRepository.Layout.findAndCount({
