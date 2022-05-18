@@ -17,16 +17,16 @@ const createItem = (request: IRequest): void => {
       };
 
       // middleware단에서 objectId로 무조건 전처리
-      if (!_.isUndefined(query._id)) {
+      if (!_.isEmpty(query._id)) {
         query._id = toObjectId(query._id as string);
       }
 
       // Mysql과 다르게 Mongo는 take, skip을 number타입으로 무조건 제공해야함.
-      if (!_.isUndefined(query.take)) {
+      if (!_.isEmpty(query.take)) {
         query.take = Number(query.take);
       }
 
-      if (!_.isUndefined(query.skip)) {
+      if (!_.isEmpty(query.skip)) {
         query.skip = Number(query.skip);
       }
 
