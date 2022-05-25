@@ -9,12 +9,11 @@ import {
   createProductionExpress,
   createRoute,
   createServer,
-  initializeSentry
+  initializeSentry,
 } from "./lib";
 import { generateConfigLog } from "./utils";
 
 class App {
-
   private onInitializeSentry(server: Application): void {
     console.log("App Initialize Sentry");
     initializeSentry(server);
@@ -53,7 +52,7 @@ class App {
     await this.onConnectDB();
     await this.onConnectRepository();
     await this.onCreateTestSample();
-  };
+  }
 
   // * localhost환경과 달라야 할 경우 확장
   private onCreateDevelopmentApp = this.onCreateLocalHostApp;
@@ -66,7 +65,7 @@ class App {
     this.onCreateServer(server);
     await this.onConnectDB();
     await this.onConnectRepository();
-  };
+  }
 
   private getApplication(): Function {
     const applications = {
@@ -84,7 +83,7 @@ class App {
       config.NODE_ENV = "localhost";
       return this.onCreateLocalHostApp;
     }
-  };
+  }
 
   async startApplication(): Promise<void> {
     try {
@@ -94,7 +93,7 @@ class App {
     } catch (error: unknown) {
       console.log(error);
     }
-  };
+  }
 }
 
 export default new App();
