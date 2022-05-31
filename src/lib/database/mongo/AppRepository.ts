@@ -3,6 +3,7 @@ import { Component } from "@/models/Component/entity";
 import { Layout } from "@/models/Layout/entity";
 import { Style } from "@/models/Style/entity";
 import { Theme } from "@/models/Theme/entity";
+import { ObjectId } from "mongodb";
 import { getManager, MongoRepository } from "typeorm";
 import { sampleComponents } from "./sample/component";
 import { sampleLayouts } from "./sample/layout";
@@ -16,16 +17,20 @@ class AppRepository {
   private theme!: MongoRepository<Theme>;
 
   async generateTestData(): Promise<void> {
-    const styleInfos: any = [];
-    const layoutInfos: any = {
+    const styleInfos = [] as ObjectId[];
+    const layoutInfos = {
       BLACK_THEME_STYLE: [],
       WHITE_THEME_STYLE: [],
       GREEN_THEME_STYLE: [],
+    } as {
+      [name: string]: ObjectId[];
     };
-    const componentInfos: any = {
+    const componentInfos = {
       BLACK_THEME_STYLE: [],
       WHITE_THEME_STYLE: [],
       GREEN_THEME_STYLE: [],
+    } as {
+      [name: string]: ObjectId[];
     };
 
     // Generate Component Collection
