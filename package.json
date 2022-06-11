@@ -1,30 +1,30 @@
 {
-  "name": "node-design-template",
+  "name": "express-design-system-boilerplate",
   "version": "1.0.0",
-  "description": "design style server",
+  "description": "design system server",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "export port=3005 && nodemon src/index.ts"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/awakelife93/node-design-template.git"
+    "url": "git+https://github.com/awakelife93/express-design-system-boilerplate.git"
   },
   "keywords": [
-    "node",
+    "express",
     "design",
     "style",
-    "template"
+    "boilerplate"
   ],
   "author": "HyunwooPark",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/awakelife93/node-design-template/issues"
+    "url": "https://github.com/awakelife93/express-design-system-boilerplate/issues"
   },
   "_moduleAliases": {
     "@": "src"
   },
-  "homepage": "https://github.com/awakelife93/node-design-template#readme",
+  "homepage": "https://github.com/awakelife93/express-design-system-boilerplate#readme",
   "dependencies": {
     "@sentry/node": "^6.18.2",
     "@sentry/tracing": "^6.18.2",
