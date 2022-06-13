@@ -4,7 +4,7 @@ import { Style } from "@/models/Style";
 import { QueryType, SortType } from "@/types/common";
 import { StyleRequestType } from "@/types/style";
 import { onFailureHandler } from "@/utils";
-import * as _ from "lodash";
+import _ from "lodash";
 
 export const findStyleCount =
   async (): CommonPromiseAPIResponseType<number> => {

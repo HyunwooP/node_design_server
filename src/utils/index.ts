@@ -1,7 +1,7 @@
 import config, { ConfigType } from "@/config";
-import * as _ from "lodash";
+import _ from "lodash";
 import { ObjectID } from "mongodb";
-import * as os from "os";
+import os from "os";
 import { getErrorItem, HandlerParamsType, onFailureHandler } from "./error";
 
 export const nowMemoryPercent = (): number => {

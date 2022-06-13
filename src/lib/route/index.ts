@@ -1,6 +1,6 @@
 import { getErrorItem } from "@/utils";
 import { Application } from "express";
-import * as _ from "lodash";
+import _ from "lodash";
 import { initMiddleWare, IRequest, IResponse } from "..";
 import RouteItems, { RouteItemType } from "./routes";
 

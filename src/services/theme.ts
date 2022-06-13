@@ -4,7 +4,7 @@ import { Theme } from "@/models/Theme";
 import { QueryType, SortType } from "@/types/common";
 import { ThemeRequestType } from "@/types/theme";
 import { onFailureHandler } from "@/utils";
-import * as _ from "lodash";
+import _ from "lodash";
 import { ObjectLiteral } from "typeorm";
 
 export const findThemeCount =

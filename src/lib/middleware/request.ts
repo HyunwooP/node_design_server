@@ -1,6 +1,6 @@
 import { UnknownObject } from "@/lib";
 import { toObjectId } from "@/utils";
-import * as _ from "lodash";
+import _ from "lodash";
 import { IRequest } from ".";
 
 export default async (request: IRequest): Promise<void> => {

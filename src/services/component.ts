@@ -4,7 +4,7 @@ import { Component } from "@/models/Component";
 import { QueryType, SortType } from "@/types/common";
 import { ComponentRequestType } from "@/types/component";
 import { onFailureHandler } from "@/utils";
-import * as _ from "lodash";
+import _ from "lodash";
 
 export const findComponentCount =
   async (): CommonPromiseAPIResponseType<number> => {

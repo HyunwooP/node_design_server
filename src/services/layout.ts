@@ -4,7 +4,7 @@ import { Layout } from "@/models/Layout";
 import { QueryType, SortType } from "@/types/common";
 import { LayoutRequestType } from "@/types/layout";
 import { onFailureHandler } from "@/utils";
-import * as _ from "lodash";
+import _ from "lodash";
 
 export const findLayoutCount =
   async (): CommonPromiseAPIResponseType<number> => {
