@@ -1,5 +1,5 @@
-import { CommonRequestType, SortType } from "@/models/Common/type";
-import { Layout } from "./entity";
+import { Layout } from "@/models/Layout";
+import { CommonRequestType, SortType } from "./common";
 
 type LayoutRequestSubOptionType = {
   nameSort: SortType;

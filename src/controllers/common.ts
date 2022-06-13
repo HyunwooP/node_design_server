@@ -1,7 +1,7 @@
 import { IRequest, IResponse } from "@/lib";
 import { CommonAPIResponseType } from "@/lib/type";
+import { _health } from "@/services/common";
 import { HandlerParamsType } from "@/utils";
-import { _health } from "../service";
 
 export const health = (
   request: IRequest,

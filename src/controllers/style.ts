@@ -1,14 +1,14 @@
 import { IRequest, IResponse } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
-import { Style } from "../entity";
+import { Style } from "@/models/Style";
 import {
   findOneStyle,
   findStyle,
   findStyleCount,
   removeStyle,
   updateStyle,
-} from "../service";
-import { StyleRequestType } from "../type";
+} from "@/services/style";
+import { StyleRequestType } from "@/types/style";
 
 export const findCount = async (
   request: IRequest,

@@ -1,14 +1,14 @@
 import { IRequest, IResponse } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
-import { Layout } from "../entity";
+import { Layout } from "@/models/Layout";
 import {
   findLayout,
   findLayoutCount,
   findOneLayout,
   removeLayout,
   updateLayout,
-} from "../service";
-import { LayoutRequestType } from "../type";
+} from "@/services/layout";
+import { LayoutRequestType } from "@/types/layout";
 
 export const findCount = async (
   request: IRequest,

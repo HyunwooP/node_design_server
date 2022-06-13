@@ -1,8 +1,8 @@
 import config from "@/config";
-import { Component } from "@/models/Component/entity";
-import { Layout } from "@/models/Layout/entity";
-import { Style } from "@/models/Style/entity";
-import { Theme } from "@/models/Theme/entity";
+import { Component } from "@/models/Component";
+import { Layout } from "@/models/Layout";
+import { Style } from "@/models/Style";
+import { Theme } from "@/models/Theme";
 import { ObjectId } from "mongodb";
 import { getManager, MongoRepository } from "typeorm";
 import { sampleComponents } from "./sample/component";

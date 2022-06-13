@@ -1,36 +1,42 @@
+import {
+  find,
+  findCount,
+  findItem,
+  findOne,
+  remove,
+} from "@/controllers/theme";
 import { RouteItemType } from "@/lib/route/routes";
-import * as Theme from "@/models/Theme/controller";
 
 const rootPath = "/themes";
 const ThemeRoute: RouteItemType[] = [
   {
     path: `${rootPath}/count`,
     method: "get",
-    next: Theme.findCount,
+    next: findCount,
     auth: false,
   },
   {
     path: `${rootPath}/themeItem`,
     method: "get",
-    next: Theme.findItem,
+    next: findItem,
     auth: false,
   },
   {
     path: `${rootPath}/:_id`,
     method: "get",
-    next: Theme.findOne,
+    next: findOne,
     auth: false,
   },
   {
     path: rootPath,
     method: "get",
-    next: Theme.find,
+    next: find,
     auth: false,
   },
   {
     path: `${rootPath}/:_id`,
     method: "delete",
-    next: Theme.remove,
+    next: remove,
     auth: true,
   },
 ];

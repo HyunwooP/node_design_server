@@ -1,6 +1,6 @@
 import { IRequest, IResponse } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
-import { Theme } from "../entity";
+import { Theme } from "@/models/Theme";
 import {
   findOneTheme,
   findTheme,
@@ -8,8 +8,8 @@ import {
   findThemeItem,
   removeTheme,
   updateTheme,
-} from "../service";
-import { ThemeRequestType } from "../type";
+} from "@/services/theme";
+import { ThemeRequestType } from "@/types/theme";
 
 export const findCount = async (
   request: IRequest,

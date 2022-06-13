@@ -1,10 +1,10 @@
 import { AppRepository, CommonStatusCode, CommonStatusMessage } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
-import { QueryType, SortType } from "@/models/Common/type";
+import { Component } from "@/models/Component";
+import { QueryType, SortType } from "@/types/common";
+import { ComponentRequestType } from "@/types/component";
 import { onFailureHandler } from "@/utils";
 import * as _ from "lodash";
-import { Component } from "../entity";
-import { ComponentRequestType } from "../type";
 
 export const findComponentCount =
   async (): CommonPromiseAPIResponseType<number> => {

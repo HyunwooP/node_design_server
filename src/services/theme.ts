@@ -1,11 +1,11 @@
 import { AppRepository, CommonStatusCode, CommonStatusMessage } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
-import { QueryType, SortType } from "@/models/Common/type";
+import { Theme } from "@/models/Theme";
+import { QueryType, SortType } from "@/types/common";
+import { ThemeRequestType } from "@/types/theme";
 import { onFailureHandler } from "@/utils";
 import * as _ from "lodash";
 import { ObjectLiteral } from "typeorm";
-import { Theme } from "../entity";
-import { ThemeRequestType } from "../type";
 
 export const findThemeCount =
   async (): CommonPromiseAPIResponseType<number> => {

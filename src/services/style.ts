@@ -1,10 +1,10 @@
 import { AppRepository, CommonStatusCode, CommonStatusMessage } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
-import { QueryType, SortType } from "@/models/Common/type";
+import { Style } from "@/models/Style";
+import { QueryType, SortType } from "@/types/common";
+import { StyleRequestType } from "@/types/style";
 import { onFailureHandler } from "@/utils";
 import * as _ from "lodash";
-import { Style } from "../entity";
-import { StyleRequestType } from "../type";
 
 export const findStyleCount =
   async (): CommonPromiseAPIResponseType<number> => {

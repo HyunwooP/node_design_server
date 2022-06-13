@@ -1,6 +1,6 @@
-import { CommonEntity } from "@/models/Common/entity";
 import { ObjectID } from "mongodb";
 import { Column, Entity, ObjectIdColumn } from "typeorm";
+import { CommonEntity } from "./Common";
 
 @Entity("component")
 export class Component extends CommonEntity {

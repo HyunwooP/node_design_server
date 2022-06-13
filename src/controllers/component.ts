@@ -1,14 +1,14 @@
 import { IRequest, IResponse } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
-import { Component } from "../entity";
+import { Component } from "@/models/Component";
 import {
   findComponent,
   findComponentCount,
   findOneComponent,
   removeComponent,
   updateComponent,
-} from "../service";
-import { ComponentRequestType } from "../type";
+} from "@/services/component";
+import { ComponentRequestType } from "@/types/component";
 
 export const findCount = async (
   request: IRequest,

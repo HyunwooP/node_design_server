@@ -1,10 +1,10 @@
 import { AppRepository, CommonStatusCode, CommonStatusMessage } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
-import { QueryType, SortType } from "@/models/Common/type";
+import { Layout } from "@/models/Layout";
+import { QueryType, SortType } from "@/types/common";
+import { LayoutRequestType } from "@/types/layout";
 import { onFailureHandler } from "@/utils";
 import * as _ from "lodash";
-import { Layout } from "../entity";
-import { LayoutRequestType } from "../type";
 
 export const findLayoutCount =
   async (): CommonPromiseAPIResponseType<number> => {

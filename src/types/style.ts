@@ -1,5 +1,5 @@
-import { CommonRequestType, SortType } from "@/models/Common/type";
-import { Style } from "./entity";
+import { Style } from "@/models/Style";
+import { CommonRequestType, SortType } from "./common";
 
 type StyleRequestSubOptionType = {
   nameSort: SortType;
