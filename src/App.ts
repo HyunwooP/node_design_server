@@ -1,16 +1,16 @@
+import AppRepository from "@/repository";
 import { Application } from "express";
 import _ from "lodash";
 import config from "./config";
 import {
-  AppRepository,
   connectMongo,
-  connectRepository,
   createDevelopmentExpress,
   createProductionExpress,
   createRoute,
   createServer,
   initializeSentry,
 } from "./lib";
+import generateTestData from "./lib/database/mongo/sample";
 import { generateConfigLog } from "./utils";
 
 class App {
@@ -36,12 +36,12 @@ class App {
 
   private async onConnectRepository(): Promise<void> {
     console.log("App Connected Repositorys");
-    await connectRepository();
+    await AppRepository.connect();
   }
 
   private async onCreateTestSample(): Promise<void> {
     console.log("App Created Test Datas");
-    await AppRepository.generateTestData();
+    await generateTestData();
   }
 
   private async onCreateLocalHostApp(): Promise<void> {

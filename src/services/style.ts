@@ -1,6 +1,7 @@
-import { AppRepository, CommonStatusCode, CommonStatusMessage } from "@/lib";
+import { CommonStatusCode, CommonStatusMessage } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
 import { Style } from "@/models/Style";
+import AppRepository from "@/repository";
 import { QueryType, SortType } from "@/types/common";
 import { StyleRequestType } from "@/types/style";
 import { onFailureHandler } from "@/utils";

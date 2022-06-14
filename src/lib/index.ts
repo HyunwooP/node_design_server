@@ -1,5 +1,4 @@
-import { connectMongo, connectRepository } from "./database/mongo";
-import AppRepository from "./database/mongo/AppRepository";
+import { connectMongo } from "./database/mongo";
 import { createDevelopmentExpress, createProductionExpress } from "./express";
 import { initMiddleWare, IRequest, IResponse } from "./middleware";
 import createRoute from "./route";
@@ -17,8 +16,6 @@ export {
   CommonStatusCode,
   CommonStatusMessage,
   connectMongo,
-  AppRepository,
-  connectRepository,
   initMiddleWare,
   IRequest,
   IResponse,
