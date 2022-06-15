@@ -1,4 +1,5 @@
 import config from "@/config";
+import { ErrorStatusMessage } from "@/lib/status";
 import { Component } from "@/models/Component";
 import { Layout } from "@/models/Layout";
 import { Style } from "@/models/Style";
@@ -21,7 +22,7 @@ class AppRepository {
 
   get Component(): MongoRepository<Component> {
     if (_.isNull(this.component)) {
-      throw new Error("Component MongoRepository is Empty");
+      throw new Error(`Component ${ErrorStatusMessage.IS_EMPTY_REPOSITORY}`);
     }
 
     return this.component;
@@ -29,7 +30,7 @@ class AppRepository {
 
   get Layout(): MongoRepository<Layout> {
     if (_.isNull(this.layout)) {
-      throw new Error("Component MongoRepository is Empty");
+      throw new Error(`Layout ${ErrorStatusMessage.IS_EMPTY_REPOSITORY}`);
     }
 
     return this.layout;
@@ -37,7 +38,7 @@ class AppRepository {
 
   get Style(): MongoRepository<Style> {
     if (_.isNull(this.style)) {
-      throw new Error("Component MongoRepository is Empty");
+      throw new Error(`Style ${ErrorStatusMessage.IS_EMPTY_REPOSITORY}`);
     }
 
     return this.style;
@@ -45,7 +46,7 @@ class AppRepository {
 
   get Theme(): MongoRepository<Theme> {
     if (_.isNull(this.theme)) {
-      throw new Error("Component MongoRepository is Empty");
+      throw new Error(`Theme ${ErrorStatusMessage.IS_EMPTY_REPOSITORY}`);
     }
 
     return this.theme;

@@ -1,4 +1,5 @@
 import config, { ConfigType } from "@/config";
+import { ErrorStatusMessage } from "@/lib/status";
 import _ from "lodash";
 import { ObjectID } from "mongodb";
 import os from "os";
@@ -26,7 +27,7 @@ export const healthCheckMemory = (): boolean => {
  */
 export const toObjectId = (_id: string | ObjectID | undefined): ObjectID => {
   if (_.isUndefined(_id)) {
-    throw new Error("toObjectId Failed - id is Undefined");
+    throw new Error(ErrorStatusMessage.TO_OBJECT_ID_FAIL);
   }
 
   return typeof _id === "string" ? new ObjectID(_id) : _id;

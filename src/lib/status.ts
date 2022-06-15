@@ -19,3 +19,8 @@ export enum CommonStatusMessage {
   CONFLICT = "CONFLICT", // 리소스 및 데이터 중복
   INTERNAL_SERVER_ERROR = "INTERNAL_SERVER_ERROR", // 기타 예외 처리
 }
+
+export enum ErrorStatusMessage {
+  TO_OBJECT_ID_FAIL = "toObjectId Failed - id is Undefined",
+  IS_EMPTY_REPOSITORY = "Repository is Empty",
+}
