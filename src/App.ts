@@ -7,7 +7,7 @@ import {
   createExpress,
   createRoute,
   createServer,
-  initializeSentry
+  initializeSentry,
 } from "./lib";
 import generateTestData from "./lib/database/mongo/sample";
 import { generateConfigLog } from "./utils";
@@ -36,12 +36,12 @@ class App {
   }
 
   private async onConnectRepository(): Promise<void> {
-    console.log("App Connected Repositorys");
+    console.log("App Connected Repository");
     await AppRepository.connect();
   }
 
   private async onCreateTestSample(): Promise<void> {
-    console.log("App Created Test Datas");
+    console.log("App Created Test Data");
     await generateTestData();
   }
 

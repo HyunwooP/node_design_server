@@ -3,7 +3,7 @@ import {
   findCount,
   findItem,
   findOne,
-  remove
+  remove,
 } from "@/controllers/theme";
 import { RouteItemType } from "@/lib/route/items";
 

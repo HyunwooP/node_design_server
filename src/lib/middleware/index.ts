@@ -37,23 +37,29 @@ const initializeRouteLevelMiddleWare = async (
   }
 };
 
-const initializeMiddleWare = (app: express.Application): express.Application => {
+const initializeMiddleWare = (
+  app: express.Application
+): express.Application => {
   if (config.NODE_ENV === "localhost") {
     return initializeLocalHostMiddleWare(app);
   }
-  
+
   return initializeProductionMiddleWare(app);
 };
 
-const initializeLocalHostMiddleWare = (app: express.Application): express.Application => {
+const initializeLocalHostMiddleWare = (
+  app: express.Application
+): express.Application => {
   return setupDefaultMiddleWare(app);
 };
 
-const initializeProductionMiddleWare = (app: express.Application): express.Application => {
+const initializeProductionMiddleWare = (
+  app: express.Application
+): express.Application => {
   app.use(Sentry.Handlers.requestHandler() as express.RequestHandler);
   app.use(Sentry.Handlers.tracingHandler());
   app.use(Sentry.Handlers.errorHandler() as express.ErrorRequestHandler);
-  
+
   return setupDefaultMiddleWare(app);
 };
 
@@ -72,5 +78,9 @@ const setupDefaultMiddleWare = (app: express.Application) => {
   return app;
 };
 
-
-export { IRequest, IResponse, initializeMiddleWare, initializeRouteLevelMiddleWare };
+export {
+  IRequest,
+  IResponse,
+  initializeMiddleWare,
+  initializeRouteLevelMiddleWare,
+};

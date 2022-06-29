@@ -1,6 +1,11 @@
 import { connectMongo } from "./database/mongo";
 import createExpress from "./express";
-import { initializeMiddleWare, initializeRouteLevelMiddleWare, IRequest, IResponse } from "./middleware";
+import {
+  initializeMiddleWare,
+  initializeRouteLevelMiddleWare,
+  IRequest,
+  IResponse,
+} from "./middleware";
 import { initializeSentry } from "./middleware/sentry";
 import createRoute from "./route";
 import createServer from "./server";
