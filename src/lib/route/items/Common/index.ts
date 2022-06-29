@@ -1,5 +1,5 @@
 import { health } from "@/controllers/common";
-import { RouteItemType } from "@/lib/route/routes";
+import { RouteItemType } from "@/lib/route/items";
 
 const CommonRoute: RouteItemType[] = [
   {

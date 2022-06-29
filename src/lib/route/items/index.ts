@@ -1,8 +1,8 @@
-import CommonRoute from "./items/Common";
-import ComponentRoute from "./items/Component";
-import LayoutRoute from "./items/Layout";
-import StyleRoute from "./items/Style";
-import ThemeRoute from "./items/Theme";
+import CommonRoute from "./Common";
+import ComponentRoute from "./Component";
+import LayoutRoute from "./Layout";
+import StyleRoute from "./Style";
+import ThemeRoute from "./Theme";
 
 export type RouteItemType = {
   path: string;

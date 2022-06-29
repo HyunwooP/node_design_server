@@ -3,9 +3,9 @@ import {
   findCount,
   findItem,
   findOne,
-  remove,
+  remove
 } from "@/controllers/theme";
-import { RouteItemType } from "@/lib/route/routes";
+import { RouteItemType } from "@/lib/route/items";
 
 const rootPath = "/themes";
 const ThemeRoute: RouteItemType[] = [

@@ -1,5 +1,5 @@
 import { find, findCount, findOne, remove } from "@/controllers/style";
-import { RouteItemType } from "@/lib/route/routes";
+import { RouteItemType } from "@/lib/route/items";
 
 const rootPath = "/styles";
 const StyleRoute: RouteItemType[] = [
