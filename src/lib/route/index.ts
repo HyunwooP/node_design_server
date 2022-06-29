@@ -1,14 +1,14 @@
 import { getErrorItem } from "@/utils";
 import { Application } from "express";
 import _ from "lodash";
-import { initMiddleWare, IRequest, IResponse } from "..";
-import RouteItems, { RouteItemType } from "./routes";
+import { initializeRouteLevelMiddleWare, IRequest, IResponse } from "..";
+import RouteItems, { RouteItemType } from "./items";
 
 export default (app: Application): void => {
   RouteItems.forEach((item: RouteItemType) => {
     app[item.method](
       item.path,
-      initMiddleWare,
+      initializeRouteLevelMiddleWare,
       async (request: IRequest, response: IResponse) => {
         try {
           const result = await item.next(request, response);

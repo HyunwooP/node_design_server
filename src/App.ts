@@ -4,29 +4,30 @@ import _ from "lodash";
 import config from "./config";
 import {
   connectMongo,
-  createDevelopmentExpress,
-  createProductionExpress,
+  createExpress,
   createRoute,
   createServer,
-  initializeSentry,
+  initializeSentry
 } from "./lib";
 import generateTestData from "./lib/database/mongo/sample";
 import { generateConfigLog } from "./utils";
 
 class App {
-  private onInitializeSentry(server: Application): void {
+  private readonly server: Application = createExpress();
+
+  private onInitializeSentry(): void {
     console.log("App Initialize Sentry");
-    initializeSentry(server);
+    initializeSentry(this.server);
   }
 
-  private onCreateRoute(server: Application): void {
+  private onCreateRoute(): void {
     console.log("App Created Route");
-    createRoute(server);
+    createRoute(this.server);
   }
 
-  private onCreateServer(server: Application): void {
+  private onCreateServer(): void {
     console.log("App Created Server");
-    createServer(server);
+    createServer(this.server);
   }
 
   private async onConnectDB(): Promise<void> {
@@ -45,10 +46,8 @@ class App {
   }
 
   private async onCreateLocalHostApp(): Promise<void> {
-    const server: Application = createDevelopmentExpress();
-
-    this.onCreateRoute(server);
-    this.onCreateServer(server);
+    this.onCreateRoute();
+    this.onCreateServer();
     await this.onConnectDB();
     await this.onConnectRepository();
     await this.onCreateTestSample();
@@ -58,11 +57,9 @@ class App {
   private onCreateDevelopmentApp = this.onCreateLocalHostApp;
 
   private async onCreateProductionApp(): Promise<void> {
-    const server: Application = createProductionExpress();
-
-    this.onInitializeSentry(server);
-    this.onCreateRoute(server);
-    this.onCreateServer(server);
+    this.onInitializeSentry();
+    this.onCreateRoute();
+    this.onCreateServer();
     await this.onConnectDB();
     await this.onConnectRepository();
   }
