@@ -14,6 +14,9 @@ export const mongoConfig: TypeOrmConfigType = {
     logging: false,
     dropSchema: true,
     entities: ["src/models/**/*.ts"],
+    extra: {
+      connectionLimit: 5
+    }
   },
   development: {
     ...config.mongo.development,
@@ -23,6 +26,9 @@ export const mongoConfig: TypeOrmConfigType = {
     logging: false,
     dropSchema: true,
     entities: ["src/models/**/*.ts"],
+    extra: {
+      connectionLimit: 10
+    }
   },
   production: {
     ...config.mongo.production,
@@ -37,5 +43,8 @@ export const mongoConfig: TypeOrmConfigType = {
       // migrationsDir: "src/migration",
       // subscribersDir: "src/subscriber",
     },
+    extra: {
+      connectionLimit: 50
+    }
   },
 };
