@@ -1,0 +1,42 @@
+version: "3.7"
+services:
+  mongo:   
+    image: "mongo"
+    restart: always
+    volumes:
+      - ./data/mongodata:/var/lib/mongo
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    command: mongod --auth
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${mongoRootUserName}
+      - MONGO_INITDB_ROOT_PASSWORD=${mongoRootPassword}
+      - MONGO_INITDB_DATABASE=${mongoDataBase}
+    ports:
+      - "27017:27017"
+    networks:
+      - mongo_network
+  app:
+    build:
+      context: ./
+      # select target (localhost, development, production)
+      target: localhost
+    environment:
+      mongoHost: mongo
+      mongoPort: 27017
+      mongoUserName: ${mongoUserName}
+      mongoDataBase: ${mongoDataBase}
+      mongoPassword: ${mongoPassword}
+      # select env (localhost, development, production)
+      NODE_ENV: localhost
+    ports: 
+      - "3005:3005"
+    volumes:
+      - .:/app
+    command: npm run dockerStart
+    depends_on:
+      - mongo
+    networks:
+      - mongo_network
+networks:
+  mongo_network:
+    driver: bridge

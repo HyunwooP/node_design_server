@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+  app:
+    build:
+      context: ./
+      # select target (localhost, development, production)
+      target: localhost
+    environment:
+      mongoHost: ${mongoHost} # default "127.0.0.1"
+      mongoPort: ${mongoPort} # default 27017
+      mongoUserName: ${mongoUserName}
+      mongoDataBase: ${mongoDataBase}
+      mongoPassword: ${mongoPassword}
+      # select env (localhost, development, production)
+      NODE_ENV: localhost
+    ports: 
+      - "3005:3005"
+    volumes:
+      - .:/app
+    command: npm run dockerStart

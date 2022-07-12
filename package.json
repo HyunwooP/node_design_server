@@ -4,7 +4,9 @@
   "description": "design system server",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "export port=3005 && nodemon src/index.ts"
+    "start": "ts-node ./src/index.ts",
+    "localStart": "export port=3005 && nodemon src/index.ts",
+    "dockerStart": "ts-node ./src/index.ts"
   },
   "repository": {
     "type": "git",
