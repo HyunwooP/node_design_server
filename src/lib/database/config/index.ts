@@ -7,31 +7,29 @@ export type TypeOrmConfigType = {
 
 export const mongoConfig: TypeOrmConfigType = {
   localhost: {
-    ...config.mongo.localhost,
+    ...config.mongo,
     name: "localhost",
     type: "mongodb",
     synchronize: true,
     logging: false,
     dropSchema: true,
     entities: ["src/models/**/*.ts"],
-    extra: {
-      connectionLimit: 5
-    }
+    poolSize: 5,
+    authSource: "admin"
   },
   development: {
-    ...config.mongo.development,
+    ...config.mongo,
     name: "development",
     type: "mongodb",
     synchronize: true,
     logging: false,
     dropSchema: true,
     entities: ["src/models/**/*.ts"],
-    extra: {
-      connectionLimit: 10
-    }
+    poolSize: 10,
+    authSource: "admin"
   },
   production: {
-    ...config.mongo.production,
+    ...config.mongo,
     name: "production",
     type: "mongodb",
     synchronize: false,
@@ -43,8 +41,7 @@ export const mongoConfig: TypeOrmConfigType = {
       // migrationsDir: "src/migration",
       // subscribersDir: "src/subscriber",
     },
-    extra: {
-      connectionLimit: 50
-    }
+    poolSize: 50,
+    authSource: "admin"
   },
 };

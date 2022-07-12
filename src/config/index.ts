@@ -2,12 +2,7 @@ import { NodeEnvType } from "@/lib/type";
 import "dotenv/config";
 import { MongoConnectionOptions } from "typeorm/driver/mongodb/MongoConnectionOptions";
 
-type MongoCustomConfigType = {
-  [env in NodeEnvType]: Pick<
-    MongoConnectionOptions,
-    "port" | "host" | "username" | "database" | "password"
-  >;
-};
+type MongoCustomConfigType = Pick<MongoConnectionOptions, "port" | "host" | "username" | "database" | "password">;
 
 export type ConfigType = {
   NODE_ENV: NodeEnvType;
@@ -26,33 +21,13 @@ const config: ConfigType = {
   sentryDSN: process.env.sentryDSN ?? "",
   port: process.env.port ?? 3005,
   mongo: {
-    localhost: {
-      port: process.env.mongoLostHostPort
-        ? Number(process.env.mongoLostHostPort)
+    port: process.env.mongoPort
+        ? Number(process.env.mongoPort)
         : 27017,
-      host: process.env.mongoLocalHost ?? "127.0.0.1",
-      username: process.env.mongoLocalHostUserName ?? "root",
-      password: process.env.mongoLocalHostPassword ?? "",
-      database: process.env.mongoLocalHostDataBase ?? "localDB",
-    },
-    development: {
-      port: process.env.mongoDevelopmentPort
-        ? Number(process.env.mongoDevelopmentPort)
-        : 27017,
-      host: process.env.mongoDevelopmentHost ?? "",
-      username: process.env.mongoDevelopmentUserName ?? "",
-      password: process.env.mongoDevelopmentPassword ?? "",
-      database: process.env.mongoDevelopmentDataBase ?? "",
-    },
-    production: {
-      port: process.env.mongoProductionPort
-        ? Number(process.env.mongoProductionPort)
-        : 27017,
-      host: process.env.mongoProductionHost ?? "",
-      username: process.env.mongoProductionUserName ?? "",
-      password: process.env.mongoProductionPassword ?? "",
-      database: process.env.mongoProductionDataBase ?? "",
-    },
+      host: process.env.mongoHost ?? "127.0.0.1",
+      username: process.env.mongoUserName ?? "root",
+      password: process.env.mongoPassword ?? "",
+      database: process.env.mongoDataBase ?? "localDB",
   },
   origin:
     process.env.gatewayDomain && process.env.gatewayPort
