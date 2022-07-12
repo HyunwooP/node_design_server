@@ -6,8 +6,6 @@ import { Style } from "@/models/Style";
 import { Theme } from "@/models/Theme";
 import _ from "lodash";
 import { getManager, MongoRepository } from "typeorm";
-;
-
 class AppRepository {
   private component: MongoRepository<Component> | null = null;
   private layout: MongoRepository<Layout> | null = null;
@@ -16,7 +14,7 @@ class AppRepository {
 
   connect(): void {
     const manager = getManager(config.NODE_ENV);
-    
+
     this.component = manager.getMongoRepository(Component);
     this.layout = manager.getMongoRepository(Layout);
     this.style = manager.getMongoRepository(Style);

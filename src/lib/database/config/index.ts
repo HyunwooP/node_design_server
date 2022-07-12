@@ -15,7 +15,7 @@ export const mongoConfig: TypeOrmConfigType = {
     dropSchema: true,
     entities: ["src/models/**/*.ts"],
     poolSize: 5,
-    authSource: "admin"
+    authSource: "admin",
   },
   development: {
     ...config.mongo,
@@ -26,7 +26,7 @@ export const mongoConfig: TypeOrmConfigType = {
     dropSchema: true,
     entities: ["src/models/**/*.ts"],
     poolSize: 10,
-    authSource: "admin"
+    authSource: "admin",
   },
   production: {
     ...config.mongo,
@@ -42,6 +42,6 @@ export const mongoConfig: TypeOrmConfigType = {
       // subscribersDir: "src/subscriber",
     },
     poolSize: 50,
-    authSource: "admin"
+    authSource: "admin",
   },
 };
