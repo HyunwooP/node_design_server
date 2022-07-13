@@ -39,6 +39,7 @@ https://github.com/awakelife93/express-boilerplate
 2. Common preprocessing and data checking is handled by middleware. (src/lib/middleware)
 3. This project did not create a separate Dto.
 4. All elements included in the design system indicate which theme they were made for by promising "\_\_" as a delimiter depending on the theme.
+5. The default environment for build and code level is the localhost environment.
 ```
 
 ## Author
