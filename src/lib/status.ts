@@ -22,5 +22,5 @@ export enum CommonStatusMessage {
 
 export enum ErrorStatusMessage {
   TO_OBJECT_ID_FAIL = "toObjectId Failed - id is Undefined",
-  IS_EMPTY_REPOSITORY = "Repository is Empty",
+  IS_NULL_REPOSITORY = "Repository Object is null",
 }

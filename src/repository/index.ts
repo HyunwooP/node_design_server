@@ -23,7 +23,7 @@ class AppRepository {
 
   get Component(): MongoRepository<Component> {
     if (_.isNull(this.component)) {
-      throw new Error(`Component ${ErrorStatusMessage.IS_EMPTY_REPOSITORY}`);
+      throw new Error(`Component ${ErrorStatusMessage.IS_NULL_REPOSITORY}`);
     }
 
     return this.component;
@@ -31,7 +31,7 @@ class AppRepository {
 
   get Layout(): MongoRepository<Layout> {
     if (_.isNull(this.layout)) {
-      throw new Error(`Layout ${ErrorStatusMessage.IS_EMPTY_REPOSITORY}`);
+      throw new Error(`Layout ${ErrorStatusMessage.IS_NULL_REPOSITORY}`);
     }
 
     return this.layout;
@@ -39,7 +39,7 @@ class AppRepository {
 
   get Style(): MongoRepository<Style> {
     if (_.isNull(this.style)) {
-      throw new Error(`Style ${ErrorStatusMessage.IS_EMPTY_REPOSITORY}`);
+      throw new Error(`Style ${ErrorStatusMessage.IS_NULL_REPOSITORY}`);
     }
 
     return this.style;
@@ -47,7 +47,7 @@ class AppRepository {
 
   get Theme(): MongoRepository<Theme> {
     if (_.isNull(this.theme)) {
-      throw new Error(`Theme ${ErrorStatusMessage.IS_EMPTY_REPOSITORY}`);
+      throw new Error(`Theme ${ErrorStatusMessage.IS_NULL_REPOSITORY}`);
     }
 
     return this.theme;
