@@ -37,7 +37,7 @@ class App {
 
   private async onConnectRepository(): Promise<void> {
     console.log("App Connected Repository");
-    await AppRepository.connect();
+    AppRepository.connect();
   }
 
   private async onCreateTestSample(): Promise<void> {
