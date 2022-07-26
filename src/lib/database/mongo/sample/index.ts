@@ -1,7 +1,7 @@
-import { Component } from "@/models/Component";
-import { Layout } from "@/models/Layout";
-import { Style } from "@/models/Style";
-import { Theme } from "@/models/Theme";
+import { Component } from "@/entities/Component";
+import { Layout } from "@/entities/Layout";
+import { Style } from "@/entities/Style";
+import { Theme } from "@/entities/Theme";
 import AppRepository from "@/repository";
 import { ObjectId } from "mongodb";
 import { sampleComponents } from "./component";

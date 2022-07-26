@@ -1,12 +1,12 @@
+import { Layout } from "@/entities/Layout";
 import { IRequest, IResponse } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
-import { Layout } from "@/models/Layout";
 import {
   findLayout,
   findLayoutCount,
   findOneLayout,
   removeLayout,
-  updateLayout,
+  updateLayout
 } from "@/services/layout";
 import { LayoutRequestType } from "@/types/layout";
 

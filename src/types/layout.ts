@@ -1,4 +1,4 @@
-import { Layout } from "@/models/Layout";
+import { Layout } from "@/entities/Layout";
 import { CommonRequestType, SortType } from "./common";
 
 type LayoutRequestSubOptionType = {

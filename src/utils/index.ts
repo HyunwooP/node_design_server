@@ -37,7 +37,7 @@ export const generateConfigLog = (): void => {
   console.log("==================================");
   console.log("*");
   console.log(
-    `* start time: ${new Date().toLocaleDateString(config.timezone, {
+    `* start time: ${new Date().toLocaleDateString("ko", {
       year: "numeric",
       month: "numeric",
       day: "numeric",

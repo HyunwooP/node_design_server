@@ -4,7 +4,7 @@ import { MongoConnectionOptions } from "typeorm/driver/mongodb/MongoConnectionOp
 
 type MongoCustomConfigType = Pick<
   MongoConnectionOptions,
-  "port" | "host" | "username" | "database" | "password"
+  "port" | "host" | "username" | "database" | "password" | "type"
 >;
 
 export type ConfigType = {
@@ -13,7 +13,6 @@ export type ConfigType = {
   port: string | number;
   mongo: MongoCustomConfigType;
   origin: string;
-  timezone: string;
 };
 
 /**
@@ -24,6 +23,7 @@ const config: ConfigType = {
   sentryDSN: process.env.sentryDSN ?? "",
   port: process.env.port ?? 3005,
   mongo: {
+    type: "mongodb",
     port: process.env.mongoPort ? Number(process.env.mongoPort) : 27017,
     host: process.env.mongoHost ?? "127.0.0.1",
     username: process.env.mongoUserName ?? "root",
@@ -34,7 +34,6 @@ const config: ConfigType = {
     process.env.gatewayDomain && process.env.gatewayPort
       ? `http://${process.env.gatewayDomain}:${process.env.gatewayPort}`
       : "http://localhost:8080",
-  timezone: process.env.timezone ?? "ko",
 };
 
 export default config;

@@ -1,6 +1,6 @@
+import { Layout } from "@/entities/Layout";
 import { CommonStatusCode, CommonStatusMessage } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
-import { Layout } from "@/models/Layout";
 import AppRepository from "@/repository";
 import { QueryType, SortType } from "@/types/common";
 import { LayoutRequestType } from "@/types/layout";

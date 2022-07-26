@@ -1,12 +1,12 @@
+import { Style } from "@/entities/Style";
 import { IRequest, IResponse } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
-import { Style } from "@/models/Style";
 import {
   findOneStyle,
   findStyle,
   findStyleCount,
   removeStyle,
-  updateStyle,
+  updateStyle
 } from "@/services/style";
 import { StyleRequestType } from "@/types/style";
 

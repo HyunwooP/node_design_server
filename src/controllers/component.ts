@@ -1,12 +1,12 @@
+import { Component } from "@/entities/Component";
 import { IRequest, IResponse } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
-import { Component } from "@/models/Component";
 import {
   findComponent,
   findComponentCount,
   findOneComponent,
   removeComponent,
-  updateComponent,
+  updateComponent
 } from "@/services/component";
 import { ComponentRequestType } from "@/types/component";
 

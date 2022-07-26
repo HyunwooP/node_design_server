@@ -1,4 +1,4 @@
-import { Theme } from "@/models/Theme";
+import { Theme } from "@/entities/Theme";
 import { CommonRequestType, SortType } from "./common";
 
 type ThemeRequestSubOptionType = {

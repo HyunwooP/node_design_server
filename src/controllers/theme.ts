@@ -1,13 +1,13 @@
+import { Theme } from "@/entities/Theme";
 import { IRequest, IResponse } from "@/lib";
 import { CommonPromiseAPIResponseType } from "@/lib/type";
-import { Theme } from "@/models/Theme";
 import {
   findOneTheme,
   findTheme,
   findThemeCount,
   findThemeItem,
   removeTheme,
-  updateTheme,
+  updateTheme
 } from "@/services/theme";
 import { ThemeRequestType } from "@/types/theme";
 
