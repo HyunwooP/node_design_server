@@ -75,7 +75,6 @@ class App {
     
     if (_.isUndefined(application)) {
       console.log(`NODE_ENV is Undefined!!! start localhost mode`);
-      config.NODE_ENV = "localhost";
       return this.onCreateLocalHostApp;
     }
 
