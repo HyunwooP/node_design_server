@@ -7,7 +7,7 @@ import {
   createExpress,
   createRoute,
   createServer,
-  initializeSentry
+  initializeSentry,
 } from "./lib";
 import generateTestData from "./lib/database/mongo/sample";
 import { generateConfigLog } from "./utils";
@@ -72,7 +72,7 @@ class App {
     };
 
     const application = applications[config.NODE_ENV];
-    
+
     if (_.isUndefined(application)) {
       console.log(`NODE_ENV is Undefined!!! start localhost mode`);
       return this.onCreateLocalHostApp;

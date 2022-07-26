@@ -1,7 +1,12 @@
 import { getErrorItem } from "@/utils";
 import { Application } from "express";
 import _ from "lodash";
-import { CommonStatusCode, initializeRouteLevelMiddleWare, IRequest, IResponse } from "..";
+import {
+  CommonStatusCode,
+  initializeRouteLevelMiddleWare,
+  IRequest,
+  IResponse,
+} from "..";
 import RouteItems, { RouteItemType } from "./items";
 
 export default (app: Application): void => {

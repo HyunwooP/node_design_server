@@ -6,7 +6,7 @@ import {
   findLayoutCount,
   findOneLayout,
   removeLayout,
-  updateLayout
+  updateLayout,
 } from "@/services/layout";
 import { LayoutRequestType } from "@/types/layout";
 
