@@ -35,11 +35,11 @@ https://github.com/awakelife93/express-boilerplate
 ### Description
 
 ```
-1. Controller / Model / Service Layer
-2. Common preprocessing and data checking is handled by middleware. (src/lib/middleware)
-3. This project did not create a separate Dto.
-4. All elements included in the design system indicate which theme they were made for by promising "\_\_" as a delimiter depending on the theme.
-5. The default environment for build and code level is the localhost environment.
+1. Common preprocessing and data checking is handled by middleware. (src/lib/middleware)
+2. This project did not create a separate Dto.
+3. All elements included in the design system indicate which theme they were made for by promising "\_\_" as a delimiter depending on the theme.
+4. The default environment for build and code level is the localhost environment.
+5. This project is oriented towards the Data Mapper pattern, not the Active Record pattern.
 ```
 
 ## Author
