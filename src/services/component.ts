@@ -1,27 +1,26 @@
 import { Component } from "@/entities/Component";
-import { CommonStatusCode, CommonStatusMessage } from "@/lib";
-import { CommonPromiseAPIResponseType } from "@/lib/type";
+import { CommonPromiseAPIResponse, CommonStatusCode, CommonStatusMessage } from "@/lib";
 import AppRepository from "@/repository";
-import { QueryType, SortType } from "@/types/common";
-import { ComponentRequestType } from "@/types/component";
+import { Query, Sort } from "@/types/common";
+import { ComponentRequest } from "@/types/component";
 import { onFailureHandler } from "@/utils";
 import _ from "lodash";
 
 export const findComponentCount =
-  async (): CommonPromiseAPIResponseType<number> => {
+  async (): CommonPromiseAPIResponse<number> => {
     return await AppRepository.Component.count();
   };
 
 export const findOneComponent = async (
-  conditions: Partial<ComponentRequestType>
-): CommonPromiseAPIResponseType<Component> => {
+  conditions: Partial<ComponentRequest>
+): CommonPromiseAPIResponse<Component> => {
   return await AppRepository.Component.findOne({ ...conditions });
 };
 
 export const findComponent = async (
-  conditions: Partial<ComponentRequestType>
-): CommonPromiseAPIResponseType<[Component[], number]> => {
-  let query = {} as QueryType;
+  conditions: Partial<ComponentRequest>
+): CommonPromiseAPIResponse<[Component[], number]> => {
+  let query = {} as Query;
 
   if (!_.isEmpty(conditions.searchKeyword)) {
     query.where = {
@@ -34,7 +33,7 @@ export const findComponent = async (
 
   if (!_.isEmpty(conditions.nameSort)) {
     query.order = {
-      name: conditions.nameSort as SortType,
+      name: conditions.nameSort as Sort,
     };
   }
 
@@ -46,13 +45,13 @@ export const findComponent = async (
 
 export const createComponent = async (
   conditions: Component
-): CommonPromiseAPIResponseType<Component> => {
+): CommonPromiseAPIResponse<Component> => {
   return await AppRepository.Component.create(conditions);
 };
 
 export const updateComponent = async (
   conditions: Partial<Component>
-): CommonPromiseAPIResponseType<Component> => {
+): CommonPromiseAPIResponse<Component> => {
   if (_.isUndefined(conditions._id)) {
     onFailureHandler({
       status: CommonStatusCode.BAD_REQUEST,
@@ -66,7 +65,7 @@ export const updateComponent = async (
 
 export const removeComponent = async (
   conditions: Partial<Component>
-): CommonPromiseAPIResponseType<object> => {
+): CommonPromiseAPIResponse<object> => {
   await updateComponent({ _id: conditions._id, isDeleted: true });
   return {};
 };

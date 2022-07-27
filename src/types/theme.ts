@@ -1,10 +1,10 @@
 import { Theme } from "@/entities/Theme";
-import { CommonRequestType, SortType } from "./common";
+import { CommonRequest, Sort } from "./common";
 
-type ThemeRequestSubOptionType = {
-  nameSort: SortType;
+type ThemeRequestSubOption = {
+  nameSort: Sort;
 };
 
-export type ThemeRequestType = ThemeRequestSubOptionType &
-  CommonRequestType &
+export type ThemeRequest = ThemeRequestSubOption &
+  CommonRequest &
   Theme;

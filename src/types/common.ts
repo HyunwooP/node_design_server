@@ -1,10 +1,10 @@
-export type SortType = "ASC" | "DESC";
+export type Sort = "ASC" | "DESC";
 
-export type CommonRequestType = {
+export type CommonRequest = {
   searchKeyword: string;
 };
 
-export type QueryType = {
+export type Query = {
   where: {
     // search
     [index: string]: {
@@ -13,6 +13,6 @@ export type QueryType = {
     };
   };
   order: {
-    [index: string]: SortType;
+    [index: string]: Sort;
   };
 };

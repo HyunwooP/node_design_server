@@ -3,12 +3,12 @@ import {
   findCount,
   findItem,
   findOne,
-  remove,
+  remove
 } from "@/controllers/theme";
-import { RouteItemType } from "@/lib/route/items";
+import { RouteItem } from "..";
 
 const rootPath = "/themes";
-const ThemeRoute: RouteItemType[] = [
+const ThemeRoute: RouteItem[] = [
   {
     path: `${rootPath}/count`,
     method: "get",

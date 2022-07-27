@@ -4,14 +4,14 @@ import LayoutRoute from "./Layout";
 import StyleRoute from "./Style";
 import ThemeRoute from "./Theme";
 
-export type RouteItemType = {
+export type RouteItem = {
   path: string;
   method: "get" | "post" | "put" | "delete" | "patch";
   next: Function;
   auth: boolean;
 };
 
-const item: RouteItemType[] = [
+const item: RouteItem[] = [
   ...CommonRoute,
   ...ComponentRoute,
   ...LayoutRoute,

@@ -1,10 +1,10 @@
 import { Component } from "@/entities/Component";
-import { CommonRequestType, SortType } from "./common";
+import { CommonRequest, Sort } from "./common";
 
-type ComponentRequestSubOptionType = {
-  nameSort: SortType;
+type ComponentRequestSubOption = {
+  nameSort: Sort;
 };
 
-export type ComponentRequestType = ComponentRequestSubOptionType &
-  CommonRequestType &
+export type ComponentRequest = ComponentRequestSubOption &
+  CommonRequest &
   Component;

@@ -1,16 +1,16 @@
-import AppRepository from "@/repository";
-import { Application } from "express";
-import _ from "lodash";
-import config from "./config";
+import config from "@/config";
 import {
   connectMongo,
   createExpress,
   createRoute,
   createServer,
-  initializeSentry,
-} from "./lib";
-import generateTestData from "./lib/database/mongo/sample";
-import { generateConfigLog } from "./utils";
+  generateTestData,
+  initializeSentry
+} from "@/lib";
+import AppRepository from "@/repository";
+import { generateConfigLog } from "@/utils";
+import { Application } from "express";
+import _ from "lodash";
 
 class App {
   private readonly server: Application = createExpress();

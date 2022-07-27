@@ -1,9 +1,9 @@
 import { UnknownObject } from "@/lib";
 
-type SampleLayoutType = {
+type SampleLayout = {
   [index: string]: UnknownObject;
 };
-export const sampleLayouts: SampleLayoutType = {
+export const sampleLayouts: SampleLayout = {
   BLACK_THEME__CONTAINER_LAYOUT: {
     backgroundColor: "black",
   },

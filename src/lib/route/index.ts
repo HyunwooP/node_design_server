@@ -5,12 +5,12 @@ import {
   CommonStatusCode,
   initializeRouteLevelMiddleWare,
   IRequest,
-  IResponse,
+  IResponse
 } from "..";
-import RouteItems, { RouteItemType } from "./items";
+import RouteItems, { RouteItem } from "./items";
 
-export default (app: Application): void => {
-  RouteItems.forEach((item: RouteItemType) => {
+const createRoute = (app: Application): void => {
+  RouteItems.forEach((item: RouteItem) => {
     app[item.method](
       item.path,
       initializeRouteLevelMiddleWare,
@@ -33,3 +33,5 @@ export default (app: Application): void => {
     );
   });
 };
+
+export default createRoute;

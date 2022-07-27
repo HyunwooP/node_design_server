@@ -3,10 +3,6 @@ import { toObjectId } from "@/utils";
 import _ from "lodash";
 import { IRequest } from ".";
 
-export default async (request: IRequest): Promise<void> => {
-  await createItem(request);
-};
-
 const createItem = (request: IRequest): void => {
   switch (request.method) {
     case "GET":
@@ -40,3 +36,9 @@ const createItem = (request: IRequest): void => {
       break;
   }
 };
+
+const generateRequest = async (request: IRequest): Promise<void> => {
+  await createItem(request);
+};
+
+export default generateRequest;

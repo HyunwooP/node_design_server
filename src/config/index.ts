@@ -1,25 +1,25 @@
-import { NodeEnvType } from "@/lib/type";
+import { NodeEnvironment } from "@/lib";
 import "dotenv/config";
 import { MongoConnectionOptions } from "typeorm/driver/mongodb/MongoConnectionOptions";
 
-type MongoCustomConfigType = Pick<
+type MongoCustomConfig = Pick<
   MongoConnectionOptions,
   "port" | "host" | "username" | "database" | "password" | "type"
 >;
 
-export type ConfigType = {
-  NODE_ENV: NodeEnvType;
+export type Config = {
+  NODE_ENV: NodeEnvironment;
   sentryDSN: string;
   port: string | number;
-  mongo: MongoCustomConfigType;
+  mongo: MongoCustomConfig;
   origin: string;
 };
 
 /**
  * 외부에 노출되는 데이터들이기 때문에 주의해서 사용해야 한다.
  */
-const config: ConfigType = {
-  NODE_ENV: (process.env.NODE_ENV as NodeEnvType) ?? "localhost",
+const config: Config = {
+  NODE_ENV: (process.env.NODE_ENV as NodeEnvironment) ?? "localhost",
   sentryDSN: process.env.sentryDSN ?? "",
   port: process.env.port ?? 3005,
   mongo: {

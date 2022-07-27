@@ -1,9 +1,9 @@
-import config, { ConfigType } from "@/config";
-import { ErrorStatusMessage } from "@/lib/status";
+import config, { Config } from "@/config";
+import { ErrorStatusMessage } from "@/lib";
 import _ from "lodash";
 import { ObjectID } from "mongodb";
 import os from "os";
-import { getErrorItem, HandlerParamsType, onFailureHandler } from "./error";
+export * from "./error";
 
 export const nowMemoryPercent = (): number => {
   const totalmem = os.totalmem();
@@ -47,7 +47,7 @@ export const generateConfigLog = (): void => {
     })}`
   );
   Object.keys(config).forEach((key) => {
-    const value = config[key as keyof ConfigType];
+    const value = config[key as keyof Config];
     if (_.isObjectLike(value)) {
       console.log(`* ${key}: `);
       console.log(value);
@@ -59,4 +59,4 @@ export const generateConfigLog = (): void => {
   console.log("==================================");
 };
 
-export { getErrorItem, HandlerParamsType, onFailureHandler };
+

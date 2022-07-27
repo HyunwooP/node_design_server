@@ -1,50 +1,49 @@
 import { Theme } from "@/entities/Theme";
-import { IRequest, IResponse } from "@/lib";
-import { CommonPromiseAPIResponseType } from "@/lib/type";
+import { CommonPromiseAPIResponse, IRequest, IResponse } from "@/lib";
 import {
   findOneTheme,
   findTheme,
   findThemeCount,
   findThemeItem,
   removeTheme,
-  updateTheme,
+  updateTheme
 } from "@/services/theme";
-import { ThemeRequestType } from "@/types/theme";
+import { ThemeRequest } from "@/types/theme";
 
 export const findCount = async (
   request: IRequest,
   response: IResponse
-): CommonPromiseAPIResponseType<number> => {
+): CommonPromiseAPIResponse<number> => {
   return await findThemeCount();
 };
 
 export const findItem = async (
   request: IRequest,
   response: IResponse
-): CommonPromiseAPIResponseType<Theme> => {
+): CommonPromiseAPIResponse<Theme> => {
   return await findThemeItem();
 };
 
 export const findOne = async (
   request: IRequest,
   response: IResponse
-): CommonPromiseAPIResponseType<Theme> => {
-  const conditions = request.item as ThemeRequestType;
+): CommonPromiseAPIResponse<Theme> => {
+  const conditions = request.item as ThemeRequest;
   return await findOneTheme(conditions);
 };
 
 export const find = async (
   request: IRequest,
   response: IResponse
-): CommonPromiseAPIResponseType<[Theme[], number]> => {
-  const conditions = request.item as ThemeRequestType;
+): CommonPromiseAPIResponse<[Theme[], number]> => {
+  const conditions = request.item as ThemeRequest;
   return await findTheme(conditions);
 };
 
 export const update = async (
   request: IRequest,
   response: IResponse
-): CommonPromiseAPIResponseType<Theme> => {
+): CommonPromiseAPIResponse<Theme> => {
   const conditions = request.item as Theme;
   return await updateTheme(conditions);
 };
@@ -52,7 +51,7 @@ export const update = async (
 export const remove = async (
   request: IRequest,
   response: IResponse
-): CommonPromiseAPIResponseType<object> => {
+): CommonPromiseAPIResponse<object> => {
   const conditions = request.item as Theme;
   return await removeTheme(conditions);
 };

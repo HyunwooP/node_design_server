@@ -3,7 +3,7 @@ import { Component } from "@/entities/Component";
 import { Layout } from "@/entities/Layout";
 import { Style } from "@/entities/Style";
 import { Theme } from "@/entities/Theme";
-import { ErrorStatusMessage } from "@/lib/status";
+import { ErrorStatusMessage } from "@/lib";
 import _ from "lodash";
 import { getManager, MongoRepository } from "typeorm";
 

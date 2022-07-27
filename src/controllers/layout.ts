@@ -1,42 +1,41 @@
 import { Layout } from "@/entities/Layout";
-import { IRequest, IResponse } from "@/lib";
-import { CommonPromiseAPIResponseType } from "@/lib/type";
+import { CommonPromiseAPIResponse, IRequest, IResponse } from "@/lib";
 import {
   findLayout,
   findLayoutCount,
   findOneLayout,
   removeLayout,
-  updateLayout,
+  updateLayout
 } from "@/services/layout";
-import { LayoutRequestType } from "@/types/layout";
+import { LayoutRequest } from "@/types/layout";
 
 export const findCount = async (
   request: IRequest,
   response: IResponse
-): CommonPromiseAPIResponseType<number> => {
+): CommonPromiseAPIResponse<number> => {
   return await findLayoutCount();
 };
 
 export const findOne = async (
   request: IRequest,
   response: IResponse
-): CommonPromiseAPIResponseType<Layout> => {
-  const conditions = request.item as LayoutRequestType;
+): CommonPromiseAPIResponse<Layout> => {
+  const conditions = request.item as LayoutRequest;
   return await findOneLayout(conditions);
 };
 
 export const find = async (
   request: IRequest,
   response: IResponse
-): CommonPromiseAPIResponseType<[Layout[], number]> => {
-  const conditions = request.item as LayoutRequestType;
+): CommonPromiseAPIResponse<[Layout[], number]> => {
+  const conditions = request.item as LayoutRequest;
   return await findLayout(conditions);
 };
 
 export const update = async (
   request: IRequest,
   response: IResponse
-): CommonPromiseAPIResponseType<Layout> => {
+): CommonPromiseAPIResponse<Layout> => {
   const conditions = request.item as Layout;
   return await updateLayout(conditions);
 };
@@ -44,7 +43,7 @@ export const update = async (
 export const remove = async (
   request: IRequest,
   response: IResponse
-): CommonPromiseAPIResponseType<object> => {
+): CommonPromiseAPIResponse<object> => {
   const conditions = request.item as Layout;
   return await removeLayout(conditions);
 };

@@ -1,7 +1,7 @@
 import { health } from "@/controllers/common";
-import { RouteItemType } from "@/lib/route/items";
+import { RouteItem } from "..";
 
-const CommonRoute: RouteItemType[] = [
+const CommonRoute: RouteItem[] = [
   {
     path: "/designHealth",
     method: "get",

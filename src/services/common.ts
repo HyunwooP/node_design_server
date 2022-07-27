@@ -1,13 +1,12 @@
-import { CommonStatusCode } from "@/lib";
-import { CommonAPIResponseType } from "@/lib/type";
+import { CommonAPIResponse, CommonStatusCode } from "@/lib";
 import {
-  HandlerParamsType,
+  HandlerParams,
   healthCheckMemory,
   nowMemoryPercent,
-  onFailureHandler,
+  onFailureHandler
 } from "@/utils";
 
-export const _health = (): CommonAPIResponseType<HandlerParamsType> => {
+export const _health = (): CommonAPIResponse<HandlerParams> => {
   if (healthCheckMemory()) {
     onFailureHandler({
       status: CommonStatusCode.INTERNAL_SERVER_ERROR,

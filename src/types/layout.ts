@@ -1,10 +1,10 @@
 import { Layout } from "@/entities/Layout";
-import { CommonRequestType, SortType } from "./common";
+import { CommonRequest, Sort } from "./common";
 
-type LayoutRequestSubOptionType = {
-  nameSort: SortType;
+type LayoutRequestSubOption = {
+  nameSort: Sort;
 };
 
-export type LayoutRequestType = LayoutRequestSubOptionType &
-  CommonRequestType &
+export type LayoutRequest = LayoutRequestSubOption &
+  CommonRequest &
   Layout;

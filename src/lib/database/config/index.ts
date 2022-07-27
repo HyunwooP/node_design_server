@@ -1,11 +1,11 @@
 import config from "@/config";
 import { MongoConnectionOptions } from "typeorm/driver/mongodb/MongoConnectionOptions";
 
-export type TypeOrmConfigType = {
+export type MongoConfig = {
   [key: string]: MongoConnectionOptions;
 };
 
-export const mongoConfig: TypeOrmConfigType = {
+export const mongoConfig: MongoConfig = {
   localhost: {
     ...config.mongo,
     name: "localhost",

@@ -8,14 +8,14 @@ import generateRequest from "./request";
 import generateResponse from "./response";
 import Sentry from "./sentry";
 
-type ClientRequestItemType = {
+type ClientRequestItem = {
   /**
    * Method Type에 상관없이 쉽게 꺼내쓰기 위해 정제한다.
    */
   item: unknown;
 };
 
-interface IRequest extends Request, Partial<ClientRequestItemType> {}
+interface IRequest extends Request, Partial<ClientRequestItem> {}
 
 interface IResponse extends Response {}
 

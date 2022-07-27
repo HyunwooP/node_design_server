@@ -1,8 +1,8 @@
 import { find, findCount, findOne, remove } from "@/controllers/layout";
-import { RouteItemType } from "@/lib/route/items";
+import { RouteItem } from "..";
 
 const rootPath = "/layouts";
-const LayoutRoute: RouteItemType[] = [
+const LayoutRoute: RouteItem[] = [
   {
     path: `${rootPath}/count`,
     method: "get",

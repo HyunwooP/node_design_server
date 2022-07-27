@@ -1,10 +1,10 @@
 import { Style } from "@/entities/Style";
-import { CommonRequestType, SortType } from "./common";
+import { CommonRequest, Sort } from "./common";
 
-type StyleRequestSubOptionType = {
-  nameSort: SortType;
+type StyleRequestSubOption = {
+  nameSort: Sort;
 };
 
-export type StyleRequestType = StyleRequestSubOptionType &
-  CommonRequestType &
+export type StyleRequest = StyleRequestSubOption &
+  CommonRequest &
   Style;

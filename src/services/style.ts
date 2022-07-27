@@ -1,27 +1,26 @@
 import { Style } from "@/entities/Style";
-import { CommonStatusCode, CommonStatusMessage } from "@/lib";
-import { CommonPromiseAPIResponseType } from "@/lib/type";
+import { CommonPromiseAPIResponse, CommonStatusCode, CommonStatusMessage } from "@/lib";
 import AppRepository from "@/repository";
-import { QueryType, SortType } from "@/types/common";
-import { StyleRequestType } from "@/types/style";
+import { Query, Sort } from "@/types/common";
+import { StyleRequest } from "@/types/style";
 import { onFailureHandler } from "@/utils";
 import _ from "lodash";
 
 export const findStyleCount =
-  async (): CommonPromiseAPIResponseType<number> => {
+  async (): CommonPromiseAPIResponse<number> => {
     return await AppRepository.Style.count();
   };
 
 export const findOneStyle = async (
-  conditions: Partial<StyleRequestType>
-): CommonPromiseAPIResponseType<Style> => {
+  conditions: Partial<StyleRequest>
+): CommonPromiseAPIResponse<Style> => {
   return await AppRepository.Style.findOne({ ...conditions });
 };
 
 export const findStyle = async (
-  conditions: Partial<StyleRequestType>
-): CommonPromiseAPIResponseType<[Style[], number]> => {
-  let query = {} as QueryType;
+  conditions: Partial<StyleRequest>
+): CommonPromiseAPIResponse<[Style[], number]> => {
+  let query = {} as Query;
 
   if (!_.isEmpty(conditions.searchKeyword)) {
     query.where = {
@@ -34,7 +33,7 @@ export const findStyle = async (
 
   if (!_.isEmpty(conditions.nameSort)) {
     query.order = {
-      name: conditions.nameSort as SortType,
+      name: conditions.nameSort as Sort,
     };
   }
 
@@ -46,13 +45,13 @@ export const findStyle = async (
 
 export const createStyle = async (
   conditions: Style
-): CommonPromiseAPIResponseType<Style> => {
+): CommonPromiseAPIResponse<Style> => {
   return await AppRepository.Style.create(conditions);
 };
 
 export const updateStyle = async (
   conditions: Partial<Style>
-): CommonPromiseAPIResponseType<Style> => {
+): CommonPromiseAPIResponse<Style> => {
   if (_.isUndefined(conditions._id)) {
     onFailureHandler({
       status: CommonStatusCode.BAD_REQUEST,
@@ -66,7 +65,7 @@ export const updateStyle = async (
 
 export const removeStyle = async (
   conditions: Partial<Style>
-): CommonPromiseAPIResponseType<object> => {
+): CommonPromiseAPIResponse<object> => {
   await updateStyle({ _id: conditions._id, isDeleted: true });
   return {};
 };
