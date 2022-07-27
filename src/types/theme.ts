@@ -5,6 +5,4 @@ type ThemeRequestSubOption = {
   nameSort: Sort;
 };
 
-export type ThemeRequest = ThemeRequestSubOption &
-  CommonRequest &
-  Theme;
+export type ThemeRequest = ThemeRequestSubOption & CommonRequest & Theme;

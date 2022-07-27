@@ -5,7 +5,7 @@ import {
   CommonStatusCode,
   initializeRouteLevelMiddleWare,
   IRequest,
-  IResponse
+  IResponse,
 } from "..";
 import RouteItems, { RouteItem } from "./items";
 

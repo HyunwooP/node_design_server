@@ -5,6 +5,4 @@ type LayoutRequestSubOption = {
   nameSort: Sort;
 };
 
-export type LayoutRequest = LayoutRequestSubOption &
-  CommonRequest &
-  Layout;
+export type LayoutRequest = LayoutRequestSubOption & CommonRequest & Layout;

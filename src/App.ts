@@ -5,7 +5,7 @@ import {
   createRoute,
   createServer,
   generateTestData,
-  initializeSentry
+  initializeSentry,
 } from "@/lib";
 import AppRepository from "@/repository";
 import { generateConfigLog } from "@/utils";

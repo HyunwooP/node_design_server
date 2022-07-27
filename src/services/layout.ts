@@ -1,15 +1,18 @@
 import { Layout } from "@/entities/Layout";
-import { CommonPromiseAPIResponse, CommonStatusCode, CommonStatusMessage } from "@/lib";
+import {
+  CommonPromiseAPIResponse,
+  CommonStatusCode,
+  CommonStatusMessage,
+} from "@/lib";
 import AppRepository from "@/repository";
 import { Query, Sort } from "@/types/common";
 import { LayoutRequest } from "@/types/layout";
 import { onFailureHandler } from "@/utils";
 import _ from "lodash";
 
-export const findLayoutCount =
-  async (): CommonPromiseAPIResponse<number> => {
-    return await AppRepository.Layout.count();
-  };
+export const findLayoutCount = async (): CommonPromiseAPIResponse<number> => {
+  return await AppRepository.Layout.count();
+};
 
 export const findOneLayout = async (
   conditions: Partial<LayoutRequest>

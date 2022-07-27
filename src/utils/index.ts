@@ -58,5 +58,3 @@ export const generateConfigLog = (): void => {
   console.log("*");
   console.log("==================================");
 };
-
-

@@ -1,5 +1,9 @@
 import { Component } from "@/entities/Component";
-import { CommonPromiseAPIResponse, CommonStatusCode, CommonStatusMessage } from "@/lib";
+import {
+  CommonPromiseAPIResponse,
+  CommonStatusCode,
+  CommonStatusMessage,
+} from "@/lib";
 import AppRepository from "@/repository";
 import { Query, Sort } from "@/types/common";
 import { ComponentRequest } from "@/types/component";

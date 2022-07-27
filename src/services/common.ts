@@ -3,7 +3,7 @@ import {
   HandlerParams,
   healthCheckMemory,
   nowMemoryPercent,
-  onFailureHandler
+  onFailureHandler,
 } from "@/utils";
 
 export const _health = (): CommonAPIResponse<HandlerParams> => {

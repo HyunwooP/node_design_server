@@ -5,7 +5,7 @@ import {
   findStyle,
   findStyleCount,
   removeStyle,
-  updateStyle
+  updateStyle,
 } from "@/services/style";
 import { StyleRequest } from "@/types/style";
 

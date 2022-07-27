@@ -1,15 +1,18 @@
 import { Style } from "@/entities/Style";
-import { CommonPromiseAPIResponse, CommonStatusCode, CommonStatusMessage } from "@/lib";
+import {
+  CommonPromiseAPIResponse,
+  CommonStatusCode,
+  CommonStatusMessage,
+} from "@/lib";
 import AppRepository from "@/repository";
 import { Query, Sort } from "@/types/common";
 import { StyleRequest } from "@/types/style";
 import { onFailureHandler } from "@/utils";
 import _ from "lodash";
 
-export const findStyleCount =
-  async (): CommonPromiseAPIResponse<number> => {
-    return await AppRepository.Style.count();
-  };
+export const findStyleCount = async (): CommonPromiseAPIResponse<number> => {
+  return await AppRepository.Style.count();
+};
 
 export const findOneStyle = async (
   conditions: Partial<StyleRequest>

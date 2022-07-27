@@ -1,5 +1,9 @@
 import { Theme } from "@/entities/Theme";
-import { CommonPromiseAPIResponse, CommonStatusCode, CommonStatusMessage } from "@/lib";
+import {
+  CommonPromiseAPIResponse,
+  CommonStatusCode,
+  CommonStatusMessage,
+} from "@/lib";
 import AppRepository from "@/repository";
 import { Query, Sort } from "@/types/common";
 import { ThemeRequest } from "@/types/theme";
@@ -7,10 +11,9 @@ import { onFailureHandler } from "@/utils";
 import _ from "lodash";
 import { ObjectLiteral } from "typeorm";
 
-export const findThemeCount =
-  async (): CommonPromiseAPIResponse<number> => {
-    return await AppRepository.Theme.count();
-  };
+export const findThemeCount = async (): CommonPromiseAPIResponse<number> => {
+  return await AppRepository.Theme.count();
+};
 
 /**
  * @description
