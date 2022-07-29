@@ -1,7 +1,3 @@
-import { Component } from "@/entities/Component";
-import { Layout } from "@/entities/Layout";
-import { Style } from "@/entities/Style";
-import { Theme } from "@/entities/Theme";
 import AppRepository from "@/repository";
 import { ObjectId } from "mongodb";
 import { sampleComponents } from "./component";
@@ -30,11 +26,13 @@ const generateTestData = async (): Promise<void> => {
   const generateComponentCollection = async () => {
     const componentNames = Object.keys(sampleComponents);
     for (const name of componentNames) {
-      const component = new Component();
-      component.name = name;
-      component.attribute = sampleComponents[name];
+      const component = await AppRepository.Component.create({
+        name,
+        attribute: sampleComponents[name]
+      });
 
       const outputComponent = await AppRepository.Component.save(component);
+      
       if (outputComponent.name.indexOf("BLACK_THEME") !== -1) {
         componentInfos.BLACK_THEME_STYLE.push(outputComponent._id);
       } else if (outputComponent.name.indexOf("WHITE_THEME") !== -1) {
@@ -49,11 +47,13 @@ const generateTestData = async (): Promise<void> => {
   const generateLayoutCollection = async () => {
     const layoutNames = Object.keys(sampleLayouts);
     for (const name of layoutNames) {
-      const layout = new Layout();
-      layout.name = name;
-      layout.attribute = sampleLayouts[name];
+      const layout = await AppRepository.Layout.create({
+        name,
+        attribute: sampleLayouts[name]
+      });
 
       const outputLayout = await AppRepository.Layout.save(layout);
+      
       if (outputLayout.name.indexOf("BLACK_THEME") !== -1) {
         layoutInfos.BLACK_THEME_STYLE.push(outputLayout._id);
       } else if (outputLayout.name.indexOf("WHITE_THEME") !== -1) {
@@ -67,10 +67,12 @@ const generateTestData = async (): Promise<void> => {
   // Generate Style Collection
   const generateStyleCollection = async () => {
     for (const name of sampleStyles) {
-      const style = new Style();
-      style.name = name;
-      style.components = componentInfos[name];
-      style.layouts = layoutInfos[name];
+      const style = await AppRepository.Style.create({
+        name,
+        components: componentInfos[name],
+        layouts: layoutInfos[name]
+      });
+      
       const outputStyle = await AppRepository.Style.save(style);
       styleInfos.push(outputStyle._id);
     }
@@ -79,11 +81,12 @@ const generateTestData = async (): Promise<void> => {
   // Generate Theme Collection
   const generateThemeCollection = async () => {
     for (const name of sampleTheme) {
-      const theme = new Theme();
-      theme.name = name;
-      // populate or aggregation
-      theme.styles = styleInfos;
-      await AppRepository.Theme.save(theme);
+      const theme = await AppRepository.Theme.create({
+        name,
+        styles: styleInfos // populate or aggregation
+      });
+      
+      AppRepository.Theme.save(theme);
     }
   };
 
