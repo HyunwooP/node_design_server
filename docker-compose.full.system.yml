@@ -13,8 +13,6 @@ services:
       - MONGO_INITDB_DATABASE=${mongoDataBase}
     ports:
       - "27017:27017"
-    networks:
-      - mongo_network
   app:
     build:
       context: ./
@@ -35,8 +33,3 @@ services:
     command: npm run dockerStart
     depends_on:
       - mongo
-    networks:
-      - mongo_network
-networks:
-  mongo_network:
-    driver: bridge

@@ -15,20 +15,18 @@ export type Config = {
   origin: string;
 };
 
-/**
- * 외부에 노출되는 데이터들이기 때문에 주의해서 사용해야 한다.
- */
+// * Because variables are injected even in the Docker environment, || is used because it is an empty string rather than undefined.
 const config: Config = {
-  NODE_ENV: (process.env.NODE_ENV as NodeEnvironment) ?? "localhost",
-  sentryDSN: process.env.sentryDSN ?? "",
-  port: process.env.port ?? 3005,
+  NODE_ENV: (process.env.NODE_ENV as NodeEnvironment) || "localhost",
+  sentryDSN: process.env.sentryDSN || "",
+  port: process.env.port || 3005,
   mongo: {
     type: "mongodb",
     port: process.env.mongoPort ? Number(process.env.mongoPort) : 27017,
-    host: process.env.mongoHost ?? "127.0.0.1",
-    username: process.env.mongoUserName ?? "root",
-    password: process.env.mongoPassword ?? "",
-    database: process.env.mongoDataBase ?? "localDB",
+    host: process.env.mongoHost || "127.0.0.1",
+    username: process.env.mongoUserName || "root",
+    password: process.env.mongoPassword || "",
+    database: process.env.mongoDataBase || "localDB",
   },
   origin:
     process.env.gatewayDomain && process.env.gatewayPort
