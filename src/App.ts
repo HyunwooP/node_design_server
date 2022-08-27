@@ -70,6 +70,7 @@ class App {
       localhost: () => this.onCreateLocalHostApp(),
     };
     
+    // * default localhost
     return applications[config.NODE_ENV];
   }
 
