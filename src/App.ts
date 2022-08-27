@@ -5,12 +5,11 @@ import {
   createRoute,
   createServer,
   generateTestData,
-  initializeSentry,
+  initializeSentry
 } from "@/lib";
 import AppRepository from "@/repository";
 import { generateConfigLog } from "@/utils";
 import { Application } from "express";
-import _ from "lodash";
 
 class App {
   private readonly server: Application = createExpress();
@@ -70,15 +69,8 @@ class App {
       development: () => this.onCreateDevelopmentApp(),
       localhost: () => this.onCreateLocalHostApp(),
     };
-
-    const application = applications[config.NODE_ENV];
-
-    if (_.isUndefined(application)) {
-      console.log(`NODE_ENV is Undefined!!! start localhost mode`);
-      return this.onCreateLocalHostApp;
-    }
-
-    return application;
+    
+    return applications[config.NODE_ENV];
   }
 
   async startApplication(): Promise<void> {
