@@ -28,11 +28,11 @@ const generateTestData = async (): Promise<void> => {
     for (const name of componentNames) {
       const component = await AppRepository.Component.create({
         name,
-        attribute: sampleComponents[name]
+        attribute: sampleComponents[name],
       });
 
       const outputComponent = await AppRepository.Component.save(component);
-      
+
       if (outputComponent.name.indexOf("BLACK_THEME") !== -1) {
         componentInfos.BLACK_THEME_STYLE.push(outputComponent._id);
       } else if (outputComponent.name.indexOf("WHITE_THEME") !== -1) {
@@ -49,11 +49,11 @@ const generateTestData = async (): Promise<void> => {
     for (const name of layoutNames) {
       const layout = await AppRepository.Layout.create({
         name,
-        attribute: sampleLayouts[name]
+        attribute: sampleLayouts[name],
       });
 
       const outputLayout = await AppRepository.Layout.save(layout);
-      
+
       if (outputLayout.name.indexOf("BLACK_THEME") !== -1) {
         layoutInfos.BLACK_THEME_STYLE.push(outputLayout._id);
       } else if (outputLayout.name.indexOf("WHITE_THEME") !== -1) {
@@ -70,9 +70,9 @@ const generateTestData = async (): Promise<void> => {
       const style = await AppRepository.Style.create({
         name,
         components: componentInfos[name],
-        layouts: layoutInfos[name]
+        layouts: layoutInfos[name],
       });
-      
+
       const outputStyle = await AppRepository.Style.save(style);
       styleInfos.push(outputStyle._id);
     }
@@ -83,9 +83,9 @@ const generateTestData = async (): Promise<void> => {
     for (const name of sampleTheme) {
       const theme = await AppRepository.Theme.create({
         name,
-        styles: styleInfos // populate or aggregation
+        styles: styleInfos, // populate or aggregation
       });
-      
+
       AppRepository.Theme.save(theme);
     }
   };

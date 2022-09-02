@@ -5,7 +5,7 @@ import {
   createRoute,
   createServer,
   generateTestData,
-  initializeSentry
+  initializeSentry,
 } from "@/lib";
 import AppRepository from "@/repository";
 import { generateConfigLog } from "@/utils";
@@ -69,7 +69,7 @@ class App {
       development: () => this.onCreateDevelopmentApp(),
       localhost: () => this.onCreateLocalHostApp(),
     };
-    
+
     // * default localhost
     return applications[config.NODE_ENV];
   }
