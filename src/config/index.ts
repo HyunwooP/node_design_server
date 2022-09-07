@@ -1,5 +1,4 @@
 import { NodeEnvironment } from "@/lib";
-import "dotenv/config";
 import { MongoConnectionOptions } from "typeorm/driver/mongodb/MongoConnectionOptions";
 
 type MongoCustomConfig = Pick<
