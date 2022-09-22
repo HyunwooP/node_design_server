@@ -5,7 +5,7 @@ import {
   createRoute,
   createServer,
   generateTestData,
-  initializeSentry,
+  initializeSentry
 } from "@/lib";
 import AppRepository from "@/repository";
 import { generateConfigLog } from "@/utils";
@@ -45,22 +45,22 @@ class App {
   }
 
   private async onCreateLocalHostApp(): Promise<void> {
-    this.onCreateRoute();
-    this.onCreateServer();
     await this.onConnectDB();
     await this.onConnectRepository();
     await this.onCreateTestSample();
+    await this.onCreateRoute();
+    await this.onCreateServer();
   }
 
   // * localhost환경과 달라야 할 경우 확장
   private onCreateDevelopmentApp = this.onCreateLocalHostApp;
 
   private async onCreateProductionApp(): Promise<void> {
-    this.onInitializeSentry();
-    this.onCreateRoute();
-    this.onCreateServer();
+    await this.onInitializeSentry();
     await this.onConnectDB();
     await this.onConnectRepository();
+    await this.onCreateRoute();
+    await this.onCreateServer();
   }
 
   private getApplication(): Function {

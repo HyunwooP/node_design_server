@@ -10,7 +10,7 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${mongoRootUserName}
       - MONGO_INITDB_ROOT_PASSWORD=${mongoRootPassword}
-      - MONGO_INITDB_DATABASE=${mongoDataBase}
+      - MONGO_INITDB_DATABASE=${mongoDatabase}
     ports:
       - "27017:27017"
   app:
@@ -22,7 +22,7 @@ services:
       mongoHost: mongo
       mongoPort: 27017
       mongoUserName: ${mongoUserName}
-      mongoDataBase: ${mongoDataBase}
+      mongoDatabase: ${mongoDatabase}
       mongoPassword: ${mongoPassword}
       # select app envierment (localhost, development, production) - default localhost
       NODE_ENV: ${NODE_ENV:-localhost}

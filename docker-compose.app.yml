@@ -9,7 +9,7 @@ services:
       mongoHost: ${mongoHost} # default "127.0.0.1"
       mongoPort: ${mongoPort} # default 27017
       mongoUserName: ${mongoUserName}
-      mongoDataBase: ${mongoDataBase}
+      mongoDatabase: ${mongoDatabase}
       mongoPassword: ${mongoPassword}
       # select app envierment (localhost, development, production) - default localhost
       NODE_ENV: ${NODE_ENV:-localhost}

@@ -25,7 +25,7 @@ const config: Config = {
     host: process.env.mongoHost || "127.0.0.1",
     username: process.env.mongoUserName,
     password: process.env.mongoPassword,
-    database: process.env.mongoDataBase,
+    database: process.env.mongoDatabase,
   },
   origin:
     process.env.gatewayDomain && process.env.gatewayPort
