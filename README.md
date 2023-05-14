@@ -40,6 +40,7 @@ https://github.com/awakelife93/express-boilerplate
 3. All elements included in the design system indicate which theme they were made for by promising "\_\_" as a delimiter depending on the theme.
 4. The default environment for build and code level is the localhost environment.
 5. This project is oriented towards the Data Mapper pattern, not the Active Record pattern.
+6. Test data setup is false by default. (config.isSetUpTestData)
 ```
 
 ## Author

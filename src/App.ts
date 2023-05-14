@@ -5,7 +5,7 @@ import {
   createRoute,
   createServer,
   generateTestData,
-  initializeSentry
+  initializeSentry,
 } from "@/lib";
 import AppRepository from "@/repository";
 import { generateConfigLog } from "@/utils";
@@ -47,9 +47,12 @@ class App {
   private async onCreateLocalHostApp(): Promise<void> {
     await this.onConnectDB();
     await this.onConnectRepository();
-    await this.onCreateTestSample();
     await this.onCreateRoute();
     await this.onCreateServer();
+
+    if (config.isSetUpTestData) {
+      await this.onCreateTestSample();
+    }
   }
 
   // * localhost환경과 달라야 할 경우 확장
